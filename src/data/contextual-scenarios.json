@@ -1,0 +1,187 @@
+{
+  "metadata": {
+    "purpose": "Real-world application contexts, constraints, and domain-specific scenarios",
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-14"
+  },
+  "domainContexts": {
+    "ecommerce": {
+      "description": "Online retail and marketplace platforms",
+      "characteristics": ["high-availability", "scalability", "security", "performance"],
+      "constraints": ["seasonal-traffic", "payment-compliance", "inventory-consistency"],
+      "stakeholders": ["customers", "merchants", "payment-processors", "logistics-partners"],
+      "scenarios": [
+        {
+          "name": "black-friday-scaling",
+          "description": "Handle 10x normal traffic during peak shopping events",
+          "challenges": ["traffic-spikes", "inventory-contention", "payment-processing"],
+          "characteristics": ["elasticity", "performance", "reliability"]
+        },
+        {
+          "name": "marketplace-expansion",
+          "description": "Add third-party sellers to existing retail platform",
+          "challenges": ["multi-tenancy", "data-isolation", "revenue-sharing"],
+          "characteristics": ["configurability", "security", "auditability"]
+        }
+      ]
+    },
+    "fintech": {
+      "description": "Financial services and trading platforms",
+      "characteristics": ["security", "reliability", "consistency", "auditability"],
+      "constraints": ["regulatory-compliance", "data-privacy", "transaction-integrity"],
+      "stakeholders": ["regulators", "customers", "auditors", "risk-managers"],
+      "scenarios": [
+        {
+          "name": "high-frequency-trading",
+          "description": "Microsecond latency trading system",
+          "challenges": ["ultra-low-latency", "data-consistency", "fault-tolerance"],
+          "characteristics": ["performance", "reliability", "consistency"]
+        },
+        {
+          "name": "regulatory-reporting",
+          "description": "Real-time compliance monitoring and reporting",
+          "challenges": ["data-lineage", "audit-trails", "regulatory-changes"],
+          "characteristics": ["auditability", "traceability", "adaptability"]
+        }
+      ]
+    },
+    "healthcare": {
+      "description": "Medical systems and patient care platforms",
+      "characteristics": ["privacy", "reliability", "interoperability", "usability"],
+      "constraints": ["hipaa-compliance", "life-critical-operations", "legacy-integration"],
+      "stakeholders": ["patients", "healthcare-providers", "regulators", "insurance"],
+      "scenarios": [
+        {
+          "name": "patient-data-exchange",
+          "description": "Secure sharing of medical records between providers",
+          "challenges": ["privacy-protection", "data-standards", "consent-management"],
+          "characteristics": ["security", "interoperability", "privacy"]
+        },
+        {
+          "name": "telemedicine-platform",
+          "description": "Remote patient consultation and monitoring",
+          "challenges": ["real-time-communication", "device-integration", "data-synchronization"],
+          "characteristics": ["availability", "usability", "reliability"]
+        }
+      ]
+    },
+    "gaming": {
+      "description": "Interactive entertainment and gaming platforms",
+      "characteristics": ["performance", "scalability", "responsiveness", "availability"],
+      "constraints": ["real-time-requirements", "global-distribution", "cheat-prevention"],
+      "stakeholders": ["players", "game-developers", "platform-operators", "content-creators"],
+      "scenarios": [
+        {
+          "name": "multiplayer-battle-royale",
+          "description": "100-player real-time competitive gaming",
+          "challenges": ["low-latency", "state-synchronization", "anti-cheat"],
+          "characteristics": ["performance", "consistency", "fairness"]
+        },
+        {
+          "name": "global-leaderboards",
+          "description": "Real-time ranking system across regions",
+          "challenges": ["eventual-consistency", "geographic-distribution", "data-aggregation"],
+          "characteristics": ["scalability", "consistency", "performance"]
+        }
+      ]
+    },
+    "iot": {
+      "description": "Internet of Things and edge computing systems",
+      "characteristics": ["scalability", "reliability", "efficiency", "interoperability"],
+      "constraints": ["resource-limitations", "connectivity-issues", "device-diversity"],
+      "stakeholders": ["device-manufacturers", "service-providers", "end-users", "platform-operators"],
+      "scenarios": [
+        {
+          "name": "smart-city-infrastructure",
+          "description": "Connected traffic, utilities, and public services",
+          "challenges": ["massive-scale", "heterogeneous-devices", "real-time-processing"],
+          "characteristics": ["scalability", "interoperability", "reliability"]
+        },
+        {
+          "name": "industrial-monitoring",
+          "description": "Factory equipment monitoring and predictive maintenance",
+          "challenges": ["edge-processing", "offline-operation", "safety-critical"],
+          "characteristics": ["reliability", "efficiency", "availability"]
+        }
+      ]
+    }
+  },
+  "organizationalContexts": {
+    "startup": {
+      "description": "Early-stage companies with rapid growth and limited resources",
+      "characteristics": ["agility", "cost-effectiveness", "simplicity"],
+      "constraints": ["limited-budget", "small-team", "uncertain-requirements"],
+      "priorities": ["time-to-market", "feature-velocity", "learning-speed"],
+      "challenges": ["technical-debt", "scaling-pressure", "skill-gaps"]
+    },
+    "enterprise": {
+      "description": "Large established organizations with complex requirements",
+      "characteristics": ["reliability", "security", "compliance", "integration"],
+      "constraints": ["legacy-systems", "regulatory-requirements", "organizational-complexity"],
+      "priorities": ["risk-mitigation", "operational-stability", "governance"],
+      "challenges": ["change-resistance", "coordination-overhead", "technology-debt"]
+    },
+    "scaleup": {
+      "description": "Growing companies transitioning from startup to enterprise",
+      "characteristics": ["scalability", "maintainability", "team-growth"],
+      "constraints": ["legacy-technical-debt", "growing-complexity", "skill-scaling"],
+      "priorities": ["sustainable-growth", "team-productivity", "system-reliability"],
+      "challenges": ["architecture-evolution", "team-coordination", "quality-maintenance"]
+    },
+    "consultancy": {
+      "description": "Service organizations building solutions for multiple clients",
+      "characteristics": ["reusability", "configurability", "maintainability"],
+      "constraints": ["diverse-client-needs", "time-pressure", "knowledge-transfer"],
+      "priorities": ["delivery-speed", "solution-quality", "client-satisfaction"],
+      "challenges": ["requirement-variability", "team-allocation", "knowledge-retention"]
+    }
+  },
+  "technicalContexts": {
+    "legacy-modernization": {
+      "description": "Updating existing systems with modern approaches",
+      "challenges": ["data-migration", "business-continuity", "risk-management"],
+      "strategies": ["strangler-fig", "parallel-run", "incremental-migration"],
+      "considerations": ["backward-compatibility", "rollback-capability", "team-training"]
+    },
+    "cloud-migration": {
+      "description": "Moving from on-premise to cloud infrastructure",
+      "challenges": ["vendor-lock-in", "cost-optimization", "security-model"],
+      "strategies": ["lift-and-shift", "re-platforming", "cloud-native-rebuild"],
+      "considerations": ["data-sovereignty", "compliance-requirements", "operational-model"]
+    },
+    "microservices-adoption": {
+      "description": "Transitioning from monolithic to microservices architecture",
+      "challenges": ["service-boundaries", "data-consistency", "operational-complexity"],
+      "strategies": ["domain-driven-design", "event-sourcing", "service-mesh"],
+      "considerations": ["team-structure", "deployment-automation", "monitoring-strategy"]
+    },
+    "performance-optimization": {
+      "description": "Improving system performance and efficiency",
+      "challenges": ["bottleneck-identification", "resource-utilization", "user-experience"],
+      "strategies": ["caching-layers", "database-optimization", "load-balancing"],
+      "considerations": ["measurement-strategy", "trade-off-analysis", "capacity-planning"]
+    }
+  },
+  "constraintPatterns": {
+    "regulatory": {
+      "types": ["gdpr", "hipaa", "sox", "pci-dss"],
+      "implications": ["data-handling", "audit-trails", "access-controls", "retention-policies"],
+      "architecturalImpact": ["security-by-design", "compliance-monitoring", "data-governance"]
+    },
+    "performance": {
+      "types": ["latency-requirements", "throughput-demands", "resource-limits"],
+      "implications": ["technology-selection", "caching-strategy", "optimization-focus"],
+      "architecturalImpact": ["performance-budgets", "monitoring-strategy", "scalability-design"]
+    },
+    "integration": {
+      "types": ["legacy-systems", "third-party-apis", "partner-platforms"],
+      "implications": ["interface-design", "data-transformation", "error-handling"],
+      "architecturalImpact": ["adapter-patterns", "anti-corruption-layers", "circuit-breakers"]
+    },
+    "operational": {
+      "types": ["deployment-frequency", "maintenance-windows", "support-model"],
+      "implications": ["automation-requirements", "monitoring-needs", "rollback-strategy"],
+      "architecturalImpact": ["observability-design", "deployment-patterns", "operational-simplicity"]
+    }
+  }
+}

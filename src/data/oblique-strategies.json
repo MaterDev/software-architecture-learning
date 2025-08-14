@@ -1,0 +1,287 @@
+{
+  "metadata": {
+    "purpose": "Oblique strategies for lateral thinking in software architecture learning",
+    "inspiration": "Brian Eno's Oblique Strategies adapted for software architecture",
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-14",
+    "totalStrategies": 33
+  },
+  "strategies": [
+    {
+      "id": 1,
+      "strategy": "What would you do if you had unlimited resources?",
+      "category": "constraints",
+      "description": "Remove resource constraints to explore ideal solutions, then work backwards to practical implementations"
+    },
+    {
+      "id": 2,
+      "strategy": "Consider the opposite of your first instinct",
+      "category": "perspective",
+      "description": "Challenge initial assumptions by exploring the inverse approach"
+    },
+    {
+      "id": 3,
+      "strategy": "What if this system had to work for 100 years?",
+      "category": "time",
+      "description": "Design for extreme longevity to reveal hidden assumptions about change and evolution"
+    },
+    {
+      "id": 4,
+      "strategy": "Remove the most important component",
+      "category": "elimination",
+      "description": "Force innovation by eliminating what seems essential"
+    },
+    {
+      "id": 5,
+      "strategy": "What would a child design?",
+      "category": "simplicity",
+      "description": "Embrace radical simplicity and naive solutions"
+    },
+    {
+      "id": 6,
+      "strategy": "Design for your worst enemy",
+      "category": "adversarial",
+      "description": "Consider how someone trying to break or exploit your system would approach it"
+    },
+    {
+      "id": 7,
+      "strategy": "What if data could never be deleted?",
+      "category": "constraints",
+      "description": "Explore immutable architectures and append-only designs"
+    },
+    {
+      "id": 8,
+      "strategy": "Use only technologies from 10 years ago",
+      "category": "constraints",
+      "description": "Focus on fundamental principles rather than latest trends"
+    },
+    {
+      "id": 9,
+      "strategy": "What if every operation took exactly 1 second?",
+      "category": "performance",
+      "description": "Explore how uniform latency would change your design decisions"
+    },
+    {
+      "id": 10,
+      "strategy": "Design as if you'll never see the code again",
+      "category": "clarity",
+      "description": "Optimize for extreme clarity and self-documentation"
+    },
+    {
+      "id": 11,
+      "strategy": "What would happen if you doubled everything?",
+      "category": "scale",
+      "description": "Consider how 2x users, data, requests, or components would affect your design"
+    },
+    {
+      "id": 12,
+      "strategy": "Solve a different problem entirely",
+      "category": "reframing",
+      "description": "Step back and question whether you're solving the right problem"
+    },
+    {
+      "id": 13,
+      "strategy": "What if failures were features?",
+      "category": "resilience",
+      "description": "Design systems that benefit from or gracefully degrade with failures"
+    },
+    {
+      "id": 14,
+      "strategy": "Use only asynchronous communication",
+      "category": "communication",
+      "description": "Eliminate all synchronous calls and explore event-driven architectures"
+    },
+    {
+      "id": 15,
+      "strategy": "What if you had to explain this to your grandmother?",
+      "category": "simplicity",
+      "description": "Reduce complexity to its most essential, understandable elements"
+    },
+    {
+      "id": 16,
+      "strategy": "Design for a single user, then for a billion",
+      "category": "scale",
+      "description": "Explore how extreme scale changes affect fundamental design decisions"
+    },
+    {
+      "id": 17,
+      "strategy": "What if every component was a separate company?",
+      "category": "boundaries",
+      "description": "Design with extreme service boundaries and contractual interfaces"
+    },
+    {
+      "id": 18,
+      "strategy": "Optimize for the rarest use case",
+      "category": "priorities",
+      "description": "Challenge normal prioritization by focusing on edge cases first"
+    },
+    {
+      "id": 19,
+      "strategy": "What if you could only use pure functions?",
+      "category": "constraints",
+      "description": "Explore functional programming principles and immutable designs"
+    },
+    {
+      "id": 20,
+      "strategy": "Design as if security didn't matter, then add it back",
+      "category": "security",
+      "description": "Understand the core functionality before layering security concerns"
+    },
+    {
+      "id": 21,
+      "strategy": "What would the maintenance team want?",
+      "category": "operations",
+      "description": "Prioritize operational concerns and long-term maintainability"
+    },
+    {
+      "id": 22,
+      "strategy": "Use the technology you know least about",
+      "category": "learning",
+      "description": "Force exploration of unfamiliar approaches and paradigms"
+    },
+    {
+      "id": 23,
+      "strategy": "What if every decision was reversible?",
+      "category": "flexibility",
+      "description": "Design for maximum adaptability and decision reversibility"
+    },
+    {
+      "id": 24,
+      "strategy": "Solve it like it's 1995",
+      "category": "constraints",
+      "description": "Use historical constraints to focus on fundamental solutions"
+    },
+    {
+      "id": 25,
+      "strategy": "What if documentation was the only deliverable?",
+      "category": "communication",
+      "description": "Focus on clarity of intent and architectural communication"
+    },
+    {
+      "id": 26,
+      "strategy": "Design for your biggest competitor",
+      "category": "perspective",
+      "description": "Consider how competitive pressures would change your approach"
+    },
+    {
+      "id": 27,
+      "strategy": "What if every change broke something?",
+      "category": "stability",
+      "description": "Design for maximum stability and change isolation"
+    },
+    {
+      "id": 28,
+      "strategy": "Use only open source, or only proprietary",
+      "category": "constraints",
+      "description": "Explore how licensing constraints affect architectural decisions"
+    },
+    {
+      "id": 29,
+      "strategy": "What if you had to demo this in 5 minutes?",
+      "category": "simplicity",
+      "description": "Focus on core value and eliminate non-essential complexity"
+    },
+    {
+      "id": 30,
+      "strategy": "Design as if the team will triple next month",
+      "category": "team-scaling",
+      "description": "Consider how rapid team growth affects architectural decisions"
+    },
+    {
+      "id": 31,
+      "strategy": "What would break if you removed all caching?",
+      "category": "performance",
+      "description": "Understand fundamental performance characteristics without optimization layers"
+    },
+    {
+      "id": 32,
+      "strategy": "Optimize for debugging, not performance",
+      "category": "observability",
+      "description": "Prioritize system transparency and diagnostic capabilities"
+    },
+    {
+      "id": 33,
+      "strategy": "What if this was the last system you'd ever build?",
+      "category": "legacy",
+      "description": "Design with extreme care for long-term consequences and architectural beauty"
+    }
+  ],
+  "categoryGroups": {
+    "constraints": {
+      "description": "Strategies that impose artificial limitations to force creative solutions",
+      "strategies": [1, 7, 8, 19, 24, 28]
+    },
+    "perspective": {
+      "description": "Strategies that shift viewpoint or stakeholder focus",
+      "strategies": [2, 6, 26]
+    },
+    "simplicity": {
+      "description": "Strategies that force reduction to essential elements",
+      "strategies": [5, 15, 29]
+    },
+    "scale": {
+      "description": "Strategies that explore extreme scaling scenarios",
+      "strategies": [11, 16, 30]
+    },
+    "time": {
+      "description": "Strategies that manipulate time horizons and temporal constraints",
+      "strategies": [3, 33]
+    },
+    "communication": {
+      "description": "Strategies focused on interfaces and information flow",
+      "strategies": [14, 25]
+    },
+    "resilience": {
+      "description": "Strategies that explore failure modes and system robustness",
+      "strategies": [13, 27]
+    },
+    "boundaries": {
+      "description": "Strategies that explore component and system boundaries",
+      "strategies": [17, 23]
+    },
+    "operations": {
+      "description": "Strategies focused on operational and maintenance concerns",
+      "strategies": [21, 32]
+    },
+    "learning": {
+      "description": "Strategies that force exploration of unfamiliar approaches",
+      "strategies": [22]
+    }
+  },
+  "applicationMethods": {
+    "random": {
+      "description": "Select a completely random strategy to add unexpected perspective",
+      "usage": "Use when prompts feel too predictable or conventional"
+    },
+    "category-based": {
+      "description": "Select strategies from specific categories based on learning objectives",
+      "usage": "Use when targeting specific architectural thinking skills"
+    },
+    "complementary": {
+      "description": "Pair strategies that create interesting tensions or contradictions",
+      "usage": "Use to explore trade-offs and complex decision-making"
+    },
+    "progressive": {
+      "description": "Start with simple strategies and progress to more complex ones",
+      "usage": "Use for skill development and gradual complexity introduction"
+    }
+  },
+  "integrationPatterns": {
+    "prompt-injection": {
+      "description": "Inject strategy as additional constraint or perspective in existing prompts",
+      "template": "Additionally, consider this oblique strategy: '{strategy}'. How does this change your approach?"
+    },
+    "reframing": {
+      "description": "Use strategy to completely reframe the problem or solution space",
+      "template": "Reframe this entire challenge through the lens of: '{strategy}'"
+    },
+    "validation": {
+      "description": "Use strategy to validate or challenge proposed solutions",
+      "template": "Test your solution against this perspective: '{strategy}'. What changes?"
+    },
+    "exploration": {
+      "description": "Use strategy to explore alternative solution spaces",
+      "template": "Explore alternative approaches by considering: '{strategy}'"
+    }
+  }
+}

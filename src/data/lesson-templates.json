@@ -1,0 +1,169 @@
+{
+  "metadata": {
+    "purpose": "Educational lesson generation templates for AI systems",
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-14"
+  },
+  "lessonFormats": {
+    "conceptExploration": {
+      "description": "Deep dive into architectural concepts with practical applications",
+      "structure": [
+        "## Concept Overview",
+        "## Why This Matters",
+        "## Core Principles", 
+        "## Real-World Examples",
+        "## Common Pitfalls",
+        "## Practical Exercises",
+        "## Reflection Questions",
+        "## Further Reading"
+      ],
+      "instructionalGuidance": "Create an engaging lesson that helps software engineers understand {concept} through concrete examples and hands-on thinking exercises they can apply throughout their workday."
+    },
+    "tradeoffAnalysis": {
+      "description": "Structured analysis of architectural trade-offs and decision-making",
+      "structure": [
+        "## The Decision Context",
+        "## Available Options", 
+        "## Trade-off Matrix",
+        "## Scenario Analysis",
+        "## Decision Framework",
+        "## Case Study Application",
+        "## Key Takeaways",
+        "## Decision Checklist"
+      ],
+      "instructionalGuidance": "Guide the reader through systematic trade-off analysis for {decisionType} in {context}, providing a reusable framework they can apply to similar decisions."
+    },
+    "patternStudy": {
+      "description": "In-depth exploration of architectural patterns and their applications",
+      "structure": [
+        "## Pattern Definition",
+        "## Problem It Solves",
+        "## Implementation Approach",
+        "## Benefits and Drawbacks",
+        "## When to Use/Avoid",
+        "## Variations and Alternatives",
+        "## Implementation Tips",
+        "## Monitoring and Maintenance"
+      ],
+      "instructionalGuidance": "Create a comprehensive guide to {pattern} that software engineers can reference when considering this approach for their systems."
+    },
+    "skillDevelopment": {
+      "description": "Practical skill-building exercises for architectural thinking",
+      "structure": [
+        "## Skill Overview",
+        "## Current State Assessment",
+        "## Development Roadmap",
+        "## Practice Exercises",
+        "## Application Scenarios",
+        "## Progress Indicators",
+        "## Common Challenges",
+        "## Next Steps"
+      ],
+      "instructionalGuidance": "Design a practical skill development plan for {skill} that readers can implement incrementally while working on their daily engineering tasks."
+    },
+    "caseStudyAnalysis": {
+      "description": "Real-world architectural case study examination",
+      "structure": [
+        "## Scenario Background",
+        "## Initial Challenges",
+        "## Architectural Approach",
+        "## Implementation Details",
+        "## Outcomes and Lessons",
+        "## Alternative Approaches",
+        "## Transferable Insights",
+        "## Application Exercise"
+      ],
+      "instructionalGuidance": "Present a detailed case study of {scenario} that illustrates key architectural principles and provides actionable insights for similar situations."
+    }
+  },
+  "roleInstructions": {
+    "expertEngineer": {
+      "perspective": "Technical depth and implementation excellence",
+      "focus": "Provide concrete technical details, measurement strategies, and implementation guidance",
+      "tone": "Analytical and precise, with emphasis on measurable outcomes",
+      "deliverables": [
+        "Specific technical recommendations",
+        "Measurement and monitoring strategies", 
+        "Code examples or patterns",
+        "Performance considerations",
+        "Implementation roadmap"
+      ]
+    },
+    "systemDesigner": {
+      "perspective": "Holistic system design and architecture characteristics",
+      "focus": "Emphasize system-wide implications, quality attributes, and design decisions",
+      "tone": "Strategic and comprehensive, balancing multiple concerns",
+      "deliverables": [
+        "Architecture diagrams or models",
+        "Quality attribute analysis",
+        "System boundary definitions",
+        "Component interaction patterns",
+        "Governance mechanisms"
+      ]
+    },
+    "leader": {
+      "perspective": "Organizational alignment and decision-making",
+      "focus": "Address stakeholder concerns, communication, and organizational impact",
+      "tone": "Collaborative and consensus-building, with business awareness",
+      "deliverables": [
+        "Stakeholder communication plan",
+        "Decision rationale and documentation",
+        "Risk assessment and mitigation",
+        "Team alignment strategies",
+        "Change management approach"
+      ]
+    },
+    "reviewSynthesis": {
+      "perspective": "Integration and holistic understanding",
+      "focus": "Connect insights across perspectives and extract transferable wisdom",
+      "tone": "Reflective and integrative, emphasizing learning and growth",
+      "deliverables": [
+        "Cross-perspective synthesis",
+        "Key learning insights",
+        "Practical application guidance",
+        "Future learning directions",
+        "Wisdom distillation"
+      ]
+    }
+  },
+  "contentGuidelines": {
+    "readability": {
+      "targetAudience": "Software engineers with 2-10 years experience",
+      "readingTime": "10-15 minutes for deep engagement",
+      "complexity": "Accessible but substantive, avoiding both oversimplification and jargon",
+      "structure": "Clear headings, bullet points, and logical flow"
+    },
+    "practicality": {
+      "applicationFocus": "Immediately applicable to daily engineering work",
+      "exampleTypes": "Real-world scenarios, concrete code patterns, specific metrics",
+      "exerciseStyle": "Thought experiments and reflection questions for ongoing consideration",
+      "actionability": "Clear next steps and implementation guidance"
+    },
+    "engagement": {
+      "writingStyle": "Conversational but authoritative, engaging but professional",
+      "interactivity": "Questions for self-reflection and team discussion",
+      "relevance": "Connected to current industry practices and challenges",
+      "motivation": "Emphasize career growth and engineering excellence"
+    }
+  },
+  "adaptationInstructions": {
+    "domainSpecific": {
+      "ecommerce": "Focus on scalability, availability, and user experience under load",
+      "fintech": "Emphasize security, compliance, and transaction integrity",
+      "healthcare": "Highlight privacy, reliability, and regulatory compliance",
+      "gaming": "Concentrate on performance, real-time processing, and user engagement",
+      "iot": "Address resource constraints, edge computing, and device diversity"
+    },
+    "organizationalContext": {
+      "startup": "Emphasize agility, resource efficiency, and rapid iteration",
+      "enterprise": "Focus on governance, risk management, and integration complexity",
+      "scaleup": "Address growing pains, technical debt, and team scaling",
+      "consultancy": "Highlight reusability, client communication, and delivery efficiency"
+    },
+    "complexityLevel": {
+      "beginner": "Provide more background context, step-by-step guidance, and basic examples",
+      "intermediate": "Balance theory with practice, include trade-off analysis",
+      "advanced": "Assume knowledge, focus on nuanced decisions and complex scenarios"
+    }
+  }
+}

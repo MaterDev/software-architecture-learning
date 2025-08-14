@@ -1,0 +1,211 @@
+/* Error Boundary Styles - VS Code Dark+ Theme */
+
+.error-boundary-container {
+  min-height: 100vh;
+  background: var(--vscode-bg);
+  color: var(--vscode-text);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.error-boundary-content {
+  max-width: 800px;
+  width: 100%;
+  background: var(--vscode-editor-bg);
+  border: 1px solid var(--vscode-border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px var(--vscode-shadow);
+}
+
+.error-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: var(--vscode-panel-bg);
+  border-bottom: 1px solid var(--vscode-border);
+}
+
+.error-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.error-title h1 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--vscode-red);
+}
+
+.error-title p {
+  margin: 0;
+  color: var(--vscode-text-secondary);
+  font-size: 14px;
+}
+
+.error-details {
+  padding: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.error-section {
+  margin-bottom: 24px;
+}
+
+.error-section:last-child {
+  margin-bottom: 0;
+}
+
+.error-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--vscode-text-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+.error-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.error-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.error-item strong {
+  color: var(--vscode-text-bright);
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.error-item code {
+  background: var(--vscode-input-bg);
+  color: var(--vscode-orange);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.error-stack {
+  background: var(--vscode-input-bg);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 4px;
+  padding: 16px;
+  overflow: auto;
+  max-height: 200px;
+}
+
+.error-stack pre {
+  margin: 0;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--vscode-text);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.error-actions {
+  display: flex;
+  gap: 12px;
+  padding: 24px;
+  background: var(--vscode-panel-bg);
+  border-top: 1px solid var(--vscode-border);
+  flex-wrap: wrap;
+}
+
+.error-help {
+  padding: 16px 24px;
+  background: var(--vscode-hover);
+  border-top: 1px solid var(--vscode-border);
+}
+
+.error-help p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--vscode-text-secondary);
+  line-height: 1.5;
+}
+
+.error-help code {
+  background: var(--vscode-input-bg);
+  color: var(--vscode-yellow);
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+/* Custom Scrollbar for Error Details */
+.error-details::-webkit-scrollbar,
+.error-stack::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.error-details::-webkit-scrollbar-track,
+.error-stack::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.error-details::-webkit-scrollbar-thumb,
+.error-stack::-webkit-scrollbar-thumb {
+  background: var(--vscode-scrollbar);
+  border-radius: 4px;
+}
+
+.error-details::-webkit-scrollbar-thumb:hover,
+.error-stack::-webkit-scrollbar-thumb:hover {
+  background: var(--vscode-scrollbar-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .error-boundary-container {
+    padding: 16px;
+  }
+  
+  .error-header {
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .error-details {
+    padding: 20px;
+  }
+  
+  .error-actions {
+    padding: 20px;
+    flex-direction: column;
+  }
+  
+  .error-actions .vscode-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .error-item {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .error-item strong {
+    min-width: auto;
+  }
+}
