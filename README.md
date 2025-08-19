@@ -90,6 +90,14 @@ The app now uses React Router for navigation. The landing page is a dedicated "H
 
 Flow summary: choose a domain context → select role/complexity-appropriate concepts → build an educational meta‑prompt → enrich with context and deliverables.
 
+### Context & Data View
+
+![Context & Data View](./images/data-screenshot.png)
+
+- Shows contextual chips, details, and inputs beneath each generated prompt.
+- Includes domain, technologies, scenario, stakeholders, lesson format, and a JSON Variables block for reproducibility.
+- Useful for auditing and fine‑tuning prompts before sending to an LLM.
+
 ## Software Architecture Learning – Prompting Engine
 
 High-level system that generates multi-stage educational prompts for software architecture using domain contexts, core concepts, and templates. The engine produces a 4-stage cycle (Expert Engineer, System Designer, Leader, Review & Synthesis) tailored by role, complexity, and selected context.
