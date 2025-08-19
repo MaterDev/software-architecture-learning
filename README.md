@@ -12,6 +12,43 @@ For deeper details, see:
 - Data Model: `docs/DATA-MODEL.md`
 - Architecture: `docs/ARCHITECTURE.md`
 
+## 🎓 Learning Theory Behind This Approach
+
+This tool applies well-established learning science to software architecture. The core ideas:
+
+- **Interleaving across perspectives**: Cycling through Expert Engineer → System Designer → Leader → Review & Synthesis mixes related skills rather than blocking on one topic. Interleaving improves discrimination, transfer, and long‑term retention.
+- **Spaced, varied practice**: New cycles and regenerate actions create constructive variation over time. Spacing plus variation introduces **desirable difficulties** that improve durable learning.
+- **Multiple representations**: Seeing the same domain through code, system, and organizational lenses builds richer schemas and supports reinforcement across different contexts.
+- **Reflection and self‑explanation**: The Review & Synthesis stage prompts consolidation, explanation in your own words, and linking concepts—key for schema formation.
+- **Motivated encoding via relevance**: Domain weighting steers scenarios toward areas you care about, increasing engagement and relevance.
+
+### How the 4 stages map to learning principles
+
+- **Expert Engineer**
+  - Focus: implementation details, patterns, trade‑offs.
+  - Learning effects: retrieval and generative practice on concrete problems; worked‑example → problem‑solving transition; chunking at the code/pattern level.
+
+- **System Designer**
+  - Focus: architecture boundaries, data flow, scalability, integration.
+  - Learning effects: abstraction and systems thinking; concept mapping; building reusable schemas beyond a single technology.
+
+- **Leader**
+  - Focus: socio‑technical constraints, communication, alignment, risk.
+  - Learning effects: elaboration with realistic constraints; audience adaptation; decision rationale capture—critical for professional judgment.
+
+- **Review & Synthesis**
+  - Focus: integrate perspectives, surface trade‑offs, conclude next steps.
+  - Learning effects: reflection, elaborative interrogation, and metacognition; strengthens links across representations and prepares for transfer.
+
+### Suggested study pattern
+
+1. Generate a new cycle and skim all four prompts to set a mental model.
+2. Work each stage end‑to‑end; write notes, decisions, and open questions.
+3. Conclude with Review & Synthesis; extract principles and next experiments.
+4. Schedule a follow‑up cycle 1–3 days later (spacing). Increase complexity or change domain to encourage transfer.
+
+> The UI mirrors this theory: the default landing explains the stages (How It Works), and stage views provide structured meta‑prompts to drive generative, reflective work.
+
 ## Requirements
 
 - Node.js 18+ or Bun
@@ -28,6 +65,28 @@ bun run lint       # lint source code
 bun run qa         # generate QA reports under reports/qa/
 bun run build      # production build
 ```
+
+## 🖼️ UI Overview & Screenshots
+
+The app now uses React Router for navigation. The landing page is a dedicated "How It Works" route that explains the four learning stages and how to use the tool. Selecting a stage in the sidebar navigates to a focused prompt editor for that stage.
+
+### How It Works (Landing)
+
+![How It Works – Landing](./images/full-screenshot.png)
+
+- **Route**: `/how-it-works` (default redirect from `/`).
+- **Content**: Four stage cards with descriptions and a "How to Use This Tool" checklist.
+- **Sidebar**: "How It Works" link and a "Generate New Cycle" action.
+- **Learning Stages**: List of stages shows concept counts and supports navigation to each stage view.
+
+### Stage Prompt View
+
+![Stage Prompt View – Expert Engineer](./images/prompt-screenshot.png)
+
+- **Route**: `/stage/:stageId` (e.g., `/stage/Expert%20Engineer`).
+- **Editor**: Displays the generated educational meta‑prompt for the selected stage.
+- **Actions**: "Regenerate" to create a new prompt variation, "Copy Prompt" to copy the current prompt, and "Copy All" when applicable.
+- **Flow**: Use the sidebar to switch stages; the URL updates accordingly.
 
 Flow summary: choose a domain context → select role/complexity-appropriate concepts → build an educational meta‑prompt → enrich with context and deliverables.
 
@@ -48,16 +107,8 @@ The application has been completely refactored into a **modular, testable archit
 ### Data Layer (`src/data/`)
 
 - **repositories/** - Data access layer with caching and filtering
-
 - **models/** - Domain models with validation and business logic
 - **sources/** - JSON data files (concepts, templates, scenarios, strategies)
-
-### Testing Infrastructure (`src/__tests__/`)
-
-- **Comprehensive unit tests** for all components
-
-- **Test fixtures** and mocks for reliable testing
-- **Coverage reporting** and CI-ready configuration
 
 ## 🚀 Key Features
 
@@ -104,7 +155,7 @@ src/
 
 ## 🧪 Testing
 
-The project includes a comprehensive test suite with:
+The project includes a comprehensive test suite. Common commands:
 
 ```bash
 # Run all tests
@@ -120,45 +171,7 @@ bun run test:coverage
 bun run test:ui
 ```
 
-### Test Coverage
-
-- **Unit tests** for all repositories, models, and generators
-
-- **Integration tests** for the complete prompt generation flow
-- **Mock fixtures** for reliable, fast testing
-- **95%+ code coverage** target
-
-## 🛠️ Development
-
-### Prerequisites
-
-- Node.js 18+ or Bun runtime
-
-- Modern web browser
-
-### Setup
-
-```bash
-# Install dependencies
-bun install
-
-# Start development server
-bun run dev
-
-# Run tests
-bun run test
-
-# Build for production
-bun run build
-```
-
-### Code Quality
-
-- **ESLint**: `bun run lint`
-- **QA suite**: `bun run qa` (outputs reports under `reports/qa/`). ESLint is configured to ignore `reports/**` in `eslint.config.js` to avoid linting generated artifacts.
-- **Modular architecture** with clear separation of concerns
-- **Comprehensive logging** for debugging and monitoring
-- **Type safety** through careful validation
+Targets: unit and integration coverage with a 95%+ goal.
 
 ## 📊 Data Sources
 
