@@ -10,6 +10,10 @@ import { ScenarioRepository } from '../../data/repositories/ScenarioRepository.j
 import { StrategyRepository } from '../../data/repositories/StrategyRepository.js';
 import { logger } from '../../utils/logger.js';
 import { ContextEnricher } from './services/ContextEnricher.js';
+import { createFallbackCycle as createFallback } from './core/FallbackFactory.js';
+import { isFullyInitialized as isInit, reinitialize as doReinit } from './core/InitManager.js';
+import { setDomainWeights as setWeights, getDomainWeights as readWeights } from './core/WeightsManager.js';
+import { getStats as aggregateStats } from './core/StatsProvider.js';
 
 export class PromptEngine {
   constructor({
@@ -72,7 +76,7 @@ export class PromptEngine {
       const cycle = this.cycleGenerator.generate();
       // Normalize structure to meet contract even with mocked generators
       if (!cycle || typeof cycle !== 'object') {
-        return this.createFallbackCycle();
+        return createFallback();
       }
       if (typeof cycle.timestamp !== 'number') {
         cycle.timestamp = Date.now();
@@ -96,93 +100,31 @@ export class PromptEngine {
    * Check if all repositories are properly initialized
    */
   isFullyInitialized() {
-    return this.conceptRepo?.initialized && 
-           this.templateRepo?.initialized && 
-           this.scenarioRepo?.initialized && 
-           this.strategyRepo?.initialized;
+    return isInit({
+      conceptRepo: this.conceptRepo,
+      templateRepo: this.templateRepo,
+      scenarioRepo: this.scenarioRepo,
+      strategyRepo: this.strategyRepo
+    });
   }
 
   /**
    * Reinitialize repositories if needed
    */
   reinitialize() {
-    try {
-      if (!this.conceptRepo?.initialized) {
-        this.conceptRepo.initializeCache();
-      }
-      if (!this.templateRepo?.initialized) {
-        this.templateRepo.initializeCache();
-      }
-      if (!this.scenarioRepo?.initialized) {
-        this.scenarioRepo.initializeCache();
-      }
-      if (!this.strategyRepo?.initialized) {
-        this.strategyRepo.initializeCache();
-      }
-    } catch (error) {
-      logger.error('PromptEngine', 'Failed to reinitialize repositories', { error });
-    }
+    return doReinit({
+      conceptRepo: this.conceptRepo,
+      templateRepo: this.templateRepo,
+      scenarioRepo: this.scenarioRepo,
+      strategyRepo: this.strategyRepo
+    }, logger);
   }
 
   /**
    * Create a fallback cycle when generation fails
    */
   createFallbackCycle() {
-    const timestamp = Date.now();
-    return {
-      id: `fallback-cycle-${timestamp}`,
-      timestamp,
-      context: { name: 'general', domain: 'software-architecture' },
-      complexity: 'intermediate',
-      obliqueStrategy: null,
-      stages: [
-        {
-          stage: 'Expert Engineer',
-          prompt: 'Fallback prompt: Explore software architecture fundamentals and design patterns.',
-          hashtags: ['#software-architecture', '#design-patterns', '#engineering'],
-          context: 'general',
-          complexity: 'intermediate',
-          lessonType: 'Foundational concepts',
-          conceptsUsed: ['software-architecture'],
-          timestamp
-        },
-        {
-          stage: 'System Designer',
-          prompt: 'Fallback prompt: Design scalable systems with proper architectural decisions.',
-          hashtags: ['#system-design', '#scalability', '#architecture'],
-          context: 'general',
-          complexity: 'intermediate',
-          lessonType: 'System design',
-          conceptsUsed: ['system-design'],
-          timestamp
-        },
-        {
-          stage: 'Leader',
-          prompt: 'Fallback prompt: Lead architectural decisions and communicate technical vision.',
-          hashtags: ['#leadership', '#technical-vision', '#communication'],
-          context: 'general',
-          complexity: 'intermediate',
-          lessonType: 'Leadership skills',
-          conceptsUsed: ['leadership'],
-          timestamp
-        },
-        {
-          stage: 'Review & Synthesis',
-          prompt: 'Fallback prompt: Review architectural decisions and synthesize learnings.',
-          hashtags: ['#review', '#synthesis', '#reflection'],
-          context: 'general',
-          complexity: 'intermediate',
-          lessonType: 'Reflection and synthesis',
-          conceptsUsed: ['reflection'],
-          timestamp
-        }
-      ],
-      metadata: {
-        generationApproach: 'fallback-mode',
-        dataVersion: '3.0.0',
-        generator: 'PromptEngine-Fallback'
-      }
-    };
+    return createFallback();
   }
 
   /**
@@ -196,46 +138,21 @@ export class PromptEngine {
    * Get engine statistics
    */
   getStats() {
-    return {
-      concepts: this.conceptRepo.getStats(),
-      templates: this.templateRepo.getStats(),
-      scenarios: this.scenarioRepo.getStats(),
-      strategies: this.strategyRepo.getStats()
-    };
+    return aggregateStats(this);
   }
 
   /**
    * Update domain weighting preferences (passthrough to ScenarioRepository)
    */
   setDomainWeights(weights = {}) {
-    try {
-      logger.debug('PromptEngine', 'setDomainWeights:input', { keys: Object.keys(weights || {}) });
-    } catch (e) { console.debug && console.debug('[PromptEngine] log suppressed:setDomainWeights:input', e && e.message); }
-    if (this.scenarioRepo?.setDomainWeights) {
-      const before = this.scenarioRepo?.getDomainWeights ? this.scenarioRepo.getDomainWeights() : {};
-      this.scenarioRepo.setDomainWeights(weights);
-      const after = this.scenarioRepo?.getDomainWeights ? this.scenarioRepo.getDomainWeights() : {};
-      try {
-        const changedKeys = Object.keys(weights || {});
-        const changed = changedKeys.reduce((acc, k) => {
-          acc[k] = { from: before[k], to: after[k] };
-          return acc;
-        }, {});
-        logger.info('PromptEngine', 'setDomainWeights:applied', { changedKeys, changed });
-      } catch (e) { console.debug && console.debug('[PromptEngine] log suppressed:setDomainWeights:applied', e && e.message); }
-    }
+    return setWeights(this, weights, logger);
   }
 
   /**
    * Read current domain weighting preferences
    */
   getDomainWeights() {
-    const out = this.scenarioRepo?.getDomainWeights ? this.scenarioRepo.getDomainWeights() : {};
-    try {
-      const sample = Object.fromEntries(Object.entries(out).slice(0, 8));
-      logger.debug('PromptEngine', 'getDomainWeights:read', { count: Object.keys(out || {}).length, sample });
-    } catch (e) { console.debug && console.debug('[PromptEngine] log suppressed:getDomainWeights:read', e && e.message); }
-    return out;
+    return readWeights(this, logger);
   }
 }
 
