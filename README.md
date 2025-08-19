@@ -92,17 +92,26 @@ Flow summary: choose a domain context → select role/complexity-appropriate con
 
 ### Context & Data View
 
-![Context & Data View](./images/data-screenshot.png)
 
 - Shows contextual chips, details, and inputs beneath each generated prompt.
 - Includes domain, technologies, scenario, stakeholders, lesson format, and a JSON Variables block for reproducibility.
 - Useful for auditing and fine‑tuning prompts before sending to an LLM.
 
+> 
+> Callout — Data mapping
+> 
+> - Context chips, details, inputs → `src/data/sources/contextual-scenarios.json` (canonical)
+> - Concepts and complexity → `src/data/sources/core-concepts.json`
+> - Lesson format guidance → `src/data/sources/lesson-templates.json`
+> - Variables JSON mirrors the exact inputs used to build the prompt, for reproducibility
+> - Do not use `src/data/contextual-scenarios.json` (deprecated)
+> 
+
 ## Software Architecture Learning – Prompting Engine
 
 High-level system that generates multi-stage educational prompts for software architecture using domain contexts, core concepts, and templates. The engine produces a 4-stage cycle (Expert Engineer, System Designer, Leader, Review & Synthesis) tailored by role, complexity, and selected context.
 
-The application has been completely refactored into a **modular, testable architecture** with clear separation of concerns:
+{{ ... }}
 
 ### Core Engine (`src/engines/prompt/`)
 
