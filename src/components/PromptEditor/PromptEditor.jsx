@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { copyText, copyAllStages } from '../../utils/clipboard.js';
+import { logger } from '../../utils/logger.js';
 
 const PromptEditor = ({ stage, activeStage, loading, error, onRegenerate, onNewCycle, allStages }) => {
+  const [showAudit, setShowAudit] = useState(false);
+
   const handleCopyToClipboard = async (text) => {
     if (!text) return;
     await copyText(text, { action: 'copy-stage', stage: stage?.stage, source: 'PromptEditor' });
@@ -20,6 +23,32 @@ const PromptEditor = ({ stage, activeStage, loading, error, onRegenerate, onNewC
       'Review & Synthesis': 'pi-file-edit'
     };
     return icons[stage] || 'pi-file';
+  };
+
+  const buildAuditPayload = (s) => {
+    if (!s) return null;
+    const audit = s.audit || {};
+    return {
+      stage: s.stage,
+      generatedAt: s.timestamp || null,
+      context: audit.context || s.context || null,
+      complexity: s.complexity || null,
+      lessonType: s.lessonType || null,
+      conceptsUsed: s.conceptsUsed || [],
+      technologiesUsed: s.technologiesUsed || [],
+      variables: audit.variables || {},
+      lessonFormat: audit.lessonFormat || null,
+      enrichment: audit.enrichment || s.enrichment || null,
+      obliqueStrategy: audit.obliqueStrategy || null
+    };
+  };
+
+  const handleCopyAudit = async () => {
+    const payload = buildAuditPayload(stage);
+    if (!payload) return;
+    const text = JSON.stringify(payload, null, 2);
+    logger.prompt('PromptEditor', 'copy-stage-audit', { stage: stage?.stage, payload });
+    await copyText(text, { action: 'copy-stage-audit', stage: stage?.stage, source: 'PromptEditor' });
   };
 
   return (
@@ -182,11 +211,14 @@ const PromptEditor = ({ stage, activeStage, loading, error, onRegenerate, onNewC
                       <span>Context ({stage.hashtags.length})</span>
                     </div>
                     <div className="hashtags-grid">
-                      {stage.hashtags.map((hashtag, index) => (
-                        <span key={index} className="hashtag">
-                          #{hashtag}
-                        </span>
-                      ))}
+                      {stage.hashtags.map((hashtag, index) => {
+                        const display = typeof hashtag === 'string' && hashtag.startsWith('#') ? hashtag : `#${hashtag}`;
+                        return (
+                          <span key={index} className="hashtag">
+                            {display}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -231,6 +263,75 @@ const PromptEditor = ({ stage, activeStage, loading, error, onRegenerate, onNewC
                       </div>
                     )}
                   </div>
+                </div>
+
+                {/* Audit: Context & Inputs (collapsible) */}
+                <div className="context-details-section">
+                  <div className="section-header" onClick={() => setShowAudit(prev => !prev)} style={{ cursor: 'pointer' }}>
+                    <i className={`pi ${showAudit ? 'pi-chevron-down' : 'pi-chevron-right'}`} />
+                    <span>Context & Inputs</span>
+                    <div className="editor-actions" style={{ marginLeft: 'auto' }}>
+                      <button
+                        className="editor-btn secondary"
+                        onClick={(e) => { e.stopPropagation(); handleCopyAudit(); }}
+                        disabled={!stage}
+                        title="Copy audit JSON to clipboard"
+                      >
+                        <i className="pi pi-copy" />
+                        Copy Audit
+                      </button>
+                    </div>
+                  </div>
+                  {showAudit && (
+                    <div className="context-details-grid">
+                      {/* Domain */}
+                      {stage?.audit?.enrichment?.domain && (
+                        <div className="detail-row">
+                          <span className="label">Domain</span>
+                          <span className="value">{stage.audit.enrichment.domain.name}</span>
+                        </div>
+                      )}
+                      {/* Technologies */}
+                      {Array.isArray(stage?.audit?.enrichment?.technologies) && stage.audit.enrichment.technologies.length > 0 && (
+                        <div className="detail-row">
+                          <span className="label">Technologies</span>
+                          <span className="value">{stage.audit.enrichment.technologies.map(t => t.name).join(', ')}</span>
+                        </div>
+                      )}
+                      {/* Scenario */}
+                      {stage?.audit?.context?.selectedScenario && (
+                        <div className="detail-row">
+                          <span className="label">Scenario</span>
+                          <span className="value">{stage.audit.context.selectedScenario.description || stage.audit.context.selectedScenario.name}</span>
+                        </div>
+                      )}
+                      {/* Stakeholders */}
+                      {Array.isArray(stage?.audit?.context?.stakeholders) && stage.audit.context.stakeholders.length > 0 && (
+                        <div className="detail-row">
+                          <span className="label">Stakeholders</span>
+                          <span className="value">{stage.audit.context.stakeholders.join(', ')}</span>
+                        </div>
+                      )}
+                      {/* Lesson Format */}
+                      {stage?.audit?.lessonFormat && (
+                        <div className="detail-row">
+                          <span className="label">Lesson Format</span>
+                          <span className="value">{stage.audit.lessonFormat.description}</span>
+                        </div>
+                      )}
+                      {/* Variables (compact) */}
+                      {stage?.audit?.variables && (
+                        <div className="detail-row">
+                          <span className="label">Variables</span>
+                          <span className="value" style={{ maxHeight: '8rem', overflow: 'auto' }}>
+                            <pre style={{ margin: 0 }}>
+{JSON.stringify(stage.audit.variables, null, 2)}
+                            </pre>
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             )}

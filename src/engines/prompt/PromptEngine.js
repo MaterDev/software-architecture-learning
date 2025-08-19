@@ -18,12 +18,13 @@ export class PromptEngine {
     scenarioRepo = null,
     strategyRepo = null,
     cycleGenerator = null,
-    stageGenerator = null
+    stageGenerator = null,
+    domainWeights = undefined
   } = {}) {
     // Initialize data repositories (allow DI for testing)
     this.conceptRepo = conceptRepo || new ConceptRepository();
     this.templateRepo = templateRepo || new TemplateRepository();
-    this.scenarioRepo = scenarioRepo || new ScenarioRepository();
+    this.scenarioRepo = scenarioRepo || new ScenarioRepository({ domainWeights });
     this.strategyRepo = strategyRepo || new StrategyRepository();
     this.contextEnricher = new ContextEnricher();
     
@@ -202,6 +203,40 @@ export class PromptEngine {
       strategies: this.strategyRepo.getStats()
     };
   }
+
+  /**
+   * Update domain weighting preferences (passthrough to ScenarioRepository)
+   */
+  setDomainWeights(weights = {}) {
+    try {
+      logger.debug('PromptEngine', 'setDomainWeights:input', { keys: Object.keys(weights || {}) });
+    } catch (e) { console.debug && console.debug('[PromptEngine] log suppressed:setDomainWeights:input', e && e.message); }
+    if (this.scenarioRepo?.setDomainWeights) {
+      const before = this.scenarioRepo?.getDomainWeights ? this.scenarioRepo.getDomainWeights() : {};
+      this.scenarioRepo.setDomainWeights(weights);
+      const after = this.scenarioRepo?.getDomainWeights ? this.scenarioRepo.getDomainWeights() : {};
+      try {
+        const changedKeys = Object.keys(weights || {});
+        const changed = changedKeys.reduce((acc, k) => {
+          acc[k] = { from: before[k], to: after[k] };
+          return acc;
+        }, {});
+        logger.info('PromptEngine', 'setDomainWeights:applied', { changedKeys, changed });
+      } catch (e) { console.debug && console.debug('[PromptEngine] log suppressed:setDomainWeights:applied', e && e.message); }
+    }
+  }
+
+  /**
+   * Read current domain weighting preferences
+   */
+  getDomainWeights() {
+    const out = this.scenarioRepo?.getDomainWeights ? this.scenarioRepo.getDomainWeights() : {};
+    try {
+      const sample = Object.fromEntries(Object.entries(out).slice(0, 8));
+      logger.debug('PromptEngine', 'getDomainWeights:read', { count: Object.keys(out || {}).length, sample });
+    } catch (e) { console.debug && console.debug('[PromptEngine] log suppressed:getDomainWeights:read', e && e.message); }
+    return out;
+  }
 }
 
 // Export singleton instance for backward compatibility
@@ -209,5 +244,7 @@ const promptEngine = new PromptEngine();
 
 export const generateCycle = () => promptEngine.generateCycle();
 export const regenerateStage = (stageName) => promptEngine.regenerateStage(stageName);
+export const setDomainWeights = (weights) => promptEngine.setDomainWeights(weights);
+export const getDomainWeights = () => promptEngine.getDomainWeights();
 
 export default promptEngine;

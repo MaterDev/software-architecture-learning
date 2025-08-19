@@ -13,6 +13,7 @@
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
+    "sample:selection": "bun scripts/sample-selection.js",
     "qa:prepare": "mkdir -p reports/qa",
     "qa:deps": "depcheck | tee reports/qa/depcheck.txt || true && knip --no-gitignore --reporter json | tee reports/qa/knip.json || true",
     "qa:graph": "depcruise --include-only ^src --output-type text src | tee reports/qa/depcruise.txt || true",

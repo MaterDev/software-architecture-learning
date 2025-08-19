@@ -14,7 +14,9 @@
       "constraints": ["gpu-costs", "large-assets"],
       "stakeholders": ["artists", "producers"],
       "scenarios": [
-        { "name": "real-time-vfx-collab", "characteristics": ["low-latency", "versioning"] }
+        { "name": "real-time-vfx-collab", "characteristics": ["low-latency", "versioning"] },
+        { "name": "asset-versioning-at-scale", "characteristics": ["content-addressing", "branching"] },
+        { "name": "render-farm-auto-scaling", "characteristics": ["throughput", "cost-optimization"] }
       ]
     },
     {
@@ -26,7 +28,9 @@
       "constraints": ["device-variability", "bandwidth"],
       "stakeholders": ["authors", "readers"],
       "scenarios": [
-        { "name": "collaborative-editor", "characteristics": ["concurrency", "conflict-resolution"] }
+        { "name": "collaborative-editor", "characteristics": ["concurrency", "conflict-resolution"] },
+        { "name": "panel-layout-ai-assist", "characteristics": ["ml-inference", "usability"] },
+        { "name": "reader-analytics-personalization", "characteristics": ["privacy", "recommendations"] }
       ]
     },
     {
@@ -38,7 +42,9 @@
       "constraints": ["cross-platform", "precision"],
       "stakeholders": ["designers", "devs"],
       "scenarios": [
-        { "name": "vector-editor", "characteristics": ["precision", "undo-redo"] }
+        { "name": "vector-editor", "characteristics": ["precision", "undo-redo"] },
+        { "name": "plugin-sandboxing", "characteristics": ["capabilities", "security"] },
+        { "name": "gpu-memory-profiling", "characteristics": ["performance", "observability"] }
       ]
     },
     {
@@ -50,7 +56,9 @@
       "constraints": ["timing", "sync"],
       "stakeholders": ["artists", "audience"],
       "scenarios": [
-        { "name": "live-performance", "characteristics": ["low-latency", "stability"] }
+        { "name": "live-performance", "characteristics": ["low-latency", "stability"] },
+        { "name": "live-coding-webgl", "characteristics": ["hot-reload", "sandboxing"] },
+        { "name": "midi-sync-perf", "characteristics": ["timing", "jitter-control"] }
       ]
     },
     {
@@ -62,7 +70,9 @@
       "constraints": ["cost", "security"],
       "stakeholders": ["engineers", "sre"],
       "scenarios": [
-        { "name": "api-gateway", "characteristics": ["rate-limits", "idempotency"] }
+        { "name": "api-gateway", "characteristics": ["rate-limits", "idempotency"] },
+        { "name": "circuit-breaker-rollout", "characteristics": ["resilience", "observability"] },
+        { "name": "blue-green-deploy", "characteristics": ["zero-downtime", "rollback"] }
       ]
     },
     {
@@ -74,7 +84,9 @@
       "constraints": ["cross-platform", "deps"],
       "stakeholders": ["devs", "ci"],
       "scenarios": [
-        { "name": "cli-with-plugins", "characteristics": ["extensibility", "stability"] }
+        { "name": "cli-with-plugins", "characteristics": ["extensibility", "stability"] },
+        { "name": "cross-platform-packaging", "characteristics": ["portability", "reproducibility"] },
+        { "name": "plugin-registry-sync", "characteristics": ["consistency", "security"] }
       ]
     },
     {
@@ -86,7 +98,9 @@
       "constraints": ["data-volume", "latency"],
       "stakeholders": ["analysts", "pm"],
       "scenarios": [
-        { "name": "realtime-dashboard", "characteristics": ["websocket", "backpressure"] }
+        { "name": "realtime-dashboard", "characteristics": ["websocket", "backpressure"] },
+        { "name": "ad-hoc-queries-cache", "characteristics": ["caching", "freshness"] },
+        { "name": "anomaly-detection", "characteristics": ["ml-inference", "alerting"] }
       ]
     },
     {
@@ -98,7 +112,9 @@
       "constraints": ["precision", "thermal"],
       "stakeholders": ["graphics-devs", "artists"],
       "scenarios": [
-        { "name": "path-tracer", "characteristics": ["gpu", "parallelism"] }
+        { "name": "path-tracer", "characteristics": ["gpu", "parallelism"] },
+        { "name": "gpgpu-postprocessing", "characteristics": ["throughput", "latency"] },
+        { "name": "texture-streaming", "characteristics": ["bandwidth", "memory"] }
       ]
     },
     {
@@ -110,7 +126,9 @@
       "constraints": ["memory", "browser-compat"],
       "stakeholders": ["web-devs", "compiler-devs"],
       "scenarios": [
-        { "name": "wasm-image-processing", "characteristics": ["simd", "ffis"] }
+        { "name": "wasm-image-processing", "characteristics": ["simd", "ffis"] },
+        { "name": "wasi-cli-tooling", "characteristics": ["portability", "sandboxing"] },
+        { "name": "wasm-plugin-architecture", "characteristics": ["ffi", "stability"] }
       ]
     },
     {
@@ -122,7 +140,9 @@
       "constraints": ["code-signing", "os-perms"],
       "stakeholders": ["app-devs", "ops"],
       "scenarios": [
-        { "name": "secure-updater", "characteristics": ["signature", "rollback"] }
+        { "name": "secure-updater", "characteristics": ["signature", "rollback"] },
+        { "name": "file-sync-permissions", "characteristics": ["least-privilege", "usability"] },
+        { "name": "multi-window-ipc", "characteristics": ["isolation", "responsiveness"] }
       ]
     },
     {
@@ -134,7 +154,9 @@
       "constraints": ["pci", "risk"],
       "stakeholders": ["merchants", "finance"],
       "scenarios": [
-        { "name": "payment-orchestration", "characteristics": ["retries", "sagas"] }
+        { "name": "payment-orchestration", "characteristics": ["retries", "sagas"] },
+        { "name": "webhook-retry-strategy", "characteristics": ["idempotency", "deduplication"] },
+        { "name": "ledger-reconciliation", "characteristics": ["consistency", "auditing"] }
       ]
     },
     {
@@ -146,7 +168,9 @@
       "constraints": ["security", "cost"],
       "stakeholders": ["sre", "engineers"],
       "scenarios": [
-        { "name": "multi-cluster-gitops", "characteristics": ["dr", "policy"] }
+        { "name": "multi-cluster-gitops", "characteristics": ["dr", "policy"] },
+        { "name": "chaos-engineering-drill", "characteristics": ["resilience", "observability"] },
+        { "name": "observability-rollup", "characteristics": ["cardinality", "cost-optimization"] }
       ]
     },
     {
@@ -158,7 +182,9 @@
       "constraints": ["bandwidth", "trust"],
       "stakeholders": ["release-eng", "users"],
       "scenarios": [
-        { "name": "auto-update", "characteristics": ["rollback", "semver"] }
+        { "name": "auto-update", "characteristics": ["rollback", "semver"] },
+        { "name": "delta-patching", "characteristics": ["bandwidth", "integrity"] },
+        { "name": "air-gapped-installers", "characteristics": ["offline-first", "trust"] }
       ]
     },
     {
@@ -170,7 +196,9 @@
       "constraints": ["safety", "compliance"],
       "stakeholders": ["ml-engineers", "product"],
       "scenarios": [
-        { "name": "llm-coding-assistant", "characteristics": ["traceability", "evals"] }
+        { "name": "llm-coding-assistant", "characteristics": ["traceability", "evals"] },
+        { "name": "prompt-caching", "characteristics": ["latency", "determinism"] },
+        { "name": "safety-filtering", "characteristics": ["policy", "privacy"] }
       ]
     },
     {
@@ -182,7 +210,9 @@
       "constraints": ["privacy", "permissions"],
       "stakeholders": ["app-devs", "qa"],
       "scenarios": [
-        { "name": "offline-sync", "characteristics": ["merge", "conflict-resolution"] }
+        { "name": "offline-sync", "characteristics": ["merge", "conflict-resolution"] },
+        { "name": "background-sync", "characteristics": ["battery-life", "resilience"] },
+        { "name": "push-notifications", "characteristics": ["delivery", "privacy"] }
       ]
     },
     {
@@ -194,7 +224,9 @@
       "constraints": ["runtime-variability", "compat"],
       "stakeholders": ["frontend-devs", "fullstack-devs"],
       "scenarios": [
-        { "name": "code-splitting", "characteristics": ["lazy-loading", "preload-hints"] }
+        { "name": "code-splitting", "characteristics": ["lazy-loading", "preload-hints"] },
+        { "name": "isomorphic-rendering", "characteristics": ["performance", "seo"] },
+        { "name": "worker-offloading", "characteristics": ["throughput", "responsiveness"] }
       ]
     },
     {
@@ -207,7 +239,9 @@
       ,
       "stakeholders": ["frontend-devs", "library-authors"],
       "scenarios": [
-        { "name": "public-api-stability", "characteristics": ["semver", "testing"] }
+        { "name": "public-api-stability", "characteristics": ["semver", "testing"] },
+        { "name": "type-safe-sdk", "characteristics": ["refactorability", "DX"] },
+        { "name": "monorepo-build-caching", "characteristics": ["incrementality", "determinism"] }
       ]
     },
     {
@@ -219,7 +253,9 @@
       "constraints": ["gc-latency", "binary-size"],
       "stakeholders": ["backend-devs", "ops"],
       "scenarios": [
-        { "name": "high-qps-api", "characteristics": ["pooling", "backpressure"] }
+        { "name": "high-qps-api", "characteristics": ["pooling", "backpressure"] },
+        { "name": "grpc-backpressure", "characteristics": ["flow-control", "observability"] },
+        { "name": "connection-pooling", "characteristics": ["latency", "throughput"] }
       ]
     },
     {
@@ -231,7 +267,9 @@
       "constraints": ["compile-times", "unsafe-audits"],
       "stakeholders": ["systems-devs", "security"],
       "scenarios": [
-        { "name": "async-service", "characteristics": ["observability", "resilience"] }
+        { "name": "async-service", "characteristics": ["observability", "resilience"] },
+        { "name": "zero-copy-io", "characteristics": ["performance", "latency"] },
+        { "name": "ffi-boundary-safety", "characteristics": ["safety", "auditing"] }
       ]
     }
   ]

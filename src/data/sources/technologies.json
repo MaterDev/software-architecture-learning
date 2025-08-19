@@ -12,7 +12,7 @@
       "interfaces": { "inputs": ["memory"], "outputs": ["exports"], "protocols": ["wasm", "wasi"] },
       "qualityAttributes": ["performance", "portability"],
       "constraints": ["sandboxing", "linear-memory"],
-      "tags": ["web-assembly", "simd", "ffis"]
+      "tags": ["webassembly", "simd", "ffi"]
     },
     {
       "name": "Tauri",
@@ -84,7 +84,7 @@
       "interfaces": { "inputs": ["events"], "outputs": ["events"], "protocols": ["kafka"] },
       "qualityAttributes": ["throughput", "durability"],
       "constraints": ["ops-complexity"],
-      "tags": ["analytics-data-visualization", "server-side-development"]
+      "tags": ["analytics-data-viz", "server-side-development"]
     },
     {
       "name": "PostgreSQL",
@@ -166,6 +166,222 @@
       "qualityAttributes": ["developer-experience", "speed"],
       "constraints": ["plugin-compatibility"],
       "tags": ["app-development", "javascript", "typescript"]
+    },
+    {
+      "name": "Bun",
+      "category": "runtime",
+      "description": "Fast JavaScript/TypeScript runtime and toolkit",
+      "interfaces": { "inputs": ["http", "events"], "outputs": ["http", "fs"], "protocols": ["http", "tcp"] },
+      "qualityAttributes": ["speed", "developer-experience"],
+      "constraints": ["ecosystem-maturity"],
+      "tags": ["javascript", "typescript", "server-side-development", "scripting-tooling"]
+    },
+    {
+      "name": "Deno",
+      "category": "runtime",
+      "description": "Secure JavaScript/TypeScript runtime with web APIs",
+      "interfaces": { "inputs": ["http"], "outputs": ["http", "fs"], "protocols": ["http"] },
+      "qualityAttributes": ["security", "portability"],
+      "constraints": ["compatibility"],
+      "tags": ["javascript", "typescript", "server-side-development", "scripting-tooling"]
+    },
+    {
+      "name": "Cloudflare Workers",
+      "category": "platform",
+      "description": "Edge compute platform for serverless JavaScript",
+      "interfaces": { "inputs": ["http", "events"], "outputs": ["http"], "protocols": ["http"] },
+      "qualityAttributes": ["latency", "scalability"],
+      "constraints": ["runtime-limits"],
+      "tags": ["app-development", "server-side-development", "analytics-data-viz"]
+    },
+    {
+      "name": "AWS Lambda",
+      "category": "platform",
+      "description": "Serverless compute service for running code without servers",
+      "interfaces": { "inputs": ["events"], "outputs": ["events"], "protocols": ["http", "sqs", "kinesis"] },
+      "qualityAttributes": ["scalability", "cost-optimization"],
+      "constraints": ["cold-starts"],
+      "tags": ["server-side-development", "devops"]
+    },
+    {
+      "name": "NATS",
+      "category": "messaging",
+      "description": "Lightweight high-performance messaging system",
+      "interfaces": { "inputs": ["messages"], "outputs": ["messages"], "protocols": ["nats"] },
+      "qualityAttributes": ["latency", "simplicity"],
+      "constraints": ["persistence-options"],
+      "tags": ["server-side-development", "go", "microservices"]
+    },
+    {
+      "name": "RabbitMQ",
+      "category": "messaging",
+      "description": "Reliable message broker supporting multiple protocols",
+      "interfaces": { "inputs": ["messages"], "outputs": ["messages"], "protocols": ["amqp"] },
+      "qualityAttributes": ["reliability", "routing-flexibility"],
+      "constraints": ["ops-overhead"],
+      "tags": ["server-side-development", "payment-systems"]
+    },
+    {
+      "name": "Apache Flink",
+      "category": "stream",
+      "description": "Stateful computations over data streams at scale",
+      "interfaces": { "inputs": ["events"], "outputs": ["events"], "protocols": ["kafka", "files"] },
+      "qualityAttributes": ["throughput", "exactly-once"],
+      "constraints": ["cluster-complexity"],
+      "tags": ["analytics-data-viz", "server-side-development"]
+    },
+    {
+      "name": "ClickHouse",
+      "category": "analytics",
+      "description": "Columnar OLAP database for analytics at scale",
+      "interfaces": { "inputs": ["sql", "columns"], "outputs": ["rows"], "protocols": ["http", "tcp", "sql"] },
+      "qualityAttributes": ["performance", "compression"],
+      "constraints": ["join-limitations"],
+      "tags": ["analytics-data-viz", "observability"]
+    },
+    {
+      "name": "DuckDB",
+      "category": "analytics",
+      "description": "In-process OLAP database for analytics",
+      "interfaces": { "inputs": ["sql"], "outputs": ["rows"], "protocols": ["sql"] },
+      "qualityAttributes": ["portability", "simplicity"],
+      "constraints": ["single-process"],
+      "tags": ["analytics-data-viz", "scripting-tooling"]
+    },
+    {
+      "name": "OpenTelemetry",
+      "category": "observability",
+      "description": "Unified traces, metrics, and logs instrumentation",
+      "interfaces": { "inputs": ["spans", "metrics", "logs"], "outputs": ["otlp"], "protocols": ["otlp", "http", "grpc"] },
+      "qualityAttributes": ["observability", "standardization"],
+      "constraints": ["overhead", "cardinality"] ,
+      "tags": ["devops", "server-side-development"]
+    },
+    {
+      "name": "Grafana",
+      "category": "observability",
+      "description": "Visualization and dashboards for metrics, logs, and traces",
+      "interfaces": { "inputs": ["prometheus", "loki", "tempo"], "outputs": ["dashboards"], "protocols": ["http"] },
+      "qualityAttributes": ["usability", "observability"],
+      "constraints": ["datasource-setup"],
+      "tags": ["analytics-data-viz", "devops"]
+    },
+    {
+      "name": "WebRTC",
+      "category": "protocol",
+      "description": "Real-time communications for audio/video/data",
+      "interfaces": { "inputs": ["media", "data"], "outputs": ["media", "data"], "protocols": ["webrtc", "stun", "turn"] },
+      "qualityAttributes": ["real-time", "p2p"],
+      "constraints": ["nat-traversal", "complexity"],
+      "tags": ["entertainment-arts", "graphic-apps", "app-development"]
+    },
+    {
+      "name": "Server-Sent Events",
+      "category": "protocol",
+      "description": "Unidirectional streaming over HTTP",
+      "interfaces": { "inputs": ["events"], "outputs": ["events"], "protocols": ["http"] },
+      "qualityAttributes": ["simplicity", "low-overhead"],
+      "constraints": ["one-way"],
+      "tags": ["analytics-data-viz", "generative-ai", "app-development"]
+    },
+    {
+      "name": "WebSocket",
+      "category": "protocol",
+      "description": "Full-duplex communication over a single TCP connection",
+      "interfaces": { "inputs": ["messages"], "outputs": ["messages"], "protocols": ["ws"] },
+      "qualityAttributes": ["real-time", "bidirectional"],
+      "constraints": ["stateful-connections"],
+      "tags": ["analytics-data-viz", "server-side-development", "graphic-apps"]
+    },
+    {
+      "name": "esbuild",
+      "category": "tooling",
+      "description": "Extremely fast bundler and minifier",
+      "interfaces": { "inputs": ["js", "ts"], "outputs": ["bundles"], "protocols": [] },
+      "qualityAttributes": ["speed", "simplicity"],
+      "constraints": ["plugin-ecosystem"],
+      "tags": ["javascript", "typescript", "app-development", "scripting-tooling"]
+    },
+    {
+      "name": "SWC",
+      "category": "tooling",
+      "description": "Rust-based platform for JavaScript/TypeScript compilation",
+      "interfaces": { "inputs": ["js", "ts"], "outputs": ["js"], "protocols": [] },
+      "qualityAttributes": ["speed", "compatibility"],
+      "constraints": ["feature-parity"],
+      "tags": ["javascript", "typescript", "app-development"]
+    },
+    {
+      "name": "WebGL2",
+      "category": "graphics",
+      "description": "Web graphics API for 3D rendering",
+      "interfaces": { "inputs": ["buffers", "textures"], "outputs": ["frames"], "protocols": ["webgl2"] },
+      "qualityAttributes": ["portability", "performance"],
+      "constraints": ["driver-variance"],
+      "tags": ["computer-graphics", "graphic-apps"]
+    },
+    {
+      "name": "FFmpeg",
+      "category": "media",
+      "description": "Comprehensive toolkit for audio/video processing",
+      "interfaces": { "inputs": ["media"], "outputs": ["media"], "protocols": ["cli", "libav"] },
+      "qualityAttributes": ["flexibility", "performance"],
+      "constraints": ["licensing"],
+      "tags": ["entertainment-arts", "computer-graphics", "app-development"]
+    },
+    {
+      "name": "OpenAI API",
+      "category": "ai",
+      "description": "Hosted foundation models for text, vision, and more",
+      "interfaces": { "inputs": ["prompts", "images"], "outputs": ["completions"], "protocols": ["http"] },
+      "qualityAttributes": ["quality", "time-to-value"],
+      "constraints": ["cost", "rate-limits"],
+      "tags": ["generative-ai", "app-development"]
+    },
+    {
+      "name": "vLLM",
+      "category": "ai-serving",
+      "description": "High-throughput LLM serving engine",
+      "interfaces": { "inputs": ["tokens"], "outputs": ["tokens"], "protocols": ["http"] },
+      "qualityAttributes": ["throughput", "cost-efficiency"],
+      "constraints": ["gpu-requirements"],
+      "tags": ["generative-ai", "server-side-development"]
+    },
+    {
+      "name": "NVIDIA Triton",
+      "category": "ai-serving",
+      "description": "Inference server supporting multiple ML frameworks",
+      "interfaces": { "inputs": ["tensors"], "outputs": ["tensors"], "protocols": ["grpc", "http"] },
+      "qualityAttributes": ["performance", "observability"],
+      "constraints": ["deployment-complexity"],
+      "tags": ["generative-ai", "devops"]
+    },
+    {
+      "name": "Qdrant",
+      "category": "vector-db",
+      "description": "Vector database for similarity search and RAG",
+      "interfaces": { "inputs": ["vectors", "payload"], "outputs": ["results"], "protocols": ["http", "grpc"] },
+      "qualityAttributes": ["recall", "latency"],
+      "constraints": ["resource-usage"],
+      "tags": ["generative-ai", "analytics-data-viz"]
+    },
+    {
+      "name": "Flatpak",
+      "category": "packaging",
+      "description": "Linux desktop app packaging and distribution",
+      "interfaces": { "inputs": ["manifests"], "outputs": ["bundles"], "protocols": ["oci"] },
+      "qualityAttributes": ["security", "portability"],
+      "constraints": ["platform-limits"],
+      "tags": ["software-distribution", "app-development"]
+    },
+    {
+      "name": "Electron Updater",
+      "category": "updater",
+      "description": "Auto-update mechanism for Electron apps",
+      "interfaces": { "inputs": ["releases"], "outputs": ["updates"], "protocols": ["http"] },
+      "qualityAttributes": ["usability", "reliability"],
+      "constraints": ["bundle-size"],
+      "tags": ["software-distribution", "app-development"]
     }
   ]
 }

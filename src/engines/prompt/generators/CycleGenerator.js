@@ -225,6 +225,7 @@ export class CycleGenerator {
         conceptsUsed: Array.isArray(stage.conceptsUsed) ? stage.conceptsUsed : ['architecture'],
         technologiesUsed: Array.isArray(stage.technologiesUsed) ? stage.technologiesUsed : [],
         enrichment: stage.enrichment || enrichment || null,
+        audit: stage.audit || null,
         timestamp: stage.timestamp || timestamp
       };
     });
@@ -243,6 +244,21 @@ export class CycleGenerator {
         generationApproach: 'modular-architecture',
         dataVersion: '3.0.0',
         generator: 'CycleGenerator'
+      },
+      // Cycle-level audit metadata for UI and logging
+      audit: {
+        context: typeof selectedContext?.toJSON === 'function' ? selectedContext.toJSON() : { name: selectedContext?.name },
+        complexity: selectedComplexity,
+        obliqueStrategy: obliqueStrategy && typeof obliqueStrategy.toJSON === 'function' ? obliqueStrategy.toJSON() : (obliqueStrategy || null),
+        enrichment,
+        roles: roleKeys,
+        stageSummaries: validatedStages.map(s => ({
+          stage: s.stage,
+          lessonType: s.lessonType,
+          conceptsUsed: s.conceptsUsed,
+          technologiesUsed: s.technologiesUsed,
+          timestamp: s.timestamp
+        }))
       }
     };
 
@@ -251,7 +267,14 @@ export class CycleGenerator {
       context: selectedContext.name,
       complexity: selectedComplexity,
       hasObliqueStrategy: !!obliqueStrategy,
-      stageCount: stages.length
+      stageCount: stages.length,
+      audit: {
+        contextName: cycle.audit?.context?.name,
+        technologies: Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [],
+        domain: enrichment?.domain?.name || null,
+        roles: roleKeys,
+        stageNames: validatedStages.map(s => s.stage)
+      }
     });
 
     return cycle;

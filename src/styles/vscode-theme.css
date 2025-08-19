@@ -37,6 +37,86 @@
   /* Shadows */
   --vscode-shadow: rgba(0, 0, 0, 0.36);
   --vscode-shadow-light: rgba(0, 0, 0, 0.16);
+
+  /* --- Design Tokens & Aliases (NN/g-aligned) --- */
+  /* Fonts */
+  --vscode-ui-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --vscode-editor-font-family: 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+
+  /* Typography scale */
+  --vscode-font-size-xs: 11px;
+  --vscode-font-size-sm: 12px;
+  --vscode-font-size-md: 14px;
+  --vscode-font-size-lg: 16px;
+  --vscode-line-height-tight: 1.3;
+  --vscode-line-height-normal: 1.5;
+  --vscode-line-height-loose: 1.7;
+
+  /* Spacing scale */
+  --vscode-space-1: 4px;
+  --vscode-space-2: 8px;
+  --vscode-space-3: 12px;
+  --vscode-space-4: 16px;
+  --vscode-space-5: 24px;
+  --vscode-space-6: 32px;
+
+  /* Radii */
+  --vscode-radius-1: 2px;
+  --vscode-radius-2: 4px;
+  --vscode-radius-3: 6px;
+  --vscode-radius-4: 8px;
+
+  /* Elevation */
+  --vscode-elevation-1: 0 2px 6px rgba(0, 0, 0, 0.2);
+  --vscode-elevation-2: 0 6px 18px rgba(0, 0, 0, 0.28);
+  --vscode-elevation-3: 0 14px 42px rgba(0, 0, 0, 0.34);
+
+  /* Focus */
+  --vscode-focusBorder: #007acc; /* alias used across components */
+  --vscode-focus-outline: 2px solid #9cdcfe;
+  --vscode-focus-ring: 0 0 0 3px rgba(156, 220, 254, 0.35);
+
+  /* Lists & selections */
+  --vscode-list-hoverBackground: #2a2d2e;
+  --vscode-list-activeSelectionBackground: #094771;
+  --vscode-list-activeSelectionForeground: #ffffff;
+
+  /* Badges, progress */
+  --vscode-badge-background: #4d4d4d;
+  --vscode-badge-foreground: #ffffff;
+  --vscode-progressBar-background: #0e639c;
+
+  /* Foregrounds & editor aliases */
+  --vscode-foreground: #d4d4d4;
+  --vscode-editor-foreground: #d4d4d4;
+  --vscode-editor-background: var(--vscode-editor-bg);
+  --vscode-panel-border: var(--vscode-border);
+  --vscode-input-background: var(--vscode-input-bg);
+  --vscode-button-foreground: #ffffff;
+  --vscode-button-background: var(--vscode-button-bg);
+  --vscode-button-hoverBackground: var(--vscode-button-hover);
+  --vscode-button-secondaryBackground: #3a3d41;
+  --vscode-button-secondaryForeground: #ffffff;
+  --vscode-button-secondaryHoverBackground: #4b4f55;
+  --vscode-symbolIcon-colorForeground: #c5c5c5;
+  --vscode-textCodeBlock-background: #1b1b1b;
+  --vscode-tab-activeBackground: var(--vscode-editor-bg);
+  --vscode-tab-activeForeground: var(--vscode-text-bright);
+  --vscode-descriptionForeground: var(--vscode-text-secondary);
+  --vscode-errorForeground: var(--vscode-red);
+
+  /* Semantic state colors */
+  --vscode-info: #4fc1ff;
+  --vscode-warning: #d7ba7d;
+  --vscode-success: #6a9955;
+
+  /* Surfaces */
+  --vscode-surface-1: var(--vscode-editor-bg);
+  --vscode-surface-2: var(--vscode-panel-bg);
+  --vscode-surface-3: #131313;
+
+  /* Interaction size */
+  --vscode-interactive-min-size: 36px; /* large enough targets per NN/g */
 }
 
 * {
@@ -46,10 +126,26 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-family: var(--vscode-ui-font-family);
   background: var(--vscode-bg);
   color: var(--vscode-text);
   overflow: hidden;
+}
+
+/* Global focus visibility for keyboard users */
+:focus-visible {
+  outline: var(--vscode-focus-outline);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* IDE Layout Structure */

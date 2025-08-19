@@ -105,6 +105,16 @@
           "name": "Distributed Render Pipeline",
           "description": "Coordinating renders across on-prem and cloud farms with asset versioning",
           "characteristics": ["throughput", "observability", "cost-optimization"]
+        },
+        {
+          "name": "Asset Versioning at Scale",
+          "description": "Content-addressed storage and branching strategies for large media libraries",
+          "characteristics": ["content-addressing", "branching", "consistency"]
+        },
+        {
+          "name": "Render Farm Auto-Scaling",
+          "description": "Autoscale heterogeneous GPU fleets while optimizing cost and queue time",
+          "characteristics": ["throughput", "queueing-theory", "cost-optimization"]
         }
       ]
     },
@@ -118,6 +128,16 @@
           "name": "Multi-Format Publishing",
           "description": "Exporting to PDF, ePub, and web readers with consistent color profiles",
           "characteristics": ["color-management", "automation", "quality-assurance"]
+        },
+        {
+          "name": "AI-Assisted Panel Layout",
+          "description": "Suggest panel compositions with on-device inference and human-in-the-loop review",
+          "characteristics": ["ml-inference", "usability", "latency"]
+        },
+        {
+          "name": "Reader Analytics Personalization",
+          "description": "Privacy-preserving telemetry to tailor recommendations and pacing",
+          "characteristics": ["privacy", "recommendations", "aggregation"]
         }
       ]
     },
@@ -131,6 +151,16 @@
           "name": "Realtime Canvas Collaboration",
           "description": "Operational transform/CRDT sync for graphics documents",
           "characteristics": ["consistency", "conflict-resolution", "performance"]
+        },
+        {
+          "name": "Plugin Sandboxing",
+          "description": "Capability-based isolation for third-party extensions without sacrificing UX",
+          "characteristics": ["capabilities", "security", "extensibility"]
+        },
+        {
+          "name": "GPU Memory Profiling",
+          "description": "Track allocations and lifetimes to avoid stalls and OOMs",
+          "characteristics": ["observability", "performance", "stability"]
         }
       ]
     },
@@ -144,6 +174,16 @@
           "name": "Shader-Based Generative Toolkit",
           "description": "Composable GLSL/WGSL nodes with live coding and heat-safe previews",
           "characteristics": ["hot-reload", "sandboxing", "frame-time-stability"]
+        },
+        {
+          "name": "Live Coding with WebGL",
+          "description": "Tweak shaders on the fly with fast rebuild loops and rollback",
+          "characteristics": ["hot-reload", "sandboxing", "usability"]
+        },
+        {
+          "name": "MIDI Sync Performance",
+          "description": "Stable clock sync and jitter control for audio-visual shows",
+          "characteristics": ["timing", "jitter-control", "latency"]
         }
       ]
     },
@@ -157,6 +197,16 @@
           "name": "Zero-Downtime Migrations",
           "description": "Rolling schema and data migrations with dual-write and verification",
           "characteristics": ["compatibility", "idempotency", "rollback-strategy"]
+        },
+        {
+          "name": "Circuit Breaker Rollout",
+          "description": "Gradually introduce fault isolation with metrics and alerting",
+          "characteristics": ["resilience", "observability", "safety"]
+        },
+        {
+          "name": "Blue-Green Deployment",
+          "description": "Switch traffic between environments with health checks and fast rollback",
+          "characteristics": ["zero-downtime", "rollback", "automation"]
         }
       ]
     },
@@ -170,6 +220,16 @@
           "name": "Mono-Repo Automation",
           "description": "Change detection, task graphs, and caching for large repos",
           "characteristics": ["incrementality", "determinism", "parallelism"]
+        },
+        {
+          "name": "Cross-Platform Packaging",
+          "description": "Reproducible builds across macOS, Windows, and Linux with isolated environments",
+          "characteristics": ["portability", "reproducibility", "supply-chain-security"]
+        },
+        {
+          "name": "Plugin Registry Sync",
+          "description": "Signed index distribution with staged rollouts and backfill",
+          "characteristics": ["consistency", "security", "availability"]
         }
       ]
     },
@@ -183,6 +243,16 @@
           "name": "Realtime Metrics at Scale",
           "description": "Streaming aggregation with downsampling and tiered storage",
           "characteristics": ["latency", "cardinality-management", "governance"]
+        },
+        {
+          "name": "Ad-hoc Queries with Cache",
+          "description": "Multi-tier caching and freshness policies for interactive exploration",
+          "characteristics": ["caching", "freshness", "consistency"]
+        },
+        {
+          "name": "Anomaly Detection",
+          "description": "Detect outliers with sketch-based streaming features and alerting",
+          "characteristics": ["ml-inference", "alerting", "accuracy"]
         }
       ]
     },
@@ -196,6 +266,16 @@
           "name": "Hybrid Raster/Path Tracing",
           "description": "Mixing techniques with temporal denoising and frame pacing",
           "characteristics": ["artifact-control", "latency", "resource-scheduling"]
+        },
+        {
+          "name": "GPGPU Post-processing",
+          "description": "Compute-based effects pipelines tuned for throughput and latency",
+          "characteristics": ["throughput", "latency", "gpu"]
+        },
+        {
+          "name": "Texture Streaming",
+          "description": "Stream high-resolution assets with bandwidth-aware LOD management",
+          "characteristics": ["bandwidth", "memory", "stability"]
         }
       ]
     },
@@ -209,6 +289,16 @@
           "name": "Native Plugin to Web",
           "description": "Port C/C++ plugins to Wasm with shared-nothing messaging",
           "characteristics": ["FFI-bridging", "memory-safety", "latency"]
+        },
+        {
+          "name": "WASI CLI Tooling",
+          "description": "Ship portable CLI tools with sandboxed IO and predictable performance",
+          "characteristics": ["portability", "sandboxing", "startup-time"]
+        },
+        {
+          "name": "Wasm Plugin Architecture",
+          "description": "Embed Wasm modules as safe plugins with stable ABI surfaces",
+          "characteristics": ["ffi", "stability", "safety"]
         }
       ]
     },
@@ -222,6 +312,16 @@
           "name": "Secure File System Access",
           "description": "Capability-based access with granular permission prompts",
           "characteristics": ["least-privilege", "auditability", "usability"]
+        },
+        {
+          "name": "File Sync Permissions",
+          "description": "Design permission flows for background and foreground sync tasks",
+          "characteristics": ["least-privilege", "usability", "privacy"]
+        },
+        {
+          "name": "Multi-Window IPC",
+          "description": "Isolate windows and share state via secure messaging channels",
+          "characteristics": ["isolation", "responsiveness", "security"]
         }
       ]
     },
@@ -235,6 +335,16 @@
           "name": "Code Splitting Strategy",
           "description": "Balance TTI and navigation performance with route-level chunks",
           "characteristics": ["lazy-loading", "preload-hints", "monitoring"]
+        },
+        {
+          "name": "Isomorphic Rendering",
+          "description": "Combine SSR and hydration with streaming and progressive data",
+          "characteristics": ["performance", "seo", "observability"]
+        },
+        {
+          "name": "Worker Offloading",
+          "description": "Move heavy work to Web Workers and WASM for responsive UIs",
+          "characteristics": ["throughput", "responsiveness", "scheduling"]
         }
       ]
     },
@@ -248,6 +358,16 @@
           "name": "Public API Stability",
           "description": "Designing type-safe SDKs with semver-compatible evolution",
           "characteristics": ["compatibility", "DX", "testing"]
+        },
+        {
+          "name": "Type-safe SDKs",
+          "description": "Enforce type boundaries across package boundaries for safe refactors",
+          "characteristics": ["refactorability", "DX", "safety"]
+        },
+        {
+          "name": "Monorepo Build Caching",
+          "description": "Leverage incremental builds and remote cache for fast CI",
+          "characteristics": ["incrementality", "determinism", "build-speed"]
         }
       ]
     },
@@ -261,6 +381,16 @@
           "name": "High-qps API",
           "description": "Design goroutine-safe services with backpressure and pooling",
           "characteristics": ["throughput", "latency", "stability"]
+        },
+        {
+          "name": "gRPC Backpressure",
+          "description": "Tune flow control and streaming semantics with instrumentation",
+          "characteristics": ["flow-control", "observability", "resilience"]
+        },
+        {
+          "name": "Connection Pooling",
+          "description": "Balance QPS and latency with adaptive pools and keep-alives",
+          "characteristics": ["latency", "throughput", "resource-efficiency"]
         }
       ]
     },
@@ -274,6 +404,16 @@
           "name": "Async Service with Tokio",
           "description": "Structured concurrency and cancellation with minimal allocations",
           "characteristics": ["backpressure", "observability", "resilience"]
+        },
+        {
+          "name": "Zero-Copy IO",
+          "description": "Reduce copies and syscalls with OS-backed buffers and io-uring",
+          "characteristics": ["performance", "latency", "efficiency"]
+        },
+        {
+          "name": "FFI Boundary Safety",
+          "description": "Harden unsafe edges with typed wrappers and audit trails",
+          "characteristics": ["safety", "auditing", "abi-stability"]
         }
       ]
     },
@@ -287,6 +427,16 @@
           "name": "Idempotent Payment APIs",
           "description": "Ensure exactly-once semantics across retries and network partitions",
           "characteristics": ["deduplication", "saga-patterns", "auditing"]
+        },
+        {
+          "name": "Webhook Retry Strategy",
+          "description": "Handle transient failures with idempotency keys and exponential backoff",
+          "characteristics": ["idempotency", "deduplication", "retries"]
+        },
+        {
+          "name": "Ledger Reconciliation",
+          "description": "Reconcile ledgers with provable consistency and alerts for drift",
+          "characteristics": ["consistency", "auditing", "traceability"]
         }
       ]
     },
@@ -300,6 +450,16 @@
           "name": "Progressive Delivery",
           "description": "Blue/green and canary with automated rollback and SLO guards",
           "characteristics": ["error-budgets", "observability", "safety"]
+        },
+        {
+          "name": "Chaos Engineering Drill",
+          "description": "Exercise failure modes with controlled experiments and learnings",
+          "characteristics": ["resilience", "observability", "preparedness"]
+        },
+        {
+          "name": "Observability Rollup",
+          "description": "Reduce cardinality and cost while preserving investigative power",
+          "characteristics": ["cardinality", "cost-optimization", "signal-quality"]
         }
       ]
     },
@@ -313,6 +473,16 @@
           "name": "Delta Update Service",
           "description": "Chunked updates with content-addressed storage and verification",
           "characteristics": ["integrity", "bandwidth-efficiency", "resilience"]
+        },
+        {
+          "name": "Auto-Update Orchestration",
+          "description": "Plan staged rollouts with rollback and version pinning across channels",
+          "characteristics": ["rollback", "semver", "safety"]
+        },
+        {
+          "name": "Air-Gapped Installers",
+          "description": "Build and verify offline installers with provenance and attestations",
+          "characteristics": ["offline-first", "trust", "supply-chain-security"]
         }
       ]
     },
@@ -326,6 +496,16 @@
           "name": "Assistant Prompt Orchestration",
           "description": "Routing, caching, and guardrails with evaluation feedback loops",
           "characteristics": ["observability", "determinism", "privacy"]
+        },
+        {
+          "name": "Prompt Caching",
+          "description": "Reduce latency and cost with semantic and input-aware caches",
+          "characteristics": ["latency", "determinism", "cost-optimization"]
+        },
+        {
+          "name": "Safety Filtering",
+          "description": "Apply safety policies with explainable denylists and privacy controls",
+          "characteristics": ["policy", "privacy", "auditability"]
         }
       ]
     },
@@ -339,6 +519,16 @@
           "name": "Offline-First Sync",
           "description": "Conflict resolution and sync strategies across devices",
           "characteristics": ["CRDTs", "encryption", "battery-life"]
+        },
+        {
+          "name": "Background Sync",
+          "description": "Design background-friendly strategies with network and power constraints",
+          "characteristics": ["battery-life", "resilience", "scheduling"]
+        },
+        {
+          "name": "Push Notifications",
+          "description": "Reliable and private delivery across platforms with consent flows",
+          "characteristics": ["delivery", "privacy", "consent"]
         }
       ]
     }

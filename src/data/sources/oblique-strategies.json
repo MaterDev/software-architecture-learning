@@ -170,6 +170,61 @@
       "text": "Write the README first",
       "category": "docs",
       "integrationPattern": "Describe how it’s used and operated; design to that experience."
+    },
+    {
+      "text": "Prefer contracts at boundaries",
+      "category": "interface",
+      "integrationPattern": "Define schemas and SLAs at service boundaries; validate at ingress/egress."
+    },
+    {
+      "text": "Make failure visible early",
+      "category": "reliability",
+      "integrationPattern": "Introduce circuit breakers, timeouts, and clear error budgets upfront."
+    },
+    {
+      "text": "Trade latency for cost (or vice versa)",
+      "category": "latency-cost",
+      "integrationPattern": "Use caching, batching, or tiered storage guided by SLOs and budgets."
+    },
+    {
+      "text": "Bias toward reversibility",
+      "category": "migration",
+      "integrationPattern": "Design migrations with dual-writes, shadow reads, and easy rollback."
+    },
+    {
+      "text": "Instrument before optimizing",
+      "category": "observability",
+      "integrationPattern": "Add traces, metrics, and logs to measure hotspots before changes."
+    },
+    {
+      "text": "Use standards before inventing protocols",
+      "category": "reuse",
+      "integrationPattern": "Prefer HTTP, gRPC, OpenAPI, JSON Schema, and OpenTelemetry where possible."
+    },
+    {
+      "text": "Small slice, end-to-end",
+      "category": "delivery",
+      "integrationPattern": "Deliver a vertical slice through UI/API/storage to validate assumptions."
+    },
+    {
+      "text": "Fail closed at trust boundaries",
+      "category": "security",
+      "integrationPattern": "Treat inputs as hostile; enforce least privilege and explicit allow-lists."
+    },
+    {
+      "text": "Prefer idempotency at writes",
+      "category": "correctness",
+      "integrationPattern": "Use idempotency keys, natural keys, and upserts to enable safe retries."
+    },
+    {
+      "text": "Draw the unhappy path",
+      "category": "risk",
+      "integrationPattern": "Map failure modes and backoffs; design bulkheads and DLQs for protection."
+    },
+    {
+      "text": "Name the ubiquitous language",
+      "category": "domain",
+      "integrationPattern": "Align terminology across teams; reflect it in APIs, events, and docs."
     }
   ]
 }

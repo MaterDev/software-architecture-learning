@@ -1,5 +1,10 @@
 import React from 'react';
 import { copyText, copyAllStages } from '../../utils/clipboard.js';
+import { logger } from '../../utils/logger.js';
+import NavigationSection from './NavigationSection.jsx';
+import StageListSection from './StageListSection.jsx';
+import ActionsSection from './ActionsSection.jsx';
+import DomainWeightsSection from './DomainWeightsSection.jsx';
 
 const SidebarExplorer = ({ 
   currentCycle, 
@@ -11,6 +16,36 @@ const SidebarExplorer = ({
   onStageSelect, 
   activeStage 
 }) => {
+  const handleKeyActivate = (e, fn) => {
+    if (!fn) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      fn();
+    }
+  };
+
+  const handleSelectStage = (stageName) => {
+    try {
+      const s = currentCycle?.stages?.find(st => st?.stage === stageName);
+      if (s?.prompt) {
+        logger.prompt('SidebarExplorer', 'open-stage-prompt', {
+          stage: stageName,
+          prompt: s.prompt,
+          length: s.prompt.length || 0,
+          complexity: s.complexity,
+          lessonType: s.lessonType,
+          hashtagsCount: Array.isArray(s.hashtags) ? s.hashtags.length : 0,
+          timestamp: s.timestamp || null,
+        });
+      } else {
+        logger.prompt('SidebarExplorer', 'open-stage-no-prompt', { stage: stageName });
+      }
+    } catch (error) {
+      logger.error('SidebarExplorer', 'open-stage-log-error', { stage: stageName, error });
+    }
+    onStageSelect(stageName);
+  };
+
   const handleCopyAll = async () => {
     if (!currentCycle?.stages) return;
     await copyAllStages(currentCycle.stages, {}, { source: 'SidebarExplorer' });
@@ -22,32 +57,52 @@ const SidebarExplorer = ({
     await copyText(s.prompt, { action: 'copy-stage', stage: stageName, source: 'SidebarExplorer' });
   };
 
-  return (
-    <div className="explorer-content">
-      {/* Navigation */}
-      <div className="explorer-section">
-        <div className="section-header">
-          <i className="pi pi-home" />
-          <span className="section-title">Navigation</span>
-        </div>
-        <div className="section-content">
-          <div 
-            className={`nav-item ${activeStage === 'home' ? 'active' : ''}`}
-            onClick={() => onStageSelect('home')}
-          >
-            <i className="pi pi-info-circle" />
-            <span className="nav-name">How It Works</span>
-          </div>
-        </div>
-      </div>
+  const buildCycleAuditPayload = () => {
+    if (!currentCycle) return null;
+    const baseAudit = currentCycle.audit || {};
+    return {
+      id: currentCycle.id,
+      generatedAt: currentCycle.timestamp || null,
+      context: baseAudit.context || currentCycle.context || null,
+      complexity: currentCycle.complexity || baseAudit.complexity || null,
+      obliqueStrategy: baseAudit.obliqueStrategy || currentCycle.obliqueStrategy || null,
+      enrichment: baseAudit.enrichment || null,
+      roles: baseAudit.roles || (currentCycle.stages ? currentCycle.stages.map(s => s.stage) : []),
+      stageSummaries: baseAudit.stageSummaries || [],
+      stageAudits: Array.isArray(currentCycle.stages) ? currentCycle.stages.map(s => ({
+        stage: s.stage,
+        audit: s.audit || null
+      })) : []
+    };
+  };
 
-      {/* Generate New Cycle */}
+  const handleCopyCycleAudit = async () => {
+    const payload = buildCycleAuditPayload();
+    if (!payload) return;
+    const text = JSON.stringify(payload, null, 2);
+    logger.prompt('SidebarExplorer', 'copy-cycle-audit', { cycleId: currentCycle?.id, payload });
+    await copyText(text, { action: 'copy-cycle-audit', cycleId: currentCycle?.id, source: 'SidebarExplorer' });
+  };
+
+  return (
+    <div 
+      className="explorer-content"
+      role="navigation"
+      aria-label="Learning Assistant navigation"
+    >
+      <NavigationSection
+        activeStage={activeStage}
+        onStageSelect={onStageSelect}
+        onKeyActivate={handleKeyActivate}
+      />
+
       <div className="explorer-section">
         <div className="action-buttons">
           <button 
             className="explorer-button primary"
             onClick={onNewCycle}
             disabled={loading}
+            aria-label={loading ? 'Generating new cycle' : 'Generate new cycle'}
           >
             <i className="pi pi-refresh" />
             {loading ? 'Generating...' : 'Generate New Cycle'}
@@ -55,88 +110,30 @@ const SidebarExplorer = ({
         </div>
       </div>
 
-      {/* Learning Stages */}
-      {currentCycle && (
-        <div className="explorer-section">
-          <div className="section-header">
-            <i className="pi pi-list" />
-            <span className="section-title">Learning Stages</span>
-            <div className="section-actions">
-              <button
-                className="quick-action-btn"
-                onClick={handleCopyAll}
-                disabled={!currentCycle || (currentCycle.stages?.filter(s => !!s?.prompt).length || 0) < 2}
-                title="Copy all prompts (--- --- --- separators)"
-              >
-                <i className="pi pi-copy" />
-                Copy All
-              </button>
-            </div>
-          </div>
-          <div className="section-content">
-            {currentCycle.stages?.map((stage) => (
-              <div 
-                key={stage.stage}
-                className={`stage-item ${activeStage === stage.stage ? 'active' : ''}`}
-                onClick={() => onStageSelect(stage.stage)}
-              >
-                <i className={`pi ${getStageIcon(stage.stage)}`} />
-                <div className="stage-info">
-                  <span className="stage-name">{getStageTitle(stage.stage)}</span>
-                  <span className="stage-meta">{stage.hashtags?.length || 0} concepts</span>
-                </div>
-                <button
-                  className="quick-action-btn"
-                  onClick={(e) => { e.stopPropagation(); handleCopyStage(stage.stage); }}
-                  title="Copy this stage prompt"
-                  disabled={!stage.prompt}
-                >
-                  <i className="pi pi-copy" />
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <StageListSection
+        currentCycle={currentCycle}
+        activeStage={activeStage}
+        onSelectStage={handleSelectStage}
+        onKeyActivate={handleKeyActivate}
+        onCopyStage={handleCopyStage}
+        onCopyAll={handleCopyAll}
+      />
 
-      {/* Quick Actions */}
+      {/* New: Domain Weights panel */}
+      <DomainWeightsSection />
+
       {(error || currentCycle) && (
-        <div className="explorer-section">
-          <div className="section-header">
-            <i className="pi pi-cog" />
-            <span className="section-title">Actions</span>
-          </div>
-          <div className="section-content">
-            <div className="quick-actions">
-              {error && (
-                <button 
-                  className="quick-action-btn"
-                  onClick={onClearError}
-                  title="Clear Error"
-                >
-                  <i className="pi pi-times-circle" />
-                  Clear Error
-                </button>
-              )}
-              
-              {currentCycle && (
-                <button 
-                  className="quick-action-btn"
-                  onClick={onReset}
-                  title="Reset All Cycles"
-                >
-                  <i className="pi pi-trash" />
-                  Reset All
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
+        <ActionsSection
+          error={error}
+          currentCycle={currentCycle}
+          onClearError={onClearError}
+          onReset={onReset}
+          onCopyCycleAudit={handleCopyCycleAudit}
+        />
       )}
 
-      {/* Error Display */}
       {error && (
-        <div className="explorer-section error-section">
+        <div className="explorer-section error-section" role="alert" aria-live="assertive">
           <div className="section-header">
             <i className="pi pi-exclamation-triangle" />
             <span className="section-title">Error</span>
@@ -150,20 +147,6 @@ const SidebarExplorer = ({
       )}
     </div>
   );
-};
-
-const getStageIcon = (stage) => {
-  const icons = {
-    'Expert Engineer': 'pi-code',
-    'System Designer': 'pi-sitemap',
-    'Leader': 'pi-users',
-    'Review & Synthesis': 'pi-file-edit'
-  };
-  return icons[stage] || 'pi-file';
-};
-
-const getStageTitle = (stage) => {
-  return stage;
 };
 
 export default SidebarExplorer;

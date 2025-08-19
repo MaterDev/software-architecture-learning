@@ -6,6 +6,7 @@ import { HashtagGenerator } from './HashtagGenerator.js';
 import { TemplateEngine } from '../templates/TemplateEngine.js';
 import { logger } from '../../../utils/logger.js';
 import { ContextEnricher } from '../services/ContextEnricher.js';
+import { VariableBuilder } from '../templates/VariableBuilder.js';
 
 export class StageGenerator {
   constructor({ conceptRepo, templateRepo, scenarioRepo, strategyRepo, contextEnricher } = {}) {
@@ -17,6 +18,7 @@ export class StageGenerator {
     this.hashtagGenerator = new HashtagGenerator();
     this.templateEngine = new TemplateEngine({ templateRepo });
     this.contextEnricher = contextEnricher || new ContextEnricher();
+    this.variableBuilder = new VariableBuilder();
   }
 
   /**
@@ -62,6 +64,9 @@ export class StageGenerator {
       conceptNames: relevantConcepts ? relevantConcepts.map(c => c?.name || 'unnamed') : []
     });
     
+    // Enrich context with domain + technologies (before prompt so it's incorporated)
+    const enrichment = opts?.enrichment ?? this.contextEnricher.enrich({ domainName: context?.name, hints: opts?.hints });
+
     // Build educational meta-prompt
     logger.debug('StageGenerator', `Building prompt for ${roleKey}`, {
       roleKey,
@@ -75,7 +80,8 @@ export class StageGenerator {
       context,
       relevantConcepts,
       complexity,
-      obliqueStrategy
+      obliqueStrategy,
+      enrichment
     );
 
     logger.debug('StageGenerator', `Prompt built for ${roleKey}`, {
@@ -93,8 +99,7 @@ export class StageGenerator {
 
     const hashtags = this.hashtagGenerator.generate(relevantConcepts, context);
     
-    // Enrich context with domain + technologies and merge hashtags
-    const enrichment = opts?.enrichment ?? this.contextEnricher.enrich({ domainName: context?.name, hints: opts?.hints });
+    // Merge enrichment hashtags
     const mergedHashtags = [...new Set([...(hashtags || []), ...((enrichment && enrichment.hashtags) ? enrichment.hashtags : [])])];
     
     logger.debug('StageGenerator', `Hashtags generated for ${roleKey}`, {
@@ -122,6 +127,9 @@ export class StageGenerator {
       lessonDescription: lessonFormat?.description || 'no description'
     });
 
+    // Build variable map used for template interpolation (for auditing)
+    const variables = this.variableBuilder.build(relevantConcepts, context, complexity, roleName, enrichment);
+
     const stage = {
       stage: roleName,
       prompt,
@@ -133,7 +141,25 @@ export class StageGenerator {
         relevantConcepts.map(c => c && c.name ? c.name : 'unknown') : ['architecture'],
       technologiesUsed: Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [],
       enrichment,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      // Attach audit info for UI display and logging
+      audit: {
+        roleKey,
+        roleName,
+        variables,
+        lessonFormat: lessonFormat ? {
+          description: lessonFormat.description,
+          structure: Array.isArray(lessonFormat.structure) ? lessonFormat.structure : []
+        } : null,
+        context: typeof context?.toJSON === 'function' ? context.toJSON() : {
+          name: context?.name,
+          description: context?.description,
+          stakeholders: context?.stakeholders,
+          selectedScenario: context?.selectedScenario
+        },
+        enrichment,
+        obliqueStrategy: obliqueStrategy && typeof obliqueStrategy.toJSON === 'function' ? obliqueStrategy.toJSON() : (obliqueStrategy || null)
+      }
     };
 
     logger.debug('StageGenerator', `Stage object created for ${roleKey}`, {
@@ -160,6 +186,21 @@ export class StageGenerator {
       conceptsCount: relevantConcepts ? relevantConcepts.length : 0,
       lessonType: stage.lessonType
     });
+
+    // Emit structured audit log for observability
+    try {
+      logger.prompt('StageGenerator', `Stage audit for ${roleKey}`, {
+        roleKey,
+        variablesCount: Object.keys(stage.audit?.variables || {}).length,
+        lessonFormat: stage.audit?.lessonFormat?.description || 'n/a',
+        contextName: stage.audit?.context?.name || stage.context,
+        technologiesUsed: stage.technologiesUsed,
+        hashtags: stage.hashtags,
+        timestamp: stage.timestamp
+      });
+    } catch (e) {
+      logger.warn('StageGenerator', 'Audit logging failed', { error: e?.message });
+    }
 
     // Final validation before return
     if (!stage.hashtags || !Array.isArray(stage.hashtags)) {

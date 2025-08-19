@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useEffect, useRef } from 'react';
-import { generateCycle, regenerateStage } from '../engines/prompt/PromptEngine.js';
+import { generateCycle, regenerateStage, setDomainWeights } from '../engines/prompt/PromptEngine.js';
 import { logger } from '../utils/logger.js';
 import { ActionTypes, initialState } from './constants';
 
@@ -179,6 +179,19 @@ export const PromptProvider = ({ children }) => {
   useEffect(() => {
     if (hasMountedRef.current) return;
     hasMountedRef.current = true;
+    // Apply persisted domain weight overrides BEFORE first generation
+    try {
+      const raw = localStorage.getItem('domainWeightsOverrides');
+      if (raw) {
+        const stored = JSON.parse(raw);
+        if (stored && typeof stored === 'object') {
+          setDomainWeights(stored);
+          logger.info('PromptProvider', 'Applied persisted domain weight overrides before first cycle');
+        }
+      }
+    } catch (e) {
+      logger.warn('PromptProvider', 'Failed to apply persisted domain weights', { error: e?.message });
+    }
     generateNewCycle();
   }, []);
 

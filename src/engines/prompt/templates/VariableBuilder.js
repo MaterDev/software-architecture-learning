@@ -6,9 +6,12 @@ export class VariableBuilder {
   /**
    * Build comprehensive template variables for interpolation
    */
-  build(concepts, context, complexity, role) {
+  build(concepts, context, complexity, role, enrichment) {
     const mainConcept = this.getMainConcept(concepts);
     const conceptNames = concepts && concepts.length > 0 ? concepts.map(c => c.name).join(', ') : 'architecture concepts';
+    const domainName = enrichment?.domain?.name || enrichment?.domain || context?.name || 'general';
+    const techArray = Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [];
+    const techList = techArray.join(', ');
     
     return {
       // Core concepts
@@ -17,8 +20,9 @@ export class VariableBuilder {
       
       // Context variables
       context: context.name || 'software architecture',
-      domain: context.name || 'general',
+      domain: domainName,
       domainContext: context.description || 'software architecture context',
+      domainScenario: context?.selectedScenario?.name || context?.selectedScenario?.description || `${context.name} system development scenario`,
       
       // Decision and analysis variables
       decisionType: this.getDecisionType(concepts, context),
@@ -26,6 +30,8 @@ export class VariableBuilder {
       
       // Technical variables
       technicalChallenges: context.getTechnicalChallenges(),
+      technologies: techList || 'n/a',
+      primaryTechnology: techArray[0] || 'n/a',
       implementationGoal: this.getImplementationGoal(concepts),
       systemContext: context.name || 'distributed system',
       

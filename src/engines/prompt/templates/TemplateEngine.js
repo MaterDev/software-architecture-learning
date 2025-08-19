@@ -11,9 +11,28 @@ export class TemplateEngine {
   }
 
   /**
+   * Add enrichment guidance for domain and technologies
+   */
+  addEnrichmentGuidance(enrichment) {
+    let out = '';
+    const domainName = enrichment?.domain?.name || enrichment?.domain || null;
+    const technologies = Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [];
+    if (domainName || technologies.length > 0) {
+      out += `## Technology & Domain Enrichment\n`;
+      if (domainName) out += `Domain Focus: ${domainName}\n`;
+      if (technologies.length > 0) {
+        out += `Technologies to integrate: ${technologies.join(', ')}\n`;
+        out += `- Provide examples and trade-offs referencing these technologies where relevant.\n`;
+      }
+      out += `\n`;
+    }
+    return out;
+  }
+
+  /**
    * Build educational meta-prompt for AI lesson generation
    */
-  buildPrompt(role, context, concepts, complexity, obliqueStrategy) {
+  buildPrompt(role, context, concepts, complexity, obliqueStrategy, enrichment) {
     const lessonFormat = this.templateRepo.selectLessonFormat(concepts, context, complexity);
     const roleInstructions = this.templateRepo.getRoleInstructions(role.toLowerCase().replace(' ', ''));
     
@@ -33,9 +52,19 @@ export class TemplateEngine {
     // Interpolate template variables in the instructional guidance
     const interpolatedGuidance = this.interpolateTemplate(
       lessonFormat.instructionalGuidance,
-      this.variableBuilder.build(concepts, context, complexity, role)
+      this.variableBuilder.build(concepts, context, complexity, role, enrichment)
     );
     prompt += `${interpolatedGuidance}\n\n`;
+
+    // Add adaptation instructions when available
+    if (lessonFormat?.adaptationInstructions) {
+      const interpolatedAdaptation = this.interpolateTemplate(
+        lessonFormat.adaptationInstructions,
+        this.variableBuilder.build(concepts, context, complexity, role, enrichment)
+      );
+      prompt += `## Adaptation Instructions\n`;
+      prompt += `${interpolatedAdaptation}\n\n`;
+    }
     
     // Role-specific perspective
     if (roleInstructions) {
@@ -57,6 +86,11 @@ export class TemplateEngine {
 
     // Add contextual guidance
     prompt += this.addContextualGuidance(context);
+
+    // Add enrichment (domain & technologies) guidance when available
+    if (enrichment) {
+      prompt += this.addEnrichmentGuidance(enrichment);
+    }
     
     // Add concept-specific guidance
     prompt += this.addConceptGuidance(concepts);

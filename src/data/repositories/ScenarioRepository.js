@@ -4,14 +4,16 @@
  */
 import contextualScenarios from '../sources/contextual-scenarios.json';
 import { Context } from '../models/Context.js';
+import { logger } from '../../utils/logger.js';
 
 export class ScenarioRepository {
-  constructor() {
+  constructor({ domainWeights } = {}) {
     this.data = contextualScenarios;
     this.domainCache = new Map();
+    this.initialized = false;
     // Weighting for preferred domains (higher number => more likely)
     // Defaults to 1 if a domain isn't listed here
-    this.domainWeights = {
+    this.defaultDomainWeights = {
       'entertainment-arts': 4,
       'comics': 3,
       'graphic-apps': 4,
@@ -32,6 +34,14 @@ export class ScenarioRepository {
       'generative-ai': 4,
       'app-development': 3
     };
+    // Merge overrides on top of defaults (shallow)
+    this.domainWeights = { ...this.defaultDomainWeights, ...(domainWeights || {}) };
+    try {
+      logger.info('ScenarioRepository', 'init-domain-weights', {
+        defaultCount: Object.keys(this.defaultDomainWeights).length,
+        overrideKeys: Object.keys(domainWeights || {}),
+      });
+    } catch (e) { console.debug && console.debug('[ScenarioRepository] log suppressed:init', e && e.message); }
     this.initializeCache();
   }
 
@@ -44,6 +54,7 @@ export class ScenarioRepository {
       });
       this.domainCache.set(domainKey, context);
     });
+    this.initialized = true;
   }
 
   /**
@@ -83,15 +94,61 @@ export class ScenarioRepository {
       const weight = Math.max(1, this.domainWeights[key] || 1);
       for (let i = 0; i < weight; i++) weighted.push(d);
     }
+    try {
+      const sample = Object.fromEntries(Array.from(this.domainCache.keys()).slice(0, 8).map(k => [k, this.domainWeights[k] ?? 1]));
+      logger.debug('ScenarioRepository', 'selectContext:weights-snapshot', {
+        totalDomains: domains.length,
+        weightedListLength: weighted.length,
+        sample,
+      });
+    } catch (e) { console.debug && console.debug('[ScenarioRepository] log suppressed:weights-snapshot', e && e.message); }
+
     const selectedDomain = weighted[Math.floor(Math.random() * weighted.length)] || domains[0];
+    try {
+      logger.info('ScenarioRepository', 'selectContext:selected', {
+        domain: selectedDomain?.name,
+        weight: this.domainWeights[selectedDomain?.name] ?? 1,
+        weightedListLength: weighted.length,
+      });
+    } catch (e) { console.debug && console.debug('[ScenarioRepository] log suppressed:selected', e && e.message); }
     
     // Sometimes select a specific scenario within the domain
     if (selectedDomain.scenarios && Array.isArray(selectedDomain.scenarios) && Math.random() < 0.6) {
       const selectedScenario = selectedDomain.scenarios[Math.floor(Math.random() * selectedDomain.scenarios.length)];
       selectedDomain.selectedScenario = selectedScenario;
+      try {
+        logger.debug('ScenarioRepository', 'selectContext:selected-scenario', {
+          domain: selectedDomain?.name,
+          scenario: selectedScenario?.name,
+        });
+      } catch (e) { console.debug && console.debug('[ScenarioRepository] log suppressed:selected-scenario', e && e.message); }
     }
 
     return selectedDomain;
+  }
+
+  /**
+   * Override domain weighting preferences at runtime
+   * Passing a partial map will merge with existing weights
+   */
+  setDomainWeights(newWeights = {}) {
+    if (!newWeights || typeof newWeights !== 'object') return;
+    const before = { ...this.domainWeights };
+    this.domainWeights = { ...this.domainWeights, ...newWeights };
+    try {
+      const changed = Object.keys(newWeights).reduce((acc, k) => {
+        acc[k] = { from: before[k] ?? 1, to: this.domainWeights[k] };
+        return acc;
+      }, {});
+      logger.info('ScenarioRepository', 'setDomainWeights:merge', { changedKeys: Object.keys(newWeights), changed });
+    } catch (e) { console.debug && console.debug('[ScenarioRepository] log suppressed:setDomainWeights', e && e.message); }
+  }
+
+  /**
+   * Read current domain weights (copy)
+   */
+  getDomainWeights() {
+    return { ...this.domainWeights };
   }
 
   /**

@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-08-19T06:27:02.393Z",
+    "detectionDate": "2025-08-19T17:23:27.608Z",
     "formats": {
       "javascript": {
         "sources": {
@@ -17,8 +17,8 @@
             "newClones": 0
           },
           "src/engines/prompt/templates/VariableBuilder.js": {
-            "lines": 137,
-            "tokens": 1256,
+            "lines": 143,
+            "tokens": 1406,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -29,8 +29,8 @@
             "newClones": 0
           },
           "src/engines/prompt/templates/TemplateEngine.js": {
-            "lines": 157,
-            "tokens": 1104,
+            "lines": 191,
+            "tokens": 1425,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -77,8 +77,8 @@
             "newClones": 0
           },
           "src/engines/prompt/generators/StageGenerator.js": {
-            "lines": 244,
-            "tokens": 2109,
+            "lines": 285,
+            "tokens": 2527,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -101,14 +101,14 @@
             "newClones": 0
           },
           "src/engines/prompt/generators/CycleGenerator.js": {
-            "lines": 292,
-            "tokens": 2762,
+            "lines": 315,
+            "tokens": 3054,
             "sources": 1,
             "clones": 4,
             "duplicatedLines": 48,
             "duplicatedTokens": 516,
-            "percentage": 16.44,
-            "percentageTokens": 18.68,
+            "percentage": 15.24,
+            "percentageTokens": 16.9,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
@@ -161,8 +161,8 @@
             "newClones": 0
           },
           "src/engines/prompt/PromptEngine.js": {
-            "lines": 212,
-            "tokens": 1622,
+            "lines": 249,
+            "tokens": 2164,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -209,8 +209,8 @@
             "newClones": 0
           },
           "src/data/repositories/ScenarioRepository.js": {
-            "lines": 119,
-            "tokens": 886,
+            "lines": 176,
+            "tokens": 1625,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -340,9 +340,69 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "src/components/SidebarExplorer/utils.js": {
+            "lines": 10,
+            "tokens": 88,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/StageListSection.jsx": {
+            "lines": 31,
+            "tokens": 367,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "src/components/SidebarExplorer/SidebarExplorer.jsx": {
-            "lines": 90,
-            "tokens": 783,
+            "lines": 37,
+            "tokens": 221,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/NavigationSection.jsx": {
+            "lines": 5,
+            "tokens": 79,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/DomainWeightsSection.jsx": {
+            "lines": 22,
+            "tokens": 210,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/ActionsSection.jsx": {
+            "lines": 24,
+            "tokens": 133,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -353,8 +413,8 @@
             "newClones": 0
           },
           "src/components/PromptEditor/PromptEditor.jsx": {
-            "lines": 156,
-            "tokens": 1817,
+            "lines": 268,
+            "tokens": 3156,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -424,6 +484,18 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "src/__tests__/integration/EnrichmentDiversity.integration.test.js": {
+            "lines": 39,
+            "tokens": 459,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "src/__tests__/integration/Enrichment.integration.test.js": {
             "lines": 25,
             "tokens": 263,
@@ -472,6 +544,30 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "src/__tests__/data/ScenarioCoverage.test.js": {
+            "lines": 45,
+            "tokens": 313,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/data/DomainWeighting.integration.test.js": {
+            "lines": 31,
+            "tokens": 321,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "src/utils/logger.js": {
             "lines": 316,
             "tokens": 3642,
@@ -485,8 +581,8 @@
             "newClones": 0
           },
           "src/utils/clipboard.js": {
-            "lines": 55,
-            "tokens": 533,
+            "lines": 57,
+            "tokens": 553,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -546,14 +642,14 @@
           }
         },
         "total": {
-          "lines": 4927,
-          "tokens": 43654,
-          "sources": 45,
+          "lines": 5393,
+          "tokens": 48883,
+          "sources": 53,
           "clones": 2,
           "duplicatedLines": 24,
           "duplicatedTokens": 258,
-          "percentage": 0.49,
-          "percentageTokens": 0.59,
+          "percentage": 0.45,
+          "percentageTokens": 0.53,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
@@ -561,8 +657,8 @@
       "json": {
         "sources": {
           "src/data/sources/technologies.json": {
-            "lines": 170,
-            "tokens": 1750,
+            "lines": 386,
+            "tokens": 4092,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -573,8 +669,8 @@
             "newClones": 0
           },
           "src/data/sources/oblique-strategies.json": {
-            "lines": 174,
-            "tokens": 939,
+            "lines": 229,
+            "tokens": 1236,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -597,8 +693,8 @@
             "newClones": 0
           },
           "src/data/sources/domains.json": {
-            "lines": 237,
-            "tokens": 2271,
+            "lines": 275,
+            "tokens": 3107,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -621,8 +717,8 @@
             "newClones": 0
           },
           "src/data/sources/contextual-scenarios.json": {
-            "lines": 345,
-            "tokens": 2724,
+            "lines": 535,
+            "tokens": 4054,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -670,14 +766,14 @@
           }
         },
         "total": {
-          "lines": 1893,
-          "tokens": 13673,
+          "lines": 2392,
+          "tokens": 18478,
           "sources": 9,
           "clones": 1,
           "duplicatedLines": 22,
           "duplicatedTokens": 141,
-          "percentage": 1.16,
-          "percentageTokens": 1.03,
+          "percentage": 0.92,
+          "percentageTokens": 0.76,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
@@ -696,9 +792,57 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "src/components/SidebarExplorer/StageListSection.jsx": {
+            "lines": 55,
+            "tokens": 571,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "src/components/SidebarExplorer/SidebarExplorer.jsx": {
-            "lines": 168,
-            "tokens": 1397,
+            "lines": 151,
+            "tokens": 1408,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/NavigationSection.jsx": {
+            "lines": 24,
+            "tokens": 242,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/DomainWeightsSection.jsx": {
+            "lines": 123,
+            "tokens": 1345,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/ActionsSection.jsx": {
+            "lines": 50,
+            "tokens": 336,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -709,8 +853,8 @@
             "newClones": 0
           },
           "src/components/PromptEditor/PromptEditor.jsx": {
-            "lines": 243,
-            "tokens": 2689,
+            "lines": 344,
+            "tokens": 3951,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -745,8 +889,8 @@
             "newClones": 0
           },
           "src/context/PromptContext.jsx": {
-            "lines": 319,
-            "tokens": 2683,
+            "lines": 332,
+            "tokens": 2816,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -782,9 +926,9 @@
           }
         },
         "total": {
-          "lines": 1077,
-          "tokens": 9551,
-          "sources": 8,
+          "lines": 1426,
+          "tokens": 13451,
+          "sources": 12,
           "clones": 0,
           "duplicatedLines": 0,
           "duplicatedTokens": 0,
@@ -797,8 +941,8 @@
       "css": {
         "sources": {
           "src/styles/vscode-theme.css": {
-            "lines": 295,
-            "tokens": 1654,
+            "lines": 391,
+            "tokens": 2301,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -809,14 +953,14 @@
             "newClones": 0
           },
           "src/styles/ide-components.css": {
-            "lines": 881,
-            "tokens": 4772,
+            "lines": 953,
+            "tokens": 5238,
             "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
+            "clones": 2,
+            "duplicatedLines": 26,
+            "duplicatedTokens": 178,
+            "percentage": 2.73,
+            "percentageTokens": 3.4,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
@@ -858,28 +1002,28 @@
           }
         },
         "total": {
-          "lines": 1928,
-          "tokens": 10911,
+          "lines": 2096,
+          "tokens": 12024,
           "sources": 5,
-          "clones": 0,
-          "duplicatedLines": 0,
-          "duplicatedTokens": 0,
-          "percentage": 0,
-          "percentageTokens": 0,
+          "clones": 1,
+          "duplicatedLines": 13,
+          "duplicatedTokens": 89,
+          "percentage": 0.62,
+          "percentageTokens": 0.74,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
       }
     },
     "total": {
-      "lines": 9825,
-      "tokens": 77789,
-      "sources": 67,
-      "clones": 3,
-      "duplicatedLines": 46,
-      "duplicatedTokens": 399,
-      "percentage": 0.47,
-      "percentageTokens": 0.51,
+      "lines": 11307,
+      "tokens": 92836,
+      "sources": 79,
+      "clones": 4,
+      "duplicatedLines": 59,
+      "duplicatedTokens": 488,
+      "percentage": 0.52,
+      "percentageTokens": 0.53,
       "newDuplicatedLines": 0,
       "newClones": 0
     }
@@ -954,6 +1098,42 @@
           "line": 150,
           "column": 2,
           "position": 1337
+        }
+      }
+    },
+    {
+      "format": "css",
+      "lines": 14,
+      "fragment": "{\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.75rem;\n  border-radius: var(--vscode-radius-3);\n  cursor: pointer;\n  transition: all 0.15s ease;\n  font-size: 0.875rem;\n  border: 1px solid transparent;\n  min-height: var(--vscode-interactive-min-size);\n}\n\n.stage-item:hover",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/styles/ide-components.css",
+        "start": 662,
+        "end": 675,
+        "startLoc": {
+          "line": 662,
+          "column": 2,
+          "position": 3627
+        },
+        "endLoc": {
+          "line": 675,
+          "column": 18,
+          "position": 3716
+        }
+      },
+      "secondFile": {
+        "name": "src/styles/ide-components.css",
+        "start": 489,
+        "end": 502,
+        "startLoc": {
+          "line": 489,
+          "column": 2,
+          "position": 2655
+        },
+        "endLoc": {
+          "line": 502,
+          "column": 16,
+          "position": 2744
         }
       }
     },
