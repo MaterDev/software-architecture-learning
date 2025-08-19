@@ -1,0 +1,193 @@
+{
+  "metadata": {
+    "purpose": "Core architecture concepts, relationships, and knowledge graph",
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-14"
+  },
+  "conceptCategories": {
+    "foundational": {
+      "description": "Basic architecture principles and definitions",
+      "concepts": {
+        "software-architecture": {
+          "definition": "Structure + Characteristics + Decisions + Principles",
+          "components": ["structure", "characteristics", "decisions", "principles"],
+          "relationships": ["enables-quality-attributes", "guides-implementation"],
+          "complexity": "beginner",
+          "chapters": [1],
+          "keyInsights": [
+            "Architecture is more than just structure",
+            "Decisions and principles are first-class citizens",
+            "Quality attributes drive architectural choices"
+          ]
+        },
+        "modularity": {
+          "definition": "Breaking systems into cohesive, loosely coupled modules",
+          "components": ["cohesion", "coupling", "boundaries"],
+          "relationships": ["enables-maintainability", "supports-scalability"],
+          "complexity": "intermediate",
+          "chapters": [3],
+          "keyInsights": [
+            "High cohesion, low coupling",
+            "Clear module boundaries are essential",
+            "Modularity enables independent development"
+          ]
+        },
+        "domain-driven-design": {
+          "definition": "Modeling complex domains using ubiquitous language and bounded contexts",
+          "components": ["bounded-context", "ubiquitous-language", "aggregates"],
+          "relationships": ["guides-microservices", "aligns-with-business"],
+          "complexity": "intermediate",
+          "chapters": [5],
+          "keyInsights": [
+            "Explicit boundaries reduce coupling",
+            "Language alignment reduces ambiguity"
+          ]
+        },
+        "idempotency": {
+          "definition": "Operations that can be applied multiple times without changing the result",
+          "components": ["idempotency-key", "deduplication", "retries"],
+          "relationships": ["critical-for-payments", "improves-reliability"],
+          "complexity": "beginner",
+          "chapters": [12],
+          "keyInsights": [
+            "Idempotency simplifies failure handling",
+            "Design APIs with safe retries"
+          ]
+        },
+        "api-versioning": {
+          "definition": "Strategies to evolve APIs without breaking clients",
+          "components": ["semver", "backward-compatibility", "deprecation"],
+          "relationships": ["supports-distribution", "improves-DX"],
+          "complexity": "beginner",
+          "chapters": [14],
+          "keyInsights": [
+            "Plan for evolution from day one",
+            "Document breaking changes clearly"
+          ]
+        }
+      }
+    },
+    "structural": {
+      "description": "Structural patterns and organization",
+      "concepts": {
+        "layered-architecture": {
+          "definition": "Organizing code into horizontal layers",
+          "components": ["presentation", "business", "persistence"],
+          "relationships": ["implements-separation-of-concerns"],
+          "complexity": "beginner",
+          "chapters": [9],
+          "keyInsights": [
+            "Separation of concerns",
+            "Dependency direction matters",
+            "Simple but powerful pattern"
+          ]
+        },
+        "event-driven-architecture": {
+          "definition": "Systems communicating via asynchronous events",
+          "components": ["event-bus", "producers", "consumers"],
+          "relationships": ["improves-decoupling", "enables-scalability"],
+          "complexity": "intermediate",
+          "chapters": [16],
+          "keyInsights": [
+            "Event contracts must be versioned",
+            "At-least-once delivery needs idempotency"
+          ]
+        },
+        "cqrs": {
+          "definition": "Separating read and write models for scalability and complexity management",
+          "components": ["command-model", "query-model", "projections"],
+          "relationships": ["pairs-with-event-sourcing", "reduces-contention"],
+          "complexity": "advanced",
+          "chapters": [17],
+          "keyInsights": [
+            "Not all domains need CQRS",
+            "Consistency boundaries must be explicit"
+          ]
+        },
+        "saga-pattern": {
+          "definition": "Managing distributed transactions with compensating actions",
+          "components": ["orchestration", "choreography", "compensations"],
+          "relationships": ["critical-for-payment-systems", "supports-reliability"],
+          "complexity": "intermediate",
+          "chapters": [18],
+          "keyInsights": [
+            "Compensation must be safe and idempotent",
+            "Choose orchestration vs choreography deliberately"
+          ]
+        },
+        "api-gateway": {
+          "definition": "Entry point for clients handling routing, auth, and aggregation",
+          "components": ["routing", "auth", "rate-limiting"],
+          "relationships": ["improves-security", "simplifies-clients"],
+          "complexity": "beginner",
+          "chapters": [10],
+          "keyInsights": [
+            "Avoid business logic in gateway",
+            "Centralize cross-cutting concerns"
+          ]
+        }
+      }
+    },
+    "qualitative": {
+      "description": "Quality attributes and non-functional requirements",
+      "concepts": {
+        "scalability": {
+          "definition": "System's ability to handle increased load",
+          "components": ["horizontal-scaling", "vertical-scaling", "load-distribution"],
+          "relationships": ["trades-off-with-consistency"],
+          "complexity": "intermediate",
+          "chapters": [4],
+          "keyInsights": [
+            "Plan for scale from the beginning",
+            "Horizontal scaling is more flexible",
+            "Bottlenecks shift as you scale"
+          ]
+        },
+        "observability": {
+          "definition": "Ability to understand system state through logs, metrics, and traces",
+          "components": ["logging", "metrics", "tracing"],
+          "relationships": ["enables-reliability", "supports-incident-response"],
+          "complexity": "intermediate",
+          "chapters": [7],
+          "keyInsights": [
+            "Instrument where decisions are made",
+            "Cardinality must be managed"
+          ]
+        },
+        "performance-optimization": {
+          "definition": "Improving throughput and latency across the stack",
+          "components": ["profiling", "caching", "allocation-control"],
+          "relationships": ["impacts-UX", "trades-off-with-simplicity"],
+          "complexity": "advanced",
+          "chapters": [11],
+          "keyInsights": [
+            "Measure before you optimize",
+            "Optimize critical path and hot loops"
+          ]
+        },
+        "resilience": {
+          "definition": "System's ability to gracefully handle failures",
+          "components": ["retries", "circuit-breakers", "timeouts"],
+          "relationships": ["improves-reliability", "affects-latency"],
+          "complexity": "intermediate",
+          "chapters": [8],
+          "keyInsights": [
+            "Backoff strategies reduce cascading failures",
+            "Inject faults to validate assumptions"
+          ]
+        },
+        "security-hardening": {
+          "definition": "Reducing attack surface and strengthening defenses",
+          "components": ["least-privilege", "input-validation", "code-signing"],
+          "relationships": ["critical-for-distribution", "protects-users"],
+          "complexity": "advanced",
+          "chapters": [13],
+          "keyInsights": [
+            "Prefer capabilities over ambient authority",
+            "Validate at boundaries and trust nothing"
+          ]
+        }
+      }
+    }
+  }
+}

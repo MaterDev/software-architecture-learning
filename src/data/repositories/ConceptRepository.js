@@ -9,21 +9,62 @@ export class ConceptRepository {
   constructor() {
     this.data = coreConcepts;
     this.conceptCache = new Map();
+    this.initialized = false;
     this.initializeCache();
   }
 
   initializeCache() {
-    // Pre-process concepts into model instances
-    Object.entries(this.data.conceptCategories).forEach(([categoryKey, category]) => {
-      Object.entries(category.concepts).forEach(([conceptKey, conceptData]) => {
-        const concept = new Concept({
-          name: conceptKey,
-          category: categoryKey,
-          ...conceptData
-        });
-        this.conceptCache.set(conceptKey, concept);
+    try {
+      // Defensive check for data structure
+      if (!this.data || !this.data.conceptCategories) {
+        console.warn('ConceptRepository: Invalid data structure, using fallback');
+        this.createFallbackData();
+        return;
+      }
+
+      // Pre-process concepts into model instances
+      Object.entries(this.data.conceptCategories).forEach(([categoryKey, category]) => {
+        if (category && category.concepts) {
+          Object.entries(category.concepts).forEach(([conceptKey, conceptData]) => {
+            try {
+              const concept = new Concept({
+                name: conceptKey,
+                category: categoryKey,
+                ...conceptData
+              });
+              this.conceptCache.set(conceptKey, concept);
+            } catch (error) {
+              console.warn(`ConceptRepository: Failed to create concept ${conceptKey}:`, error);
+            }
+          });
+        }
       });
+      
+      this.initialized = true;
+    } catch (error) {
+      console.error('ConceptRepository: Failed to initialize cache:', error);
+      this.createFallbackData();
+    }
+  }
+
+  createFallbackData() {
+    // Create minimal fallback concepts to prevent crashes
+    const fallbackConcepts = [
+      { name: 'software-architecture', category: 'foundational', complexity: 'beginner' },
+      { name: 'system-design', category: 'structural', complexity: 'intermediate' },
+      { name: 'quality-attributes', category: 'qualitative', complexity: 'intermediate' }
+    ];
+
+    fallbackConcepts.forEach(conceptData => {
+      try {
+        const concept = new Concept(conceptData);
+        this.conceptCache.set(conceptData.name, concept);
+      } catch (error) {
+        console.warn('ConceptRepository: Failed to create fallback concept:', error);
+      }
     });
+    
+    this.initialized = true;
   }
 
   /**
@@ -64,15 +105,30 @@ export class ConceptRepository {
    * Select random concepts with intelligent filtering
    */
   selectRelevantConcepts(roleKey, complexity, count = null) {
+    // Ensure repository is initialized
+    if (!this.initialized) {
+      console.warn('ConceptRepository: Not fully initialized, using fallback concepts');
+      return this.getFallbackConcepts();
+    }
+
     const relevantConcepts = this.getConceptsForRole(roleKey, complexity);
     
     if (relevantConcepts.length === 0) {
       // Fallback to any concepts if none match criteria
-      return this.getAllConcepts().slice(0, 2);
+      const allConcepts = this.getAllConcepts();
+      return allConcepts.length > 0 ? allConcepts.slice(0, 2) : this.getFallbackConcepts();
     }
 
     const selectedCount = count || Math.min(relevantConcepts.length, 3 + Math.floor(Math.random() * 3));
     return this.shuffleArray(relevantConcepts).slice(0, selectedCount);
+  }
+
+  getFallbackConcepts() {
+    // Return minimal concepts to prevent null errors
+    return [
+      new Concept({ name: 'software-architecture', category: 'foundational', complexity: 'beginner' }),
+      new Concept({ name: 'system-design', category: 'structural', complexity: 'intermediate' })
+    ];
   }
 
   /**

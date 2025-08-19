@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "purpose": "Educational lesson generation templates and role instructions",
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-14"
+  },
+  "lessonFormats": {
+    "conceptExploration": {
+      "description": "Deep dive into architectural concepts with practical application",
+      "structure": [
+        "## Concept Overview",
+        "## Why This Matters",
+        "## Core Principles", 
+        "## Real-World Examples",
+        "## Common Pitfalls",
+        "## Practical Exercises",
+        "## Reflection Questions",
+        "## Further Reading"
+      ],
+      "instructionalGuidance": "Guide the reader through systematic exploration of {concept} in {context}, providing a reusable framework they can apply to similar {decisionType}.",
+      "adaptationInstructions": "Adapt examples and scenarios to {domain} context, emphasizing {qualityAttributes} that matter most in this domain."
+    },
+    "tradeoffAnalysis": {
+      "description": "Systematic analysis of architectural trade-offs and decision-making",
+      "structure": [
+        "## The Decision Context",
+        "## Available Options", 
+        "## Trade-off Matrix",
+        "## Scenario Analysis",
+        "## Decision Framework",
+        "## Case Study Application",
+        "## Key Takeaways",
+        "## Decision Checklist"
+      ],
+      "instructionalGuidance": "Create a systematic framework for analyzing {decisionType} in {context}, providing a reusable decision-making process for {stakeholderNeeds}.",
+      "adaptationInstructions": "Focus on {domain} specific constraints and {technicalChallenges}, ensuring the framework addresses {businessContext}."
+    },
+    "patternStudy": {
+      "description": "In-depth exploration of architectural patterns with implementation guidance",
+      "structure": [
+        "## Pattern Overview",
+        "## When to Use This Pattern",
+        "## Core Components",
+        "## Implementation Strategy",
+        "## Real-World Applications", 
+        "## Common Variations",
+        "## Anti-Patterns to Avoid",
+        "## Migration Strategies"
+      ],
+      "instructionalGuidance": "Provide comprehensive coverage of {pattern} for {systemContext}, focusing on practical {implementationGoal} in {context}.",
+      "adaptationInstructions": "Emphasize {domain} specific applications and address {constraints} commonly found in {businessContext}."
+    },
+    "skillDevelopment": {
+      "description": "Skill-building lesson focused on developing architectural capabilities",
+      "structure": [
+        "## Skill Overview",
+        "## Why This Skill Matters",
+        "## Core Competencies",
+        "## Development Exercises",
+        "## Practice Scenarios",
+        "## Assessment Criteria",
+        "## Advanced Applications",
+        "## Continuous Improvement"
+      ],
+      "instructionalGuidance": "Focus on developing {skill} through {approach}, providing practical exercises for {useCase}.",
+      "adaptationInstructions": "Tailor skill development to {role} responsibilities and {complexity} level expectations."
+    }
+  },
+  "roleInstructions": {
+    "expertEngineer": {
+      "focus": "Technical implementation details, code quality, and deep architectural understanding",
+      "tone": "Detailed, implementation-focused, with concrete examples and best practices",
+      "keyDeliverables": ["Implementation patterns", "Code examples", "Technical trade-offs", "Performance considerations"],
+      "perspective": "How would I implement this effectively and maintainably?"
+    },
+    "systemDesigner": {
+      "focus": "System-wide design decisions, component interactions, and architectural patterns",
+      "tone": "Strategic, design-oriented, focusing on system boundaries and interactions",
+      "keyDeliverables": ["System diagrams", "Component relationships", "Interface definitions", "Integration patterns"],
+      "perspective": "How does this fit into the broader system architecture?"
+    },
+    "leader": {
+      "focus": "Decision-making frameworks, team coordination, and stakeholder communication",
+      "tone": "Strategic, collaborative, emphasizing communication and organizational impact",
+      "keyDeliverables": ["Decision frameworks", "Communication strategies", "Team guidelines", "Stakeholder alignment"],
+      "perspective": "How do I guide the team and communicate this to stakeholders?"
+    },
+    "reviewSynthesis": {
+      "focus": "Integration of concepts, reflection on learning, and application planning",
+      "tone": "Reflective, synthesizing, connecting concepts to practical application",
+      "keyDeliverables": ["Concept connections", "Application roadmap", "Learning reflection", "Next steps"],
+      "perspective": "How do these concepts work together and what should I do next?"
+    }
+  }
+}

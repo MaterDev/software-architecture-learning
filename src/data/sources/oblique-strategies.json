@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "purpose": "Oblique strategies for creative architectural thinking",
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-14",
+    "inspiration": "Brian Eno's Oblique Strategies adapted for software architecture"
+  },
+  "strategies": [
+    {
+      "text": "What would you do if you knew you couldn't fail?",
+      "category": "risk-perspective",
+      "integrationPattern": "Challenge assumptions about technical constraints and encourage bold architectural decisions."
+    },
+    {
+      "text": "Consider the opposite of your first instinct",
+      "category": "alternative-thinking", 
+      "integrationPattern": "If thinking monolithic, explore distributed. If thinking synchronous, explore asynchronous."
+    },
+    {
+      "text": "What is the simplest thing that could possibly work?",
+      "category": "simplicity",
+      "integrationPattern": "Strip away complexity and focus on the minimal viable architecture."
+    },
+    {
+      "text": "How would this look from the user's perspective?",
+      "category": "user-focus",
+      "integrationPattern": "Shift focus from technical elegance to user value and experience."
+    },
+    {
+      "text": "What if this had to work with 100x the current load?",
+      "category": "scale-thinking",
+      "integrationPattern": "Force consideration of scalability constraints and bottlenecks."
+    },
+    {
+      "text": "Remove the most expensive component",
+      "category": "constraint-thinking",
+      "integrationPattern": "Identify and eliminate the highest-cost element to drive creative solutions."
+    },
+    {
+      "text": "What would a startup do? What would Google do?",
+      "category": "perspective-shift",
+      "integrationPattern": "Compare resource-constrained vs resource-abundant approaches."
+    },
+    {
+      "text": "Make it more human",
+      "category": "human-centered",
+      "integrationPattern": "Focus on developer experience, maintainability, and team dynamics."
+    },
+    {
+      "text": "What are you not seeing?",
+      "category": "blind-spots",
+      "integrationPattern": "Identify hidden assumptions and unconsidered factors."
+    },
+    {
+      "text": "How would you explain this to a 5-year-old?",
+      "category": "simplification",
+      "integrationPattern": "Force clear, simple explanations that reveal complexity."
+    }
+  ]
+}

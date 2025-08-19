@@ -1,0 +1,346 @@
+{
+  "metadata": {
+    "purpose": "Real-world domain contexts and scenarios for architectural learning",
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-14"
+  },
+  "domainContexts": {
+    "ecommerce": {
+      "description": "Online retail and marketplace systems with complex user journeys",
+      "characteristics": ["scalability", "availability", "consistency", "performance"],
+      "constraints": ["seasonal-traffic-spikes", "payment-processing", "inventory-synchronization", "global-distribution"],
+      "stakeholders": ["customers", "merchants", "operations-team", "business-analysts"],
+      "scenarios": [
+        {
+          "name": "Black Friday Traffic Surge",
+          "description": "Handling 10x normal traffic during peak shopping events",
+          "characteristics": ["extreme-scalability", "fault-tolerance", "performance"]
+        },
+        {
+          "name": "Global Marketplace Expansion", 
+          "description": "Scaling to new geographic regions with different regulations",
+          "characteristics": ["compliance", "localization", "distributed-systems"]
+        }
+      ]
+    },
+    "fintech": {
+      "description": "Financial technology systems requiring high security and regulatory compliance",
+      "characteristics": ["security", "compliance", "consistency", "auditability"],
+      "constraints": ["regulatory-requirements", "transaction-integrity", "data-privacy", "real-time-processing"],
+      "stakeholders": ["customers", "regulators", "compliance-officers", "auditors"],
+      "scenarios": [
+        {
+          "name": "Real-time Payment Processing",
+          "description": "Processing high-frequency transactions with strict consistency requirements",
+          "characteristics": ["consistency", "performance", "reliability"]
+        },
+        {
+          "name": "Regulatory Compliance Integration",
+          "description": "Integrating new compliance requirements without system downtime",
+          "characteristics": ["flexibility", "auditability", "security"]
+        }
+      ]
+    },
+    "healthcare": {
+      "description": "Healthcare systems managing sensitive patient data and critical workflows",
+      "characteristics": ["security", "privacy", "reliability", "interoperability"],
+      "constraints": ["hipaa-compliance", "system-integration", "legacy-systems", "uptime-requirements"],
+      "stakeholders": ["patients", "healthcare-providers", "administrators", "regulators"],
+      "scenarios": [
+        {
+          "name": "Electronic Health Record Integration",
+          "description": "Integrating multiple EHR systems while maintaining data privacy",
+          "characteristics": ["interoperability", "security", "data-consistency"]
+        },
+        {
+          "name": "Telemedicine Platform Scaling",
+          "description": "Rapidly scaling telehealth services during health emergencies",
+          "characteristics": ["scalability", "reliability", "user-experience"]
+        }
+      ]
+    },
+    "gaming": {
+      "description": "Interactive gaming platforms with real-time multiplayer requirements",
+      "characteristics": ["performance", "scalability", "real-time-processing", "user-experience"],
+      "constraints": ["latency-requirements", "state-synchronization", "anti-cheat-systems", "global-player-base"],
+      "stakeholders": ["players", "game-developers", "platform-operators", "community-managers"],
+      "scenarios": [
+        {
+          "name": "Massive Multiplayer Battle Royale",
+          "description": "Supporting 100+ concurrent players in real-time competitive gameplay",
+          "characteristics": ["ultra-low-latency", "state-consistency", "fault-tolerance"]
+        },
+        {
+          "name": "Cross-Platform Game Synchronization",
+          "description": "Enabling seamless gameplay across mobile, console, and PC platforms",
+          "characteristics": ["interoperability", "performance-optimization", "user-experience"]
+        }
+      ]
+    },
+    "iot": {
+      "description": "Internet of Things systems connecting millions of edge devices",
+      "characteristics": ["scalability", "reliability", "edge-processing", "connectivity"],
+      "constraints": ["resource-limitations", "intermittent-connectivity", "security-at-scale", "data-volume"],
+      "stakeholders": ["device-manufacturers", "end-users", "system-integrators", "data-analysts"],
+      "scenarios": [
+        {
+          "name": "Smart City Infrastructure",
+          "description": "Managing millions of sensors and actuators across urban infrastructure",
+          "characteristics": ["massive-scale", "real-time-analytics", "fault-tolerance"]
+        },
+        {
+          "name": "Industrial IoT Monitoring",
+          "description": "Real-time monitoring and control of manufacturing equipment",
+          "characteristics": ["reliability", "real-time-processing", "predictive-analytics"]
+        }
+      ]
+    },
+    "entertainment-arts": {
+      "description": "Studios and platforms for animation, film, and interactive media production",
+      "characteristics": ["collaboration", "asset-pipelines", "performance"],
+      "constraints": ["large-media-assets", "tight-deadlines"],
+      "stakeholders": ["artists", "producers", "technical-directors"],
+      "scenarios": [
+        {
+          "name": "Distributed Render Pipeline",
+          "description": "Coordinating renders across on-prem and cloud farms with asset versioning",
+          "characteristics": ["throughput", "observability", "cost-optimization"]
+        }
+      ]
+    },
+    "comics": {
+      "description": "Digital comics creation and distribution workflows",
+      "characteristics": ["layout-processing", "metadata", "distribution"],
+      "constraints": ["format-compatibility", "creator-royalties"],
+      "stakeholders": ["creators", "publishers", "readers"],
+      "scenarios": [
+        {
+          "name": "Multi-Format Publishing",
+          "description": "Exporting to PDF, ePub, and web readers with consistent color profiles",
+          "characteristics": ["color-management", "automation", "quality-assurance"]
+        }
+      ]
+    },
+    "graphic-apps": {
+      "description": "Desktop and web applications for vector and raster graphics",
+      "characteristics": ["low-latency", "undo-redo", "precision"],
+      "constraints": ["memory-usage", "cross-platform"],
+      "stakeholders": ["designers", "engineers", "power-users"],
+      "scenarios": [
+        {
+          "name": "Realtime Canvas Collaboration",
+          "description": "Operational transform/CRDT sync for graphics documents",
+          "characteristics": ["consistency", "conflict-resolution", "performance"]
+        }
+      ]
+    },
+    "creative-coding": {
+      "description": "Interactive sketches and generative art systems",
+      "characteristics": ["iteration-speed", "expressiveness", "portability"],
+      "constraints": ["runtime-safety", "performance-budgets"],
+      "stakeholders": ["artists", "educators", "developers"],
+      "scenarios": [
+        {
+          "name": "Shader-Based Generative Toolkit",
+          "description": "Composable GLSL/WGSL nodes with live coding and heat-safe previews",
+          "characteristics": ["hot-reload", "sandboxing", "frame-time-stability"]
+        }
+      ]
+    },
+    "server-side-development": {
+      "description": "Back-end services and APIs for business applications",
+      "characteristics": ["observability", "resilience", "scalability"],
+      "constraints": ["SLA-compliance", "cost-constraints"],
+      "stakeholders": ["backend-engineers", "SREs", "product-managers"],
+      "scenarios": [
+        {
+          "name": "Zero-Downtime Migrations",
+          "description": "Rolling schema and data migrations with dual-write and verification",
+          "characteristics": ["compatibility", "idempotency", "rollback-strategy"]
+        }
+      ]
+    },
+    "scripting-tooling": {
+      "description": "Developer tooling, CLIs, and automation scripts",
+      "characteristics": ["DX", "extensibility", "speed"],
+      "constraints": ["single-binary", "cross-env"],
+      "stakeholders": ["devs", "build-engineers", "release-managers"],
+      "scenarios": [
+        {
+          "name": "Mono-Repo Automation",
+          "description": "Change detection, task graphs, and caching for large repos",
+          "characteristics": ["incrementality", "determinism", "parallelism"]
+        }
+      ]
+    },
+    "analytics-data-viz": {
+      "description": "Interactive dashboards and analytics pipelines",
+      "characteristics": ["freshness", "accuracy", "usability"],
+      "constraints": ["PII-handling", "cost-per-query"],
+      "stakeholders": ["analysts", "executives", "data-engineers"],
+      "scenarios": [
+        {
+          "name": "Realtime Metrics at Scale",
+          "description": "Streaming aggregation with downsampling and tiered storage",
+          "characteristics": ["latency", "cardinality-management", "governance"]
+        }
+      ]
+    },
+    "computer-graphics": {
+      "description": "Rendering, simulation, and GPU-accelerated pipelines",
+      "characteristics": ["throughput", "precision", "parallelism"],
+      "constraints": ["GPU-memory", "driver-compatibility"],
+      "stakeholders": ["graphics-engineers", "artists", "researchers"],
+      "scenarios": [
+        {
+          "name": "Hybrid Raster/Path Tracing",
+          "description": "Mixing techniques with temporal denoising and frame pacing",
+          "characteristics": ["artifact-control", "latency", "resource-scheduling"]
+        }
+      ]
+    },
+    "webassembly": {
+      "description": "Wasm apps with systems-level performance in the browser and server",
+      "characteristics": ["portability", "safety", "speed"],
+      "constraints": ["sandbox-limits", "binary-size"],
+      "stakeholders": ["web-devs", "systems-devs", "security"],
+      "scenarios": [
+        {
+          "name": "Native Plugin to Web",
+          "description": "Port C/C++ plugins to Wasm with shared-nothing messaging",
+          "characteristics": ["FFI-bridging", "memory-safety", "latency"]
+        }
+      ]
+    },
+    "tauri": {
+      "description": "Tauri desktop apps using Rust backends and web frontends",
+      "characteristics": ["small-binaries", "security", "native-APIs"],
+      "constraints": ["sandboxing", "multi-platform-builds"],
+      "stakeholders": ["desktop-devs", "ops", "security"],
+      "scenarios": [
+        {
+          "name": "Secure File System Access",
+          "description": "Capability-based access with granular permission prompts",
+          "characteristics": ["least-privilege", "auditability", "usability"]
+        }
+      ]
+    },
+    "javascript": {
+      "description": "JavaScript app ecosystems across browser and server",
+      "characteristics": ["interop", "tooling", "performance"],
+      "constraints": ["bundle-size", "runtime-variability"],
+      "stakeholders": ["frontend-devs", "fullstack-devs", "platform-teams"],
+      "scenarios": [
+        {
+          "name": "Code Splitting Strategy",
+          "description": "Balance TTI and navigation performance with route-level chunks",
+          "characteristics": ["lazy-loading", "preload-hints", "monitoring"]
+        }
+      ]
+    },
+    "typescript": {
+      "description": "Type-safe application development and library authoring",
+      "characteristics": ["safety", "refactorability", "dev-speed"],
+      "constraints": ["type-complexity", "build-times"],
+      "stakeholders": ["frontend-devs", "backend-devs", "library-authors"],
+      "scenarios": [
+        {
+          "name": "Public API Stability",
+          "description": "Designing type-safe SDKs with semver-compatible evolution",
+          "characteristics": ["compatibility", "DX", "testing"]
+        }
+      ]
+    },
+    "go": {
+      "description": "Go services and tooling",
+      "characteristics": ["simplicity", "concurrency", "deployability"],
+      "constraints": ["binary-size", "GC-latency"],
+      "stakeholders": ["backend-devs", "infra-teams", "ops"],
+      "scenarios": [
+        {
+          "name": "High-qps API",
+          "description": "Design goroutine-safe services with backpressure and pooling",
+          "characteristics": ["throughput", "latency", "stability"]
+        }
+      ]
+    },
+    "rust": {
+      "description": "Rust systems and application development",
+      "characteristics": ["memory-safety", "zero-cost-abstractions", "performance"],
+      "constraints": ["compile-times", "unsafe-audits"],
+      "stakeholders": ["systems-devs", "security", "performance-engineers"],
+      "scenarios": [
+        {
+          "name": "Async Service with Tokio",
+          "description": "Structured concurrency and cancellation with minimal allocations",
+          "characteristics": ["backpressure", "observability", "resilience"]
+        }
+      ]
+    },
+    "payment-systems": {
+      "description": "Card and real-time payments, reconciliation, and ledgers",
+      "characteristics": ["idempotency", "consistency", "security"],
+      "constraints": ["PCI-DSS", "dispute-handling"],
+      "stakeholders": ["merchants", "banks", "cardholders"],
+      "scenarios": [
+        {
+          "name": "Idempotent Payment APIs",
+          "description": "Ensure exactly-once semantics across retries and network partitions",
+          "characteristics": ["deduplication", "saga-patterns", "auditing"]
+        }
+      ]
+    },
+    "devops": {
+      "description": "Operational excellence and platform engineering",
+      "characteristics": ["automation", "reliability", "security"],
+      "constraints": ["compliance", "cost-controls"],
+      "stakeholders": ["platform-teams", "SREs", "developers"],
+      "scenarios": [
+        {
+          "name": "Progressive Delivery",
+          "description": "Blue/green and canary with automated rollback and SLO guards",
+          "characteristics": ["error-budgets", "observability", "safety"]
+        }
+      ]
+    },
+    "software-distribution": {
+      "description": "Packaging, updates, and channels for desktop and server software",
+      "characteristics": ["rollback", "incremental-updates", "security"],
+      "constraints": ["code-signing", "network-variability"],
+      "stakeholders": ["release-engineers", "IT-admins", "end-users"],
+      "scenarios": [
+        {
+          "name": "Delta Update Service",
+          "description": "Chunked updates with content-addressed storage and verification",
+          "characteristics": ["integrity", "bandwidth-efficiency", "resilience"]
+        }
+      ]
+    },
+    "generative-ai": {
+      "description": "LLM and diffusion systems for product features and tooling",
+      "characteristics": ["safety", "latency", "cost"],
+      "constraints": ["policy-compliance", "evals"],
+      "stakeholders": ["ML-engineers", "product", "trust-safety"],
+      "scenarios": [
+        {
+          "name": "Assistant Prompt Orchestration",
+          "description": "Routing, caching, and guardrails with evaluation feedback loops",
+          "characteristics": ["observability", "determinism", "privacy"]
+        }
+      ]
+    },
+    "app-development": {
+      "description": "End-to-end product development for mobile and desktop apps",
+      "characteristics": ["maintainability", "performance", "UX"],
+      "constraints": ["store-policies", "offline-first"],
+      "stakeholders": ["mobile-devs", "desktop-devs", "QA"],
+      "scenarios": [
+        {
+          "name": "Offline-First Sync",
+          "description": "Conflict resolution and sync strategies across devices",
+          "characteristics": ["CRDTs", "encryption", "battery-life"]
+        }
+      ]
+    }
+  }
+}

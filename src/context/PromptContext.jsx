@@ -1,7 +1,7 @@
-import React, { createContext, useReducer, useEffect } from 'react';
-import { generateCycle, regenerateStage } from '../utils/advancedPromptGenerator.js';
-import { ActionTypes, initialState } from './constants';
+import React, { createContext, useReducer, useEffect, useRef } from 'react';
+import { generateCycle, regenerateStage } from '../engines/prompt/PromptEngine.js';
 import { logger } from '../utils/logger.js';
+import { ActionTypes, initialState } from './constants';
 
 // Reducer function with comprehensive logging
 const promptReducer = (state, action) => {
@@ -24,7 +24,9 @@ const promptReducer = (state, action) => {
     case ActionTypes.GENERATE_CYCLE_SUCCESS:
       logger.info('PromptContext', 'Cycle generation successful', {
         cycleCount: state.cycleCount + 1,
-        stagesGenerated: Object.keys(action.payload)
+        stagesGenerated: Array.isArray(action.payload?.stages)
+          ? action.payload.stages.map(s => s?.stage)
+          : []
       });
       newState = {
         ...state,
@@ -51,6 +53,15 @@ const promptReducer = (state, action) => {
         newPrompt: action.payload.prompt,
         hashtags: action.payload.hashtags
       });
+
+      if (!state.currentCycle || !Array.isArray(state.currentCycle.stages)) {
+        logger.warn('PromptContext', 'REGENERATE_STAGE ignored: no currentCycle or stages array', {
+          hasCurrentCycle: !!state.currentCycle,
+          stagesType: typeof state.currentCycle?.stages
+        });
+        newState = state;
+        break;
+      }
       
       const updatedStages = state.currentCycle.stages.map(stage => 
         stage.stage === action.payload.stage ? action.payload : stage
@@ -109,12 +120,12 @@ const promptReducer = (state, action) => {
         stageCount: newState.currentCycle.stages?.length || 0,
         hasTimestamp: !!newState.currentCycle.timestamp,
         timestampValid: newState.currentCycle.timestamp && !isNaN(new Date(newState.currentCycle.timestamp)),
-        stagesStructure: newState.currentCycle.stages?.map(stage => ({
-          stage: stage.stage,
-          hasPrompt: !!stage.prompt,
-          hasHashtags: Array.isArray(stage.hashtags),
-          hashtagCount: stage.hashtags?.length || 0,
-          hasCopyableText: !!stage.copyableText
+        stagesStructure: newState.currentCycle.stages?.filter(stage => stage != null).map(stage => ({
+          stage: stage?.stage || 'Unknown',
+          hasPrompt: !!stage?.prompt,
+          hasHashtags: Array.isArray(stage?.hashtags),
+          hashtagCount: stage?.hashtags?.length || 0,
+          hasCopyableText: !!stage?.copyableText
         })) || []
       };
 
@@ -159,13 +170,26 @@ const PromptContext = createContext();
 export const PromptProvider = ({ children }) => {
   const [state, dispatch] = useReducer(promptReducer, initialState);
 
-  // Generate initial cycle on mount
+  // Concurrency/race guards
+  const isGeneratingRef = useRef(false);
+  const hasMountedRef = useRef(false); // Avoid double-run under React Strict Mode
+  const regeneratingRef = useRef(new Set()); // Track in-flight stage regenerations
+
+  // Generate initial cycle on mount (guarded for Strict Mode)
   useEffect(() => {
+    if (hasMountedRef.current) return;
+    hasMountedRef.current = true;
     generateNewCycle();
   }, []);
 
   // Action creators with comprehensive logging
   const generateNewCycle = async () => {
+    if (isGeneratingRef.current) {
+      logger.warn('PromptProvider', 'Generation already in progress; ignoring duplicate request');
+      return;
+    }
+    isGeneratingRef.current = true;
+
     logger.info('PromptProvider', 'User initiated new cycle generation');
     dispatch({ type: ActionTypes.GENERATE_CYCLE_START });
     
@@ -174,13 +198,18 @@ export const PromptProvider = ({ children }) => {
       const newCycle = generateCycle();
       
       logger.prompt('PromptProvider', 'New cycle generated successfully', {
-        stages: Object.keys(newCycle),
-        stageDetails: Object.entries(newCycle).map(([stage, data]) => ({
-          stage,
-          hashtagCount: data.hashtags?.length || 0,
-          promptLength: data.prompt?.length || 0,
-          timestamp: data.timestamp
-        }))
+        cycleId: newCycle?.id,
+        stageNames: Array.isArray(newCycle?.stages)
+          ? newCycle.stages.map(s => s?.stage)
+          : [],
+        stageDetails: Array.isArray(newCycle?.stages)
+          ? newCycle.stages.map(s => ({
+              stage: s?.stage,
+              hashtagCount: s?.hashtags?.length || 0,
+              promptLength: s?.prompt?.length || 0,
+              timestamp: s?.timestamp
+            }))
+          : []
       });
       
       dispatch({ 
@@ -196,10 +225,18 @@ export const PromptProvider = ({ children }) => {
         type: ActionTypes.GENERATE_CYCLE_ERROR, 
         payload: error.message 
       });
+    } finally {
+      isGeneratingRef.current = false;
     }
   };
 
   const regenerateStagePrompt = (stage) => {
+    if (regeneratingRef.current.has(stage)) {
+      logger.warn('PromptProvider', `Stage regeneration already in progress for: ${stage}`);
+      return;
+    }
+    regeneratingRef.current.add(stage);
+
     logger.info('PromptProvider', `User requested stage regeneration: ${stage}`);
     
     try {
@@ -208,10 +245,10 @@ export const PromptProvider = ({ children }) => {
       
       logger.prompt('PromptProvider', `Stage ${stage} regenerated successfully`, {
         stage,
-        newHashtags: newStageData.hashtags,
-        newPrompt: newStageData.prompt,
-        promptLength: newStageData.prompt?.length || 0,
-        timestamp: newStageData.timestamp
+        newHashtags: newStageData?.hashtags,
+        newPrompt: newStageData?.prompt,
+        promptLength: newStageData?.prompt?.length || 0,
+        timestamp: newStageData?.timestamp
       });
       
       dispatch({
@@ -228,6 +265,8 @@ export const PromptProvider = ({ children }) => {
         type: ActionTypes.GENERATE_CYCLE_ERROR, 
         payload: error.message 
       });
+    } finally {
+      regeneratingRef.current.delete(stage);
     }
   };
 
