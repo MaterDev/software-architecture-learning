@@ -34,14 +34,4 @@ const StatusBar = ({ currentCycle, loading, error }) => {
   );
 };
 
-const getStageTitle = (stage) => {
-  const titles = {
-    'expert-engineer': 'Expert Engineer',
-    'system-designer': 'System Designer', 
-    'leader': 'Leader',
-    'review-synthesis': 'Review & Synthesis'
-  };
-  return titles[stage] || stage;
-};
-
 export default StatusBar;

@@ -14,8 +14,8 @@ vi.mock('../utils/logger.js', () => ({
   }
 }));
 
-// Global test utilities
-global.mockConcept = (overrides = {}) => ({
+// Global test utilities (use globalThis for cross-env compatibility)
+globalThis.mockConcept = (overrides = {}) => ({
   name: 'test-concept',
   category: 'foundational',
   definition: 'Test definition',
@@ -25,7 +25,7 @@ global.mockConcept = (overrides = {}) => ({
   ...overrides
 });
 
-global.mockContext = (overrides = {}) => ({
+globalThis.mockContext = (overrides = {}) => ({
   name: 'test-context',
   description: 'Test context description',
   characteristics: ['scalability', 'maintainability'],

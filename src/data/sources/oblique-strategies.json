@@ -1,8 +1,8 @@
 {
   "metadata": {
     "purpose": "Oblique strategies for creative architectural thinking",
-    "version": "2.0.0",
-    "lastUpdated": "2025-01-14",
+    "version": "3.0.0",
+    "lastUpdated": "2025-08-18",
     "inspiration": "Brian Eno's Oblique Strategies adapted for software architecture"
   },
   "strategies": [
@@ -37,11 +37,6 @@
       "integrationPattern": "Identify and eliminate the highest-cost element to drive creative solutions."
     },
     {
-      "text": "What would a startup do? What would Google do?",
-      "category": "perspective-shift",
-      "integrationPattern": "Compare resource-constrained vs resource-abundant approaches."
-    },
-    {
       "text": "Make it more human",
       "category": "human-centered",
       "integrationPattern": "Focus on developer experience, maintainability, and team dynamics."
@@ -55,6 +50,126 @@
       "text": "How would you explain this to a 5-year-old?",
       "category": "simplification",
       "integrationPattern": "Force clear, simple explanations that reveal complexity."
+    },
+    {
+      "text": "If you had to ship in one day, what would you cut?",
+      "category": "timeboxing",
+      "integrationPattern": "Scope ruthlessly to essentials; identify deferrable complexity."
+    },
+    {
+      "text": "Add a measurable outcome",
+      "category": "kpi-oriented",
+      "integrationPattern": "Define a KPI (latency, error rate, cost) and design toward it."
+    },
+    {
+      "text": "Switch from synchronous to asynchronous (or vice versa)",
+      "category": "interaction-model",
+      "integrationPattern": "Explore event-driven, queues, and backpressure or simplify to request/response."
+    },
+    {
+      "text": "Fail on purpose, then design for it",
+      "category": "resilience",
+      "integrationPattern": "Introduce failure modes and add retries, timeouts, bulkheads, circuit breakers."
+    },
+    {
+      "text": "Design the observability first",
+      "category": "observability",
+      "integrationPattern": "Start from logs, metrics, traces; make unknowns measurable."
+    },
+    {
+      "text": "Remove one layer of abstraction",
+      "category": "abstraction",
+      "integrationPattern": "Flatten over-engineered layers to restore clarity and performance."
+    },
+    {
+      "text": "Make a small prototype that proves the riskiest assumption",
+      "category": "prototyping",
+      "integrationPattern": "Spike the hardest part; limit the prototype to 4 hours."
+    },
+    {
+      "text": "Document the decision before you make it",
+      "category": "adr",
+      "integrationPattern": "Write an ADR with context, options, and consequences to reveal trade-offs."
+    },
+    {
+      "text": "Invert the dependency",
+      "category": "architecture",
+      "integrationPattern": "Use ports/adapters or dependency inversion to decouple volatile parts."
+    },
+    {
+      "text": "Design for deletion",
+      "category": "evolution",
+      "integrationPattern": "Make modules replaceable; avoid hidden coupling and shared state."
+    },
+    {
+      "text": "Add a contract",
+      "category": "interface",
+      "integrationPattern": "Define explicit interfaces and SLAs; version schemas and APIs."
+    },
+    {
+      "text": "Cache the right thing",
+      "category": "performance",
+      "integrationPattern": "Choose idempotent layers; decide eviction, freshness, and invalidation triggers."
+    },
+    {
+      "text": "Secure the boundary, not just the core",
+      "category": "security",
+      "integrationPattern": "Threat-model inputs/outputs, least privilege, defense-in-depth at edges."
+    },
+    {
+      "text": "Make the cost visible",
+      "category": "finops",
+      "integrationPattern": "Annotate components with compute/storage/network cost and optimize hot paths."
+    },
+    {
+      "text": "Add a kill switch",
+      "category": "operability",
+      "integrationPattern": "Introduce feature flags and safe rollbacks; plan for rapid disable."
+    },
+    {
+      "text": "Name the invariants",
+      "category": "correctness",
+      "integrationPattern": "State what must never change; design checks around them."
+    },
+    {
+      "text": "Budget technical debt intentionally",
+      "category": "debt",
+      "integrationPattern": "Track debt as first-class with pay-down windows and explicit trade-offs."
+    },
+    {
+      "text": "Use standards before inventing",
+      "category": "reuse",
+      "integrationPattern": "Prefer protocols and widely-used libraries; reduce bespoke glue."
+    },
+    {
+      "text": "Draw it as a sequence diagram",
+      "category": "communication",
+      "integrationPattern": "Visualize interactions; hotspots and coupling become obvious."
+    },
+    {
+      "text": "Make it reversible",
+      "category": "risk",
+      "integrationPattern": "Plan migrations with dual writes, shadow reads, and rollbacks."
+    },
+    {
+      "text": "Prefer idempotency at boundaries",
+      "category": "reliability",
+      "integrationPattern": "Design external interactions to be safely retried."
+    },
+    {
+      "text": "Introduce a bounded context",
+      "category": "domain",
+      "integrationPattern": "Split language and data models to reduce cross-cutting change."
+    },
+    {
+      "text": "Let the metrics choose",
+      "category": "experimentation",
+      "integrationPattern": "Run a small experiment; decide by measured outcome, not opinion."
+    },
+    {
+      "text": "Write the README first",
+      "category": "docs",
+      "integrationPattern": "Describe how it’s used and operated; design to that experience."
     }
   ]
 }

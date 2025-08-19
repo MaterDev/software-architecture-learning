@@ -9,6 +9,7 @@ import { TemplateRepository } from '../../data/repositories/TemplateRepository.j
 import { ScenarioRepository } from '../../data/repositories/ScenarioRepository.js';
 import { StrategyRepository } from '../../data/repositories/StrategyRepository.js';
 import { logger } from '../../utils/logger.js';
+import { ContextEnricher } from './services/ContextEnricher.js';
 
 export class PromptEngine {
   constructor({
@@ -24,20 +25,23 @@ export class PromptEngine {
     this.templateRepo = templateRepo || new TemplateRepository();
     this.scenarioRepo = scenarioRepo || new ScenarioRepository();
     this.strategyRepo = strategyRepo || new StrategyRepository();
+    this.contextEnricher = new ContextEnricher();
     
     // Initialize generators (allow DI for testing)
     this.cycleGenerator = cycleGenerator || new CycleGenerator({
       conceptRepo: this.conceptRepo,
       templateRepo: this.templateRepo,
       scenarioRepo: this.scenarioRepo,
-      strategyRepo: this.strategyRepo
+      strategyRepo: this.strategyRepo,
+      contextEnricher: this.contextEnricher
     });
     
     this.stageGenerator = stageGenerator || new StageGenerator({
       conceptRepo: this.conceptRepo,
       templateRepo: this.templateRepo,
       scenarioRepo: this.scenarioRepo,
-      strategyRepo: this.strategyRepo
+      strategyRepo: this.strategyRepo,
+      contextEnricher: this.contextEnricher
     });
     
     // Safe logging in case DI passes partial mocks

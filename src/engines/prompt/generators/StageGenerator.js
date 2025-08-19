@@ -5,9 +5,10 @@
 import { HashtagGenerator } from './HashtagGenerator.js';
 import { TemplateEngine } from '../templates/TemplateEngine.js';
 import { logger } from '../../../utils/logger.js';
+import { ContextEnricher } from '../services/ContextEnricher.js';
 
 export class StageGenerator {
-  constructor({ conceptRepo, templateRepo, scenarioRepo, strategyRepo }) {
+  constructor({ conceptRepo, templateRepo, scenarioRepo, strategyRepo, contextEnricher } = {}) {
     this.conceptRepo = conceptRepo;
     this.templateRepo = templateRepo;
     this.scenarioRepo = scenarioRepo;
@@ -15,12 +16,18 @@ export class StageGenerator {
     
     this.hashtagGenerator = new HashtagGenerator();
     this.templateEngine = new TemplateEngine({ templateRepo });
+    this.contextEnricher = contextEnricher || new ContextEnricher();
   }
 
   /**
    * Generate a single learning stage
+   * @param {string} roleKey
+   * @param {object} context
+   * @param {string} complexity
+   * @param {object|null} obliqueStrategy
+   * @param {object} [opts] optional options { enrichment, hints }
    */
-  generate(roleKey, context, complexity, obliqueStrategy) {
+  generate(roleKey, context, complexity, obliqueStrategy, opts = {}) {
     logger.debug('StageGenerator', `Starting stage generation for ${roleKey}`, {
       roleKey,
       hasContext: !!context,
@@ -86,6 +93,10 @@ export class StageGenerator {
 
     const hashtags = this.hashtagGenerator.generate(relevantConcepts, context);
     
+    // Enrich context with domain + technologies and merge hashtags
+    const enrichment = opts?.enrichment ?? this.contextEnricher.enrich({ domainName: context?.name, hints: opts?.hints });
+    const mergedHashtags = [...new Set([...(hashtags || []), ...((enrichment && enrichment.hashtags) ? enrichment.hashtags : [])])];
+    
     logger.debug('StageGenerator', `Hashtags generated for ${roleKey}`, {
       roleKey,
       hashtagsGenerated: !!hashtags,
@@ -114,12 +125,14 @@ export class StageGenerator {
     const stage = {
       stage: roleName,
       prompt,
-      hashtags,
+      hashtags: mergedHashtags,
       context: context?.name || 'general',
       complexity,
       lessonType: lessonFormat?.description || 'Generated lesson',
       conceptsUsed: relevantConcepts && relevantConcepts.length > 0 ? 
         relevantConcepts.map(c => c && c.name ? c.name : 'unknown') : ['architecture'],
+      technologiesUsed: Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [],
+      enrichment,
       timestamp: Date.now()
     };
 

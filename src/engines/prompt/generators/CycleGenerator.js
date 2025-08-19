@@ -5,9 +5,10 @@
 import { StageGenerator } from './StageGenerator.js';
 import { ComplexitySelector } from '../selectors/ComplexitySelector.js';
 import { logger } from '../../../utils/logger.js';
+import { ContextEnricher } from '../services/ContextEnricher.js';
 
 export class CycleGenerator {
-  constructor({ conceptRepo, templateRepo, scenarioRepo, strategyRepo }) {
+  constructor({ conceptRepo, templateRepo, scenarioRepo, strategyRepo, contextEnricher } = {}) {
     this.conceptRepo = conceptRepo;
     this.templateRepo = templateRepo;
     this.scenarioRepo = scenarioRepo;
@@ -17,10 +18,12 @@ export class CycleGenerator {
       conceptRepo,
       templateRepo,
       scenarioRepo,
-      strategyRepo
+      strategyRepo,
+      contextEnricher
     });
     
     this.complexitySelector = new ComplexitySelector();
+    this.contextEnricher = contextEnricher || new ContextEnricher();
   }
 
   /**
@@ -75,6 +78,9 @@ export class CycleGenerator {
       strategyType: typeof obliqueStrategy
     });
 
+    // Compute enrichment once per cycle
+    const enrichment = this.contextEnricher.enrich({ domainName: selectedContext?.name });
+
     const stages = [];
     const roleKeys = ['expertEngineer', 'systemDesigner', 'leader', 'reviewSynthesis'];
     
@@ -92,7 +98,13 @@ export class CycleGenerator {
       });
       
       try {
-        const stage = this.stageGenerator.generate(roleKey, selectedContext, selectedComplexity, obliqueStrategy);
+        const stage = this.stageGenerator.generate(
+          roleKey,
+          selectedContext,
+          selectedComplexity,
+          obliqueStrategy,
+          { enrichment }
+        );
         
         logger.debug('CycleGenerator', `Stage generation result for ${roleKey}`, {
           roleKey,
@@ -133,6 +145,8 @@ export class CycleGenerator {
             complexity: selectedComplexity,
             lessonType: 'Fallback lesson',
             conceptsUsed: ['architecture'],
+            technologiesUsed: Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [],
+            enrichment,
             timestamp: Date.now()
           };
           stages.push(fallbackStage);
@@ -157,6 +171,8 @@ export class CycleGenerator {
           complexity: selectedComplexity,
           lessonType: 'Fallback lesson',
           conceptsUsed: ['architecture'],
+          technologiesUsed: Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [],
+          enrichment,
           timestamp: Date.now()
         };
         stages.push(fallbackStage);
@@ -192,6 +208,8 @@ export class CycleGenerator {
           complexity: selectedComplexity,
           lessonType: 'Fallback lesson',
           conceptsUsed: ['architecture'],
+          technologiesUsed: Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [],
+          enrichment,
           timestamp
         };
       }
@@ -205,6 +223,8 @@ export class CycleGenerator {
         complexity: stage.complexity || selectedComplexity,
         lessonType: stage.lessonType || 'Generated lesson',
         conceptsUsed: Array.isArray(stage.conceptsUsed) ? stage.conceptsUsed : ['architecture'],
+        technologiesUsed: Array.isArray(stage.technologiesUsed) ? stage.technologiesUsed : [],
+        enrichment: stage.enrichment || enrichment || null,
         timestamp: stage.timestamp || timestamp
       };
     });

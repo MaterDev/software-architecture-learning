@@ -1,0 +1,238 @@
+{
+  "metadata": {
+    "purpose": "Domain catalog for prompt context enrichment",
+    "version": "1.0.0",
+    "lastUpdated": "2025-08-18"
+  },
+  "domains": [
+    {
+      "name": "entertainment-arts",
+      "description": "Creative production and media technology ecosystem",
+      "characteristics": ["media-pipelines", "real-time", "collaboration"],
+      "workflows": ["asset-ingestion", "rendering", "review-iteration"],
+      "kpis": ["render-time", "latency"],
+      "constraints": ["gpu-costs", "large-assets"],
+      "stakeholders": ["artists", "producers"],
+      "scenarios": [
+        { "name": "real-time-vfx-collab", "characteristics": ["low-latency", "versioning"] }
+      ]
+    },
+    {
+      "name": "comics",
+      "description": "Digital publishing and storytelling platforms",
+      "characteristics": ["asset-management", "responsive-rendering", "distribution"],
+      "workflows": ["page-layout", "export", "publish"],
+      "kpis": ["load-time", "retention"],
+      "constraints": ["device-variability", "bandwidth"],
+      "stakeholders": ["authors", "readers"],
+      "scenarios": [
+        { "name": "collaborative-editor", "characteristics": ["concurrency", "conflict-resolution"] }
+      ]
+    },
+    {
+      "name": "graphic-apps",
+      "description": "Professional creative tools and design workflows",
+      "characteristics": ["gpu-acceleration", "complex-ui", "plugins"],
+      "workflows": ["edit", "preview", "export"],
+      "kpis": ["fps", "memory-usage"],
+      "constraints": ["cross-platform", "precision"],
+      "stakeholders": ["designers", "devs"],
+      "scenarios": [
+        { "name": "vector-editor", "characteristics": ["precision", "undo-redo"] }
+      ]
+    },
+    {
+      "name": "creative-coding",
+      "description": "Artistic exploration through code and interactive media",
+      "characteristics": ["live-coding", "generative", "audiovisual"],
+      "workflows": ["sketch", "iterate", "perform"],
+      "kpis": ["latency", "fps"],
+      "constraints": ["timing", "sync"],
+      "stakeholders": ["artists", "audience"],
+      "scenarios": [
+        { "name": "live-performance", "characteristics": ["low-latency", "stability"] }
+      ]
+    },
+    {
+      "name": "server-side-development",
+      "description": "Backend services powering applications and APIs",
+      "characteristics": ["scalability", "observability", "reliability"],
+      "workflows": ["build", "deploy", "operate"],
+      "kpis": ["throughput", "p99-latency", "error-rate"],
+      "constraints": ["cost", "security"],
+      "stakeholders": ["engineers", "sre"],
+      "scenarios": [
+        { "name": "api-gateway", "characteristics": ["rate-limits", "idempotency"] }
+      ]
+    },
+    {
+      "name": "scripting-tooling",
+      "description": "Developer productivity and automation tooling",
+      "characteristics": ["portability", "ergonomics", "plugins"],
+      "workflows": ["author", "package", "distribute"],
+      "kpis": ["startup-time", "docs-coverage"],
+      "constraints": ["cross-platform", "deps"],
+      "stakeholders": ["devs", "ci"],
+      "scenarios": [
+        { "name": "cli-with-plugins", "characteristics": ["extensibility", "stability"] }
+      ]
+    },
+    {
+      "name": "analytics-data-viz",
+      "description": "Data-driven decision-making environments",
+      "characteristics": ["streaming", "aggregation", "interactive-ux"],
+      "workflows": ["ingest", "transform", "visualize"],
+      "kpis": ["freshness", "time-to-insight"],
+      "constraints": ["data-volume", "latency"],
+      "stakeholders": ["analysts", "pm"],
+      "scenarios": [
+        { "name": "realtime-dashboard", "characteristics": ["websocket", "backpressure"] }
+      ]
+    },
+    {
+      "name": "computer-graphics",
+      "description": "Visual computing and rendering ecosystems",
+      "characteristics": ["gpu", "memory-bandwidth", "shaders"],
+      "workflows": ["compile-shaders", "render", "postprocess"],
+      "kpis": ["fps", "frame-time"],
+      "constraints": ["precision", "thermal"],
+      "stakeholders": ["graphics-devs", "artists"],
+      "scenarios": [
+        { "name": "path-tracer", "characteristics": ["gpu", "parallelism"] }
+      ]
+    },
+    {
+      "name": "webassembly",
+      "description": "Portable high-performance modules in the web platform",
+      "characteristics": ["sandboxing", "abi", "performance"],
+      "workflows": ["compile", "bundle", "call"],
+      "kpis": ["throughput", "startup-time"],
+      "constraints": ["memory", "browser-compat"],
+      "stakeholders": ["web-devs", "compiler-devs"],
+      "scenarios": [
+        { "name": "wasm-image-processing", "characteristics": ["simd", "ffis"] }
+      ]
+    },
+    {
+      "name": "tauri",
+      "description": "Secure cross-platform desktop app ecosystem",
+      "characteristics": ["ipc", "packaging", "security"],
+      "workflows": ["develop", "bundle", "update"],
+      "kpis": ["bundle-size", "startup-time"],
+      "constraints": ["code-signing", "os-perms"],
+      "stakeholders": ["app-devs", "ops"],
+      "scenarios": [
+        { "name": "secure-updater", "characteristics": ["signature", "rollback"] }
+      ]
+    },
+    {
+      "name": "payment-systems",
+      "description": "Financial transaction processing and settlement",
+      "characteristics": ["idempotency", "compliance", "auditing"],
+      "workflows": ["authorize", "capture", "reconcile"],
+      "kpis": ["success-rate", "chargebacks"],
+      "constraints": ["pci", "risk"],
+      "stakeholders": ["merchants", "finance"],
+      "scenarios": [
+        { "name": "payment-orchestration", "characteristics": ["retries", "sagas"] }
+      ]
+    },
+    {
+      "name": "devops",
+      "description": "Software delivery and operations culture",
+      "characteristics": ["cicd", "infra-as-code", "observability"],
+      "workflows": ["build", "deploy", "monitor"],
+      "kpis": ["mttr", "change-failure-rate"],
+      "constraints": ["security", "cost"],
+      "stakeholders": ["sre", "engineers"],
+      "scenarios": [
+        { "name": "multi-cluster-gitops", "characteristics": ["dr", "policy"] }
+      ]
+    },
+    {
+      "name": "software-distribution",
+      "description": "Packaging, updates, and delivery channels",
+      "characteristics": ["code-signing", "delta-updates", "channels"],
+      "workflows": ["package", "sign", "distribute"],
+      "kpis": ["update-success", "download-size"],
+      "constraints": ["bandwidth", "trust"],
+      "stakeholders": ["release-eng", "users"],
+      "scenarios": [
+        { "name": "auto-update", "characteristics": ["rollback", "semver"] }
+      ]
+    },
+    {
+      "name": "generative-ai",
+      "description": "AI-assisted creation and automation platforms",
+      "characteristics": ["model-serving", "safety", "latency-cost"],
+      "workflows": ["train", "serve", "observe"],
+      "kpis": ["quality", "cost", "latency"],
+      "constraints": ["safety", "compliance"],
+      "stakeholders": ["ml-engineers", "product"],
+      "scenarios": [
+        { "name": "llm-coding-assistant", "characteristics": ["traceability", "evals"] }
+      ]
+    },
+    {
+      "name": "app-development",
+      "description": "Mobile and cross-platform application ecosystems",
+      "characteristics": ["offline-first", "sync", "store-policies"],
+      "workflows": ["design", "build", "release"],
+      "kpis": ["crash-free", "tti"],
+      "constraints": ["privacy", "permissions"],
+      "stakeholders": ["app-devs", "qa"],
+      "scenarios": [
+        { "name": "offline-sync", "characteristics": ["merge", "conflict-resolution"] }
+      ]
+    },
+    {
+      "name": "javascript",
+      "description": "JavaScript ecosystems for browser and server apps",
+      "characteristics": ["interop", "tooling", "performance"],
+      "workflows": ["develop", "bundle", "deploy"],
+      "kpis": ["tti", "bundle-size"],
+      "constraints": ["runtime-variability", "compat"],
+      "stakeholders": ["frontend-devs", "fullstack-devs"],
+      "scenarios": [
+        { "name": "code-splitting", "characteristics": ["lazy-loading", "preload-hints"] }
+      ]
+    },
+    {
+      "name": "typescript",
+      "description": "Type-safe development for scalable applications",
+      "characteristics": ["safety", "refactorability", "dx"],
+      "workflows": ["type", "build", "publish"],
+      "kpis": ["type-coverage", "build-time"],
+      "constraints": ["type-complexity", "config"]
+      ,
+      "stakeholders": ["frontend-devs", "library-authors"],
+      "scenarios": [
+        { "name": "public-api-stability", "characteristics": ["semver", "testing"] }
+      ]
+    },
+    {
+      "name": "go",
+      "description": "Go services, tooling, and CLIs",
+      "characteristics": ["simplicity", "concurrency", "deployability"],
+      "workflows": ["code", "build", "ship"],
+      "kpis": ["qps", "latency"],
+      "constraints": ["gc-latency", "binary-size"],
+      "stakeholders": ["backend-devs", "ops"],
+      "scenarios": [
+        { "name": "high-qps-api", "characteristics": ["pooling", "backpressure"] }
+      ]
+    },
+    {
+      "name": "rust",
+      "description": "Systems and application development with Rust",
+      "characteristics": ["memory-safety", "performance", "zero-cost"],
+      "workflows": ["code", "compile", "optimize"],
+      "kpis": ["latency", "memory-usage"],
+      "constraints": ["compile-times", "unsafe-audits"],
+      "stakeholders": ["systems-devs", "security"],
+      "scenarios": [
+        { "name": "async-service", "characteristics": ["observability", "resilience"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "metadata": {
+    "purpose": "Technology catalog for prompt context enrichment",
+    "version": "1.0.0",
+    "lastUpdated": "2025-08-18"
+  },
+  "technologies": [
+    {
+      "name": "WebAssembly",
+      "category": "runtime",
+      "description": "Portable binary instruction format enabling near-native performance in the browser and beyond",
+      "interfaces": { "inputs": ["memory"], "outputs": ["exports"], "protocols": ["wasm", "wasi"] },
+      "qualityAttributes": ["performance", "portability"],
+      "constraints": ["sandboxing", "linear-memory"],
+      "tags": ["web-assembly", "simd", "ffis"]
+    },
+    {
+      "name": "Tauri",
+      "category": "framework",
+      "description": "Secure cross-platform desktop app framework using Rust core and web UI",
+      "interfaces": { "inputs": ["http", "ipc"], "outputs": ["fs", "updater"], "protocols": ["ipc", "http"] },
+      "qualityAttributes": ["security", "portability"],
+      "constraints": ["code-signing"],
+      "tags": ["tauri", "desktop", "packaging"]
+    },
+    {
+      "name": "Node.js",
+      "category": "runtime",
+      "description": "JavaScript runtime built on V8 for server-side development",
+      "interfaces": { "inputs": ["http", "events"], "outputs": ["http", "fs"], "protocols": ["http", "tcp"] },
+      "qualityAttributes": ["throughput", "ecosystem"],
+      "constraints": ["single-threaded"],
+      "tags": ["javascript", "server-side-development"]
+    },
+    {
+      "name": "TypeScript",
+      "category": "language",
+      "description": "Typed superset of JavaScript for large-scale apps",
+      "interfaces": { "inputs": ["ts"], "outputs": ["js", "d.ts"], "protocols": [] },
+      "qualityAttributes": ["maintainability", "safety"],
+      "constraints": ["build-step"],
+      "tags": ["typescript", "monorepo"]
+    },
+    {
+      "name": "Go",
+      "category": "language",
+      "description": "Compiled language with simple concurrency and fast builds",
+      "interfaces": { "inputs": ["go"], "outputs": ["binary"], "protocols": ["grpc", "http"] },
+      "qualityAttributes": ["concurrency", "performance"],
+      "constraints": ["generics-maturity"],
+      "tags": ["golang", "server-side-development"]
+    },
+    {
+      "name": "Rust",
+      "category": "language",
+      "description": "Memory-safe systems language with zero-cost abstractions",
+      "interfaces": { "inputs": ["rust"], "outputs": ["binary", "ffi"], "protocols": [] },
+      "qualityAttributes": ["safety", "performance"],
+      "constraints": ["compile-times"],
+      "tags": ["rust", "ffi", "computer-graphics"]
+    },
+    {
+      "name": "WebGPU",
+      "category": "graphics",
+      "description": "Modern web graphics API for GPU-accelerated compute and rendering",
+      "interfaces": { "inputs": ["buffers", "textures"], "outputs": ["frames"], "protocols": ["webgpu"] },
+      "qualityAttributes": ["performance"],
+      "constraints": ["browser-support"],
+      "tags": ["computer-graphics", "gpu"]
+    },
+    {
+      "name": "OpenGL",
+      "category": "graphics",
+      "description": "Cross-platform graphics API",
+      "interfaces": { "inputs": ["buffers", "textures"], "outputs": ["frames"], "protocols": ["opengl"] },
+      "qualityAttributes": ["portability"],
+      "constraints": ["driver-variance"],
+      "tags": ["computer-graphics", "gpu"]
+    },
+    {
+      "name": "Kafka",
+      "category": "messaging",
+      "description": "Distributed event streaming platform",
+      "interfaces": { "inputs": ["events"], "outputs": ["events"], "protocols": ["kafka"] },
+      "qualityAttributes": ["throughput", "durability"],
+      "constraints": ["ops-complexity"],
+      "tags": ["analytics-data-visualization", "server-side-development"]
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "storage",
+      "description": "Relational database with strong consistency and extensions",
+      "interfaces": { "inputs": ["sql"], "outputs": ["rows"], "protocols": ["postgres", "sql"] },
+      "qualityAttributes": ["consistency", "reliability"],
+      "constraints": ["write-scaling"],
+      "tags": ["server-side-development", "payment-systems"]
+    },
+    {
+      "name": "Redis",
+      "category": "cache",
+      "description": "In-memory data structure store",
+      "interfaces": { "inputs": ["commands"], "outputs": ["responses"], "protocols": ["redis"] },
+      "qualityAttributes": ["latency", "simplicity"],
+      "constraints": ["persistence-tradeoffs"],
+      "tags": ["performance", "server-side-development"]
+    },
+    {
+      "name": "gRPC",
+      "category": "protocol",
+      "description": "High-performance RPC framework based on HTTP/2",
+      "interfaces": { "inputs": ["protobuf"], "outputs": ["protobuf"], "protocols": ["http2"] },
+      "qualityAttributes": ["performance", "type-safety"],
+      "constraints": ["browser-support"],
+      "tags": ["server-side-development", "microservices"]
+    },
+    {
+      "name": "REST",
+      "category": "protocol",
+      "description": "Resource-oriented HTTP APIs",
+      "interfaces": { "inputs": ["json"], "outputs": ["json"], "protocols": ["http"] },
+      "qualityAttributes": ["simplicity", "interoperability"],
+      "constraints": ["overfetching"],
+      "tags": ["server-side-development", "app-development"]
+    },
+    {
+      "name": "GraphQL",
+      "category": "protocol",
+      "description": "Query language for APIs and runtime for fulfilling queries",
+      "interfaces": { "inputs": ["graphql"], "outputs": ["json"], "protocols": ["http"] },
+      "qualityAttributes": ["flexibility"],
+      "constraints": ["caching-complexity"],
+      "tags": ["app-development", "server-side-development"]
+    },
+    {
+      "name": "Stripe API",
+      "category": "payment",
+      "description": "Payments platform interfaces for authorization, capture and webhooks",
+      "interfaces": { "inputs": ["http"], "outputs": ["webhooks"], "protocols": ["http", "webhook"] },
+      "qualityAttributes": ["reliability", "security"],
+      "constraints": ["rate-limits"],
+      "tags": ["payment-systems", "idempotency"]
+    },
+    {
+      "name": "Docker",
+      "category": "ops",
+      "description": "Containerization technology to package applications",
+      "interfaces": { "inputs": ["images"], "outputs": ["containers"], "protocols": ["oci"] },
+      "qualityAttributes": ["portability"],
+      "constraints": ["resource-overhead"],
+      "tags": ["devops", "server-side-development"]
+    },
+    {
+      "name": "Kubernetes",
+      "category": "ops",
+      "description": "Container orchestration platform",
+      "interfaces": { "inputs": ["manifests"], "outputs": ["services"], "protocols": ["kube", "grpc", "http"] },
+      "qualityAttributes": ["scalability", "resilience"],
+      "constraints": ["complexity"],
+      "tags": ["devops", "gitops"]
+    },
+    {
+      "name": "Vite",
+      "category": "tooling",
+      "description": "Frontend tooling for fast dev server and builds",
+      "interfaces": { "inputs": ["ts", "js", "css"], "outputs": ["bundles"], "protocols": [] },
+      "qualityAttributes": ["developer-experience", "speed"],
+      "constraints": ["plugin-compatibility"],
+      "tags": ["app-development", "javascript", "typescript"]
+    }
+  ]
+}

@@ -56,7 +56,7 @@ export class TemplateEngine {
     }
 
     // Add contextual guidance
-    prompt += this.addContextualGuidance(context, complexity);
+    prompt += this.addContextualGuidance(context);
     
     // Add concept-specific guidance
     prompt += this.addConceptGuidance(concepts);
@@ -88,7 +88,7 @@ export class TemplateEngine {
   /**
    * Add contextual guidance for lesson adaptation
    */
-  addContextualGuidance(context, complexity) {
+  addContextualGuidance(context) {
     let guidance = `## Domain Context: ${context.name}\n`;
     guidance += `${context.description}\n\n`;
     guidance += `**Technical Challenges**: ${context.getTechnicalChallenges()}\n`;
