@@ -1,0 +1,973 @@
+{
+  "statistics": {
+    "detectionDate": "2025-08-19T05:14:31.852Z",
+    "formats": {
+      "javascript": {
+        "sources": {
+          "src/__tests__/engines/prompt/templates/TemplateEngine.test.js": {
+            "lines": 269,
+            "tokens": 2111,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/templates/VariableBuilder.js": {
+            "lines": 137,
+            "tokens": 1256,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/templates/TemplateEngine.js": {
+            "lines": 157,
+            "tokens": 1104,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/services/ContextEnricher.js": {
+            "lines": 36,
+            "tokens": 338,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/selectors/TechnologySelector.js": {
+            "lines": 55,
+            "tokens": 589,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/selectors/ComplexitySelector.js": {
+            "lines": 57,
+            "tokens": 440,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/generators/StageGenerator.js": {
+            "lines": 244,
+            "tokens": 2109,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/generators/HashtagGenerator.js": {
+            "lines": 158,
+            "tokens": 1224,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/generators/CycleGenerator.js": {
+            "lines": 292,
+            "tokens": 2762,
+            "sources": 1,
+            "clones": 4,
+            "duplicatedLines": 48,
+            "duplicatedTokens": 516,
+            "percentage": 16.44,
+            "percentageTokens": 18.68,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/engines/prompt/PromptEngine.test.js": {
+            "lines": 192,
+            "tokens": 1741,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/data/repositories/ConceptRepository.test.js": {
+            "lines": 156,
+            "tokens": 1543,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/data/models/Concept.test.js": {
+            "lines": 169,
+            "tokens": 1697,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/PromptEngine.js": {
+            "lines": 212,
+            "tokens": 1622,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/repositories/TemplateRepository.js": {
+            "lines": 111,
+            "tokens": 772,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/repositories/TechnologyRepository.js": {
+            "lines": 75,
+            "tokens": 703,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/repositories/StrategyRepository.js": {
+            "lines": 82,
+            "tokens": 497,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/repositories/ScenarioRepository.js": {
+            "lines": 119,
+            "tokens": 886,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/repositories/DomainRepository.js": {
+            "lines": 71,
+            "tokens": 660,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/repositories/ConceptRepository.js": {
+            "lines": 177,
+            "tokens": 1379,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/models/Technology.js": {
+            "lines": 56,
+            "tokens": 683,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/models/Stage.js": {
+            "lines": 83,
+            "tokens": 595,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/models/ObliqueStrategy.js": {
+            "lines": 45,
+            "tokens": 254,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/models/LessonTemplate.js": {
+            "lines": 62,
+            "tokens": 412,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/models/Domain.js": {
+            "lines": 55,
+            "tokens": 619,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/models/Cycle.js": {
+            "lines": 146,
+            "tokens": 1073,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/models/Context.js": {
+            "lines": 194,
+            "tokens": 1435,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/models/Concept.js": {
+            "lines": 84,
+            "tokens": 699,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/SidebarExplorer.jsx": {
+            "lines": 71,
+            "tokens": 612,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/PromptEditor/PromptEditor.jsx": {
+            "lines": 147,
+            "tokens": 1738,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/IDELayout/IDELayout.jsx": {
+            "lines": 30,
+            "tokens": 190,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/ErrorBoundary/ErrorBoundary.jsx": {
+            "lines": 6,
+            "tokens": 37,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/integration/PromptGeneration.integration.test.js": {
+            "lines": 200,
+            "tokens": 2018,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/integration/HashtagValidation.integration.test.js": {
+            "lines": 188,
+            "tokens": 2134,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/integration/Enrichment.integration.test.js": {
+            "lines": 25,
+            "tokens": 263,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/fixtures/mockTemplates.js": {
+            "lines": 56,
+            "tokens": 282,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/fixtures/mockScenarios.js": {
+            "lines": 46,
+            "tokens": 320,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/fixtures/mockConcepts.js": {
+            "lines": 53,
+            "tokens": 357,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/utils/logger.js": {
+            "lines": 316,
+            "tokens": 3642,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/hooks/usePrompts.js": {
+            "lines": 12,
+            "tokens": 88,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/context/constants.js": {
+            "lines": 17,
+            "tokens": 105,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/context/PromptContext.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/setup.js": {
+            "lines": 35,
+            "tokens": 263,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 4696,
+          "tokens": 41255,
+          "sources": 42,
+          "clones": 2,
+          "duplicatedLines": 24,
+          "duplicatedTokens": 258,
+          "percentage": 0.51,
+          "percentageTokens": 0.63,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "json": {
+        "sources": {
+          "src/data/sources/technologies.json": {
+            "lines": 170,
+            "tokens": 1750,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/sources/oblique-strategies.json": {
+            "lines": 174,
+            "tokens": 939,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/sources/lesson-templates.json": {
+            "lines": 94,
+            "tokens": 528,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/sources/domains.json": {
+            "lines": 237,
+            "tokens": 2271,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/sources/core-concepts.json": {
+            "lines": 192,
+            "tokens": 1268,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 22,
+            "duplicatedTokens": 141,
+            "percentage": 11.46,
+            "percentageTokens": 11.12,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/sources/contextual-scenarios.json": {
+            "lines": 345,
+            "tokens": 2724,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/oblique-strategies.json": {
+            "lines": 286,
+            "tokens": 1685,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/lesson-templates.json": {
+            "lines": 168,
+            "tokens": 848,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/core-concepts.json": {
+            "lines": 227,
+            "tokens": 1660,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 22,
+            "duplicatedTokens": 141,
+            "percentage": 9.69,
+            "percentageTokens": 8.49,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/data/contextual-scenarios.json": {
+            "lines": 186,
+            "tokens": 1720,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 2079,
+          "tokens": 15393,
+          "sources": 10,
+          "clones": 1,
+          "duplicatedLines": 22,
+          "duplicatedTokens": 141,
+          "percentage": 1.06,
+          "percentageTokens": 0.92,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "jsx": {
+        "sources": {
+          "src/components/StatusBar/StatusBar.jsx": {
+            "lines": 36,
+            "tokens": 277,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/SidebarExplorer/SidebarExplorer.jsx": {
+            "lines": 137,
+            "tokens": 1051,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/PromptEditor/PromptEditor.jsx": {
+            "lines": 206,
+            "tokens": 2198,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/IDELayout/IDELayout.jsx": {
+            "lines": 78,
+            "tokens": 593,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/ErrorBoundary/ErrorBoundary.jsx": {
+            "lines": 172,
+            "tokens": 1396,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/context/PromptContext.jsx": {
+            "lines": 319,
+            "tokens": 2683,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/main.jsx": {
+            "lines": 46,
+            "tokens": 418,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/App.jsx": {
+            "lines": 14,
+            "tokens": 83,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 1008,
+          "tokens": 8699,
+          "sources": 8,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "css": {
+        "sources": {
+          "src/styles/vscode-theme.css": {
+            "lines": 295,
+            "tokens": 1654,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/styles/ide-components.css": {
+            "lines": 881,
+            "tokens": 4772,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/styles/error-boundary.css": {
+            "lines": 210,
+            "tokens": 1153,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/index.css": {
+            "lines": 67,
+            "tokens": 372,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/App.css": {
+            "lines": 475,
+            "tokens": 2960,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 1928,
+          "tokens": 10911,
+          "sources": 5,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      }
+    },
+    "total": {
+      "lines": 9711,
+      "tokens": 76258,
+      "sources": 65,
+      "clones": 3,
+      "duplicatedLines": 46,
+      "duplicatedTokens": 399,
+      "percentage": 0.47,
+      "percentageTokens": 0.52,
+      "newDuplicatedLines": 0,
+      "newClones": 0
+    }
+  },
+  "duplicates": [
+    {
+      "format": "javascript",
+      "lines": 16,
+      "fragment": ");\n        // Add fallback stage\n        const fallbackStage = {\n          stage: roleKey,\n          prompt: 'Fallback prompt due to generation error',\n          hashtags: ['#software-architecture', '#learning'],\n          context: selectedContext?.name || 'general',\n          complexity: selectedComplexity,\n          lessonType: 'Fallback lesson',\n          conceptsUsed: ['architecture'],\n          technologiesUsed: Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [],\n          enrichment,\n          timestamp: Date.now()\n        };\n        stages.push(fallbackStage);\n        logger.debug('CycleGenerator', `Added error fallback stage for ",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/engines/prompt/generators/CycleGenerator.js",
+        "start": 164,
+        "end": 179,
+        "startLoc": {
+          "line": 164,
+          "column": 2,
+          "position": 1461
+        },
+        "endLoc": {
+          "line": 179,
+          "column": 33,
+          "position": 1617
+        }
+      },
+      "secondFile": {
+        "name": "src/engines/prompt/generators/CycleGenerator.js",
+        "start": 138,
+        "end": 153,
+        "startLoc": {
+          "line": 138,
+          "column": 2,
+          "position": 1210
+        },
+        "endLoc": {
+          "line": 153,
+          "column": 27,
+          "position": 1366
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 10,
+      "fragment": ",\n          hashtags: ['#software-architecture', '#learning'],\n          context: selectedContext?.name || 'general',\n          complexity: selectedComplexity,\n          lessonType: 'Fallback lesson',\n          conceptsUsed: ['architecture'],\n          technologiesUsed: Array.isArray(enrichment?.technologies) ? enrichment.technologies.map(t => t?.name).filter(Boolean) : [],\n          enrichment,\n          timestamp\n        }",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/engines/prompt/generators/CycleGenerator.js",
+        "start": 205,
+        "end": 214,
+        "startLoc": {
+          "line": 205,
+          "column": 36,
+          "position": 1854
+        },
+        "endLoc": {
+          "line": 214,
+          "column": 2,
+          "position": 1956
+        }
+      },
+      "secondFile": {
+        "name": "src/engines/prompt/generators/CycleGenerator.js",
+        "start": 142,
+        "end": 150,
+        "startLoc": {
+          "line": 142,
+          "column": 42,
+          "position": 1237
+        },
+        "endLoc": {
+          "line": 150,
+          "column": 2,
+          "position": 1337
+        }
+      }
+    },
+    {
+      "format": "json",
+      "lines": 23,
+      "fragment": "{\n  \"metadata\": {\n    \"purpose\": \"Core architecture concepts, relationships, and knowledge graph\",\n    \"version\": \"2.0.0\",\n    \"lastUpdated\": \"2025-01-14\"\n  },\n  \"conceptCategories\": {\n    \"foundational\": {\n      \"description\": \"Basic architecture principles and definitions\",\n      \"concepts\": {\n        \"software-architecture\": {\n          \"definition\": \"Structure + Characteristics + Decisions + Principles\",\n          \"components\": [\"structure\", \"characteristics\", \"decisions\", \"principles\"],\n          \"relationships\": [\"enables-quality-attributes\", \"guides-implementation\"],\n          \"complexity\": \"beginner\",\n          \"chapters\": [1],\n          \"keyInsights\": [\n            \"Architecture is more than just structure\",\n            \"Decisions and principles are first-class citizens\",\n            \"Quality attributes drive architectural choices\"\n          ]\n        },\n        \"architect-responsibilities\"",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/data/core-concepts.json",
+        "start": 1,
+        "end": 23,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 23,
+          "column": 29,
+          "position": 141
+        }
+      },
+      "secondFile": {
+        "name": "src/data/sources/core-concepts.json",
+        "start": 1,
+        "end": 23,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 23,
+          "column": 13,
+          "position": 141
+        }
+      }
+    }
+  ]
+}

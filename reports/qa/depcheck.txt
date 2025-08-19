@@ -1,0 +1,7 @@
+Unused devDependencies
+* @types/react-dom
+* @vitest/coverage-v8
+* ajv-cli
+* dependency-cruiser
+* escomplex
+* typhonjs-escomplex

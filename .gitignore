@@ -85,3 +85,35 @@ yarn.lock
 # Generated files
 *.tsbuildinfo
 .tscache
+
+# QA reports (generated) — keep only AI-useful artifacts
+# Ignore everything under reports/qa by default
+reports/qa/**
+
+# Keep the folder itself
+!reports/qa/
+!reports/qa/.gitkeep
+
+# Keep small, AI-friendly summaries and structured outputs
+!reports/qa/depcheck.txt
+!reports/qa/knip.json
+!reports/qa/depcruise.txt
+!reports/qa/madge-circular.txt
+!reports/qa/jscpd.txt
+!reports/qa/jscpd-report.json
+!reports/qa/jsinspect.json
+!reports/qa/scc.json
+!reports/qa/cloc.json
+!reports/qa/semgrep.json
+!reports/qa/gitleaks.json
+!reports/qa/ncu.json
+
+# Explicitly ignore heavy artifacts
+reports/qa/plato/
+reports/qa/html/
+reports/qa/madge-graph.png
+reports/qa/licenses.json
+reports/qa/tree.txt
+reports/qa/scc.txt
+reports/qa/cloc.txt
+
