@@ -1,23 +1,22 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { logger } from '../../utils/logger.js';
 
-const NavigationSection = ({ activeStage, onStageSelect, onKeyActivate }) => (
+const NavigationSection = () => (
   <div className="explorer-section">
     <div className="section-header">
       <i className="pi pi-home" />
       <span className="section-title">Navigation</span>
     </div>
     <div className="section-content">
-      <div
-        className={`nav-item ${activeStage === 'home' ? 'active' : ''}`}
-        role="button"
-        tabIndex={0}
-        aria-pressed={activeStage === 'home'}
-        onClick={() => onStageSelect('home')}
-        onKeyDown={(e) => onKeyActivate(e, () => onStageSelect('home'))}
+      <NavLink
+        to="/how-it-works"
+        className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+        onClick={() => logger.info('Navigation', 'navigate-how-it-works-click')}
       >
         <i className="pi pi-info-circle" />
         <span className="nav-name">How It Works</span>
-      </div>
+      </NavLink>
     </div>
   </div>
 );

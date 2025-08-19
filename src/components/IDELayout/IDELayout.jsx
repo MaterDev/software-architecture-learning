@@ -1,12 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { usePrompts } from '../../hooks/usePrompts';
 import PromptEditor from '../PromptEditor';
 import SidebarExplorer from '../SidebarExplorer';
 import StatusBar from '../StatusBar';
+import HowItWorks from '../HowItWorks/HowItWorks.jsx';
+import { logger } from '../../utils/logger.js';
 
 const IDELayout = () => {
   const { state, generateNewCycle, regenerateStagePrompt, clearError, resetCycles } = usePrompts();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { stageId } = useParams();
   const [activeStage, setActiveStage] = useState(null);
+  const prevPathRef = useRef(location.pathname);
+
+  // Sync active stage from route param
+  useEffect(() => {
+    setActiveStage(stageId || null);
+  }, [stageId]);
+
+  // Log route changes
+  useEffect(() => {
+    const prev = prevPathRef.current;
+    const curr = location.pathname;
+    if (prev !== curr) {
+      logger.info('Navigation', 'route-change', {
+        from: prev,
+        to: curr,
+        stageId: stageId || null,
+      });
+      prevPathRef.current = curr;
+    }
+  }, [location.pathname, stageId]);
 
   const handleNewCycle = () => {
     generateNewCycle();
@@ -17,12 +43,15 @@ const IDELayout = () => {
   };
 
   const handleStageSelect = (stage) => {
-    setActiveStage(stage);
+    logger.info('Navigation', 'navigate-stage', { stage });
+    navigate(`/stage/${encodeURIComponent(stage)}`);
   };
 
   const currentStage = activeStage ? 
     state.currentCycle?.stages?.find(stage => stage.stage === activeStage) : 
     null;
+
+  const isHowItWorksActive = location.pathname.startsWith('/how-it-works');
 
   return (
     <div className="ide-container">
@@ -54,16 +83,20 @@ const IDELayout = () => {
 
         {/* Main Content */}
         <div className="ide-content">
-          <PromptEditor
-            key={`${activeStage}-${currentStage?.timestamp || 'no-timestamp'}`}
-            stage={currentStage}
-            activeStage={activeStage}
-            loading={state.loading}
-            error={state.error}
-            onRegenerate={handleStageRegenerate}
-            onNewCycle={handleNewCycle}
-            allStages={state.currentCycle?.stages || []}
-          />
+          {isHowItWorksActive ? (
+            <HowItWorks />
+          ) : (
+            <PromptEditor
+              key={`${activeStage}-${currentStage?.timestamp || 'no-timestamp'}`}
+              stage={currentStage}
+              activeStage={activeStage}
+              loading={state.loading}
+              error={state.error}
+              onRegenerate={handleStageRegenerate}
+              onNewCycle={handleNewCycle}
+              allStages={state.currentCycle?.stages || []}
+            />
+          )}
         </div>
       </div>
 

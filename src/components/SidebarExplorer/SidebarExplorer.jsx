@@ -14,7 +14,7 @@ const SidebarExplorer = ({
   onClearError, 
   onReset, 
   onStageSelect, 
-  activeStage 
+  activeStage,
 }) => {
   const handleKeyActivate = (e, fn) => {
     if (!fn) return;
@@ -90,11 +90,7 @@ const SidebarExplorer = ({
       role="navigation"
       aria-label="Learning Assistant navigation"
     >
-      <NavigationSection
-        activeStage={activeStage}
-        onStageSelect={onStageSelect}
-        onKeyActivate={handleKeyActivate}
-      />
+      <NavigationSection />
 
       <div className="explorer-section">
         <div className="action-buttons">
