@@ -1,31 +1,35 @@
-# 🧠 High-Level Overview of the Prompting Engine and Context
+# 🧠 Software Architecture Learning
 
-* **Orchestrator (`src/engines/prompt/PromptEngine.js`)**
-  * Coordinates cycle and stage generation
-  * Ensures each cycle has an id, timestamp, and 4 role-based stages
+## About
 
-* **Stage generation (`src/engines/prompt/generators/StageGenerator.js`)**
-  * Picks relevant concepts for the role and complexity via `ConceptRepository.selectRelevantConcepts()`
-  * Selects or receives a domain context (weighted toward preferred domains) from `ScenarioRepository`
-  * Builds an educational meta-prompt via `TemplateEngine`, injects context, concepts, and optional oblique strategy
-  * Generates hashtags tied to the concepts and context
+This app generates multi-stage learning prompts for software architecture. Each "cycle" contains four complementary stages — Expert Engineer, System Designer, Leader, and Review & Synthesis — to help you reason from different angles and build durable understanding.
 
-* **Context system (`src/data/repositories/ScenarioRepository.js`)**
-  * Loads domain contexts from `src/data/sources/contextual-scenarios.json`
-  * Each context includes description, characteristics, constraints, stakeholders, and example scenarios
-  * Implements weighted random selection favoring preferred domains while retaining fallback behavior
-  * IMPORTANT: `src/data/sources/contextual-scenarios.json` is the single source of truth.
-    The legacy `src/data/contextual-scenarios.json` is deprecated and not used by the app.
-    Migrate any references to the `sources/` path.
+Alternating perspectives interleaves skills and ideas, while spacing practice across cycles supports long-term retention.
 
-* **Concepts (`src/data/repositories/ConceptRepository.js`)**
-  * Loads categorized core concepts from `src/data/sources/core-concepts.json`
-  * Filters by role relevance (`Concept.isRelevantToRole`) and complexity
-  * Returns a small, shuffled subset for focused lessons
+For deeper details, see:
 
-Flow summary:
+- Prompt Engine: `docs/PROMPT-ENGINE.md`
+- Data Model: `docs/DATA-MODEL.md`
+- Architecture: `docs/ARCHITECTURE.md`
 
-1) Choose/weight a domain context → 2) Select role- and complexity-appropriate concepts → 3) Build meta-prompt with templates → 4) Add context guidance, deliverables, hashtags.
+## Requirements
+
+- Node.js 18+ or Bun
+
+## Getting Started
+
+Install dependencies and start the dev server:
+
+```bash
+bun install
+bun run dev        # start Vite dev server (default http://localhost:5173)
+bun run test       # run tests
+bun run lint       # lint source code
+bun run qa         # generate QA reports under reports/qa/
+bun run build      # production build
+```
+
+Flow summary: choose a domain context → select role/complexity-appropriate concepts → build an educational meta‑prompt → enrich with context and deliverables.
 
 ## Software Architecture Learning – Prompting Engine
 
@@ -35,49 +39,49 @@ The application has been completely refactored into a **modular, testable archit
 
 ### Core Engine (`src/engines/prompt/`)
 
-* **PromptEngine.js** - Main orchestrator coordinating all components
+- **PromptEngine.js** - Main orchestrator coordinating all components
 
-* **generators/** - Specialized generators for cycles, stages, and hashtags
-* **templates/** - Template processing and variable interpolation
-* **selectors/** - Intelligent selection logic for complexity and contexts
+- **generators/** - Specialized generators for cycles, stages, and hashtags
+- **templates/** - Template processing and variable interpolation
+- **selectors/** - Intelligent selection logic for complexity and contexts
 
 ### Data Layer (`src/data/`)
 
-* **repositories/** - Data access layer with caching and filtering
+- **repositories/** - Data access layer with caching and filtering
 
-* **models/** - Domain models with validation and business logic
-* **sources/** - JSON data files (concepts, templates, scenarios, strategies)
+- **models/** - Domain models with validation and business logic
+- **sources/** - JSON data files (concepts, templates, scenarios, strategies)
 
 ### Testing Infrastructure (`src/__tests__/`)
 
-* **Comprehensive unit tests** for all components
+- **Comprehensive unit tests** for all components
 
-* **Test fixtures** and mocks for reliable testing
-* **Coverage reporting** and CI-ready configuration
+- **Test fixtures** and mocks for reliable testing
+- **Coverage reporting** and CI-ready configuration
 
 ## 🚀 Key Features
 
 ### Educational Meta-Prompt Generation
 
-* Creates prompts that **instruct AI systems** (ChatGPT, Gemini) how to generate lessons
+- Creates prompts that **instruct AI systems** (ChatGPT, Gemini) how to generate lessons
 
-* Defines lesson structure, content guidelines, and formatting requirements
-* Supports multiple lesson formats: concept exploration, trade-off analysis, pattern studies
+- Defines lesson structure, content guidelines, and formatting requirements
+- Supports multiple lesson formats: concept exploration, trade-off analysis, pattern studies
 
 ### Intelligent Context Selection
 
-* **Domain-specific scenarios** (fintech, ecommerce, healthcare, gaming, IoT, and many more)
+- **Domain-specific scenarios** (fintech, ecommerce, healthcare, etc.)
 
-* **Role-based perspectives** (Expert Engineer, System Designer, Leader, Review & Synthesis)
-* **Complexity-aware content** (beginner, intermediate, advanced)
-* **Weighted domain preference**: selection is biased toward preferred domains (e.g., entertainment arts, comics, graphic apps, creative coding, server-side development, scripting/tooling, analytics & data visualization, computer graphics, WebAssembly, Tauri, JavaScript, TypeScript, Go, Rust, payment systems, DevOps, software distribution, generative AI, app development)
+- **Role-based perspectives** (Expert Engineer, System Designer, Leader, Review & Synthesis)
+- **Complexity-aware content** (beginner, intermediate, advanced)
+- **Weighted domain preference**: selection is biased toward preferred domains (e.g., entertainment arts, comics, graphic apps, creative coding, server-side development, scripting/tooling, analytics & data visualization, computer graphics, WebAssembly, Tauri, JavaScript, TypeScript, Go, Rust, payment systems, DevOps, software distribution, generative AI, app development)
 
 ### Creative Variation System
 
-* **Oblique strategies** inspired by Brian Eno for lateral thinking
+- **Oblique strategies** inspired by Brian Eno for lateral thinking
 
-* **Template interpolation** with contextual variables
-* **Combinatorial generation** for diverse, non-repetitive content
+- **Template interpolation** with contextual variables
+- **Combinatorial generation** for diverse, non-repetitive content
 
 ## 📁 Project Structure
 
@@ -104,33 +108,33 @@ The project includes a comprehensive test suite with:
 
 ```bash
 # Run all tests
-bun test
+bun run test
 
 # Watch mode for development
-bun test:watch
+bun run test:watch
 
 # Generate coverage report
-bun test:coverage
+bun run test:coverage
 
 # Interactive test UI
-bun test:ui
+bun run test:ui
 ```
 
 ### Test Coverage
 
-* **Unit tests** for all repositories, models, and generators
+- **Unit tests** for all repositories, models, and generators
 
-* **Integration tests** for the complete prompt generation flow
-* **Mock fixtures** for reliable, fast testing
-* **95%+ code coverage** target
+- **Integration tests** for the complete prompt generation flow
+- **Mock fixtures** for reliable, fast testing
+- **95%+ code coverage** target
 
 ## 🛠️ Development
 
 ### Prerequisites
 
-* Node.js 18+ or Bun runtime
+- Node.js 18+ or Bun runtime
 
-* Modern web browser
+- Modern web browser
 
 ### Setup
 
@@ -139,55 +143,55 @@ bun test:ui
 bun install
 
 # Start development server
-bun dev
+bun run dev
 
 # Run tests
-bun test
+bun run test
 
 # Build for production
-bun build
+bun run build
 ```
 
 ### Code Quality
 
-* **ESLint** configuration for consistent code style
-
-* **Modular architecture** with clear separation of concerns
-* **Comprehensive logging** for debugging and monitoring
-* **Type safety** through careful validation
+- **ESLint**: `bun run lint`
+- **QA suite**: `bun run qa` (outputs reports under `reports/qa/`). ESLint is configured to ignore `reports/**` in `eslint.config.js` to avoid linting generated artifacts.
+- **Modular architecture** with clear separation of concerns
+- **Comprehensive logging** for debugging and monitoring
+- **Type safety** through careful validation
 
 ## 📊 Data Sources
 
 ### Core Concepts (`core-concepts.json`)
 
-* Software architecture fundamentals from "Fundamentals of Software Architecture"
+- Software architecture fundamentals from "Fundamentals of Software Architecture"
 
-* Organized by category: foundational, structural, qualitative
-* Includes complexity levels, relationships, and key insights
+- Organized by category: foundational, structural, qualitative
+- Includes complexity levels, relationships, and key insights
 
 ### Lesson Templates (`lesson-templates.json`)
 
-* Multiple lesson formats for different learning objectives
+- Multiple lesson formats for different learning objectives
 
-* Role-specific instructions and deliverables
-* Template interpolation with contextual variables
+- Role-specific instructions and deliverables
+- Template interpolation with contextual variables
 
 ### Contextual Scenarios (`contextual-scenarios.json`)
 
-* Real-world domain contexts (fintech, ecommerce, healthcare, etc.)
+- Real-world domain contexts (fintech, ecommerce, healthcare, etc.)
 
 > Note: The canonical file lives at `src/data/sources/contextual-scenarios.json`.
 > Do not edit or reference `src/data/contextual-scenarios.json` (deprecated).
 
-* Domain-specific constraints, stakeholders, and scenarios
-* Technical challenges and business contexts
+- Domain-specific constraints, stakeholders, and scenarios
+- Technical challenges and business contexts
 
 ### Oblique Strategies (`oblique-strategies.json`)
 
-* Creative thinking prompts adapted for software architecture
+- Creative thinking prompts adapted for software architecture
 
-* Categorized strategies for different types of lateral thinking
-* Integration patterns for lesson variation
+- Categorized strategies for different types of lateral thinking
+- Integration patterns for lesson variation
 
 ## 🎯 Usage Examples
 
@@ -235,39 +239,23 @@ The system has been completely refactored from a monolithic 800+ line generator 
 
 ### ✅ Improvements
 
-* **Modular design** with single responsibility components
+- **Modular design** with single responsibility components
 
-* **Comprehensive testing** with 95%+ coverage
-* **Better error handling** and null safety
-* **Template interpolation** that actually works
-* **Cleaner separation** of data, logic, and presentation
+- **Comprehensive testing** with 95%+ coverage
+- **Better error handling** and null safety
+- **Template interpolation** that actually works
+- **Cleaner separation** of data, logic, and presentation
 
 ### 🔄 Backward Compatibility
 
-* Same public API for `generateCycle()` and `regenerateStage()`
+- Same public API for `generateCycle()` and `regenerateStage()`
 
-* Existing React components work without changes
-* Enhanced prompt quality and variety
+- Existing React components work without changes
+- Enhanced prompt quality and variety
 
 ## 📈 Performance
 
-* **Lazy loading** of data repositories
-* **Caching** of processed concepts and templates
-* **Efficient selection algorithms** for large datasets
-* **Memory-conscious** object creation and disposal
-
-## 🤝 Contributing
-
-1. **Fork** the repository
-2. **Create** a feature branch
-3. **Add tests** for new functionality
-4. **Ensure** all tests pass
-5. **Submit** a pull request
-
-### Development Guidelines
-
-* Follow the modular architecture patterns
-
-* Add comprehensive tests for new features
-* Update documentation for API changes
-* Maintain backward compatibility when possible
+- **Lazy loading** of data repositories
+- **Caching** of processed concepts and templates
+- **Efficient selection algorithms** for large datasets
+- **Memory-conscious** object creation and disposal
