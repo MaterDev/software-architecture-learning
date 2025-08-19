@@ -14,6 +14,9 @@
   * Loads domain contexts from `src/data/sources/contextual-scenarios.json`
   * Each context includes description, characteristics, constraints, stakeholders, and example scenarios
   * Implements weighted random selection favoring preferred domains while retaining fallback behavior
+  * IMPORTANT: `src/data/sources/contextual-scenarios.json` is the single source of truth.
+    The legacy `src/data/contextual-scenarios.json` is deprecated and not used by the app.
+    Migrate any references to the `sources/` path.
 
 * **Concepts (`src/data/repositories/ConceptRepository.js`)**
   * Loads categorized core concepts from `src/data/sources/core-concepts.json`
@@ -172,6 +175,9 @@ bun build
 ### Contextual Scenarios (`contextual-scenarios.json`)
 
 * Real-world domain contexts (fintech, ecommerce, healthcare, etc.)
+
+> Note: The canonical file lives at `src/data/sources/contextual-scenarios.json`.
+> Do not edit or reference `src/data/contextual-scenarios.json` (deprecated).
 
 * Domain-specific constraints, stakeholders, and scenarios
 * Technical challenges and business contexts

@@ -26,4 +26,4 @@ Clone found (json):
 [90mFound 3 clones.[39m
 [32mHTML report saved to reports/qa/html/[39m
 [32mJSON report saved to reports/qa/jscpd-report.json[39m
-[3m[90mDetection time:[39m[23m: 652.076ms
+[3m[90mDetection time:[39m[23m: 899.274ms
