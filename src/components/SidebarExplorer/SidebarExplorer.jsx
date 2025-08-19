@@ -1,4 +1,5 @@
 import React from 'react';
+import { copyText, copyAllStages } from '../../utils/clipboard.js';
 
 const SidebarExplorer = ({ 
   currentCycle, 
@@ -10,6 +11,17 @@ const SidebarExplorer = ({
   onStageSelect, 
   activeStage 
 }) => {
+  const handleCopyAll = async () => {
+    if (!currentCycle?.stages) return;
+    await copyAllStages(currentCycle.stages, {}, { source: 'SidebarExplorer' });
+  };
+
+  const handleCopyStage = async (stageName) => {
+    const s = currentCycle?.stages?.find(st => st?.stage === stageName);
+    if (!s?.prompt) return;
+    await copyText(s.prompt, { action: 'copy-stage', stage: stageName, source: 'SidebarExplorer' });
+  };
+
   return (
     <div className="explorer-content">
       {/* Navigation */}
@@ -49,6 +61,17 @@ const SidebarExplorer = ({
           <div className="section-header">
             <i className="pi pi-list" />
             <span className="section-title">Learning Stages</span>
+            <div className="section-actions">
+              <button
+                className="quick-action-btn"
+                onClick={handleCopyAll}
+                disabled={!currentCycle || (currentCycle.stages?.filter(s => !!s?.prompt).length || 0) < 2}
+                title="Copy all prompts (--- --- --- separators)"
+              >
+                <i className="pi pi-copy" />
+                Copy All
+              </button>
+            </div>
           </div>
           <div className="section-content">
             {currentCycle.stages?.map((stage) => (
@@ -62,6 +85,14 @@ const SidebarExplorer = ({
                   <span className="stage-name">{getStageTitle(stage.stage)}</span>
                   <span className="stage-meta">{stage.hashtags?.length || 0} concepts</span>
                 </div>
+                <button
+                  className="quick-action-btn"
+                  onClick={(e) => { e.stopPropagation(); handleCopyStage(stage.stage); }}
+                  title="Copy this stage prompt"
+                  disabled={!stage.prompt}
+                >
+                  <i className="pi pi-copy" />
+                </button>
               </div>
             ))}
           </div>

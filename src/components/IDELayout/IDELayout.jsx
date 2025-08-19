@@ -62,6 +62,7 @@ const IDELayout = () => {
             error={state.error}
             onRegenerate={handleStageRegenerate}
             onNewCycle={handleNewCycle}
+            allStages={state.currentCycle?.stages || []}
           />
         </div>
       </div>

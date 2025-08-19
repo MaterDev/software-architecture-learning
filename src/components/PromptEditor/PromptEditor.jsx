@@ -1,29 +1,15 @@
 import React from 'react';
-import { logger } from '../../utils/logger.js';
+import { copyText, copyAllStages } from '../../utils/clipboard.js';
 
-const PromptEditor = ({ stage, activeStage, loading, error, onRegenerate, onNewCycle }) => {
+const PromptEditor = ({ stage, activeStage, loading, error, onRegenerate, onNewCycle, allStages }) => {
   const handleCopyToClipboard = async (text) => {
     if (!text) return;
-    
-    try {
-      logger.info('PromptEditor', `User copied prompt to clipboard for stage: ${stage?.stage}`, {
-        stage: stage?.stage,
-        promptLength: text.length,
-        hashtagCount: stage?.hashtags?.length || 0
-      });
-      
-      await navigator.clipboard.writeText(text);
-      
-      logger.debug('PromptEditor', 'Clipboard copy successful', {
-        stage: stage?.stage,
-        copiedLength: text.length
-      });
-    } catch (err) {
-      logger.error('PromptEditor', 'Failed to copy to clipboard', {
-        stage: stage?.stage,
-        error: err.message
-      });
-    }
+    await copyText(text, { action: 'copy-stage', stage: stage?.stage, source: 'PromptEditor' });
+  };
+
+  const handleCopyAllPrompts = async () => {
+    if (!Array.isArray(allStages) || allStages.length === 0) return;
+    await copyAllStages(allStages, {}, { source: 'PromptEditor' });
   };
 
   const getStageIcon = (stage) => {
@@ -64,6 +50,15 @@ const PromptEditor = ({ stage, activeStage, loading, error, onRegenerate, onNewC
             >
               <i className="pi pi-copy" />
               Copy Prompt
+            </button>
+            <button
+              className="editor-btn primary"
+              onClick={handleCopyAllPrompts}
+              disabled={!Array.isArray(allStages) || allStages.filter(s => !!s?.prompt).length < 2}
+              title="Copy all stage prompts to clipboard (--- --- --- separators)"
+            >
+              <i className="pi pi-copy" />
+              Copy All
             </button>
           </div>
         )}
@@ -195,6 +190,48 @@ const PromptEditor = ({ stage, activeStage, loading, error, onRegenerate, onNewC
                     </div>
                   </div>
                 )}
+
+                {/* Context Details */}
+                <div className="context-details-section">
+                  <div className="section-header">
+                    <i className="pi pi-database" />
+                    <span>Context Details</span>
+                  </div>
+                  <div className="context-details-grid">
+                    {stage.context && (
+                      <div className="detail-row">
+                        <span className="label">Context</span>
+                        <span className="value">{typeof stage.context === 'string' ? stage.context : (stage.context?.name || stage.context?.domain || '—')}</span>
+                      </div>
+                    )}
+                    {stage.complexity && (
+                      <div className="detail-row">
+                        <span className="label">Complexity</span>
+                        <span className="value">{stage.complexity}</span>
+                      </div>
+                    )}
+                    {stage.lessonType && (
+                      <div className="detail-row">
+                        <span className="label">Lesson Type</span>
+                        <span className="value">{stage.lessonType}</span>
+                      </div>
+                    )}
+                    {Array.isArray(stage.conceptsUsed) && stage.conceptsUsed.length > 0 && (
+                      <div className="detail-row">
+                        <span className="label">Concepts Used</span>
+                        <span className="value">
+                          {stage.conceptsUsed.join(', ')}
+                        </span>
+                      </div>
+                    )}
+                    {stage.timestamp && (
+                      <div className="detail-row">
+                        <span className="label">Generated</span>
+                        <span className="value">{new Date(stage.timestamp).toLocaleString()}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             )}
           </>

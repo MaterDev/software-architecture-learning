@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-08-19T05:26:46.886Z",
+    "detectionDate": "2025-08-19T06:27:02.393Z",
     "formats": {
       "javascript": {
         "sources": {
@@ -115,6 +115,18 @@
           "src/__tests__/engines/prompt/PromptEngine.test.js": {
             "lines": 192,
             "tokens": 1741,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/data/repositories/ScenarioRepository.test.js": {
+            "lines": 45,
+            "tokens": 439,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -329,8 +341,8 @@
             "newClones": 0
           },
           "src/components/SidebarExplorer/SidebarExplorer.jsx": {
-            "lines": 71,
-            "tokens": 612,
+            "lines": 90,
+            "tokens": 783,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -341,8 +353,8 @@
             "newClones": 0
           },
           "src/components/PromptEditor/PromptEditor.jsx": {
-            "lines": 147,
-            "tokens": 1738,
+            "lines": 156,
+            "tokens": 1817,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -353,8 +365,8 @@
             "newClones": 0
           },
           "src/components/IDELayout/IDELayout.jsx": {
-            "lines": 30,
-            "tokens": 190,
+            "lines": 31,
+            "tokens": 205,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -367,6 +379,18 @@
           "src/components/ErrorBoundary/ErrorBoundary.jsx": {
             "lines": 6,
             "tokens": 37,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/__tests__/utils/clipboard.test.js": {
+            "lines": 102,
+            "tokens": 1162,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -460,6 +484,18 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "src/utils/clipboard.js": {
+            "lines": 55,
+            "tokens": 533,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "src/hooks/usePrompts.js": {
             "lines": 12,
             "tokens": 88,
@@ -510,14 +546,14 @@
           }
         },
         "total": {
-          "lines": 4696,
-          "tokens": 41255,
-          "sources": 42,
+          "lines": 4927,
+          "tokens": 43654,
+          "sources": 45,
           "clones": 2,
           "duplicatedLines": 24,
           "duplicatedTokens": 258,
-          "percentage": 0.51,
-          "percentageTokens": 0.63,
+          "percentage": 0.49,
+          "percentageTokens": 0.59,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
@@ -631,29 +667,17 @@
             "percentageTokens": 8.49,
             "newDuplicatedLines": 0,
             "newClones": 0
-          },
-          "src/data/contextual-scenarios.json": {
-            "lines": 186,
-            "tokens": 1720,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
           }
         },
         "total": {
-          "lines": 2079,
-          "tokens": 15393,
-          "sources": 10,
+          "lines": 1893,
+          "tokens": 13673,
+          "sources": 9,
           "clones": 1,
           "duplicatedLines": 22,
           "duplicatedTokens": 141,
-          "percentage": 1.06,
-          "percentageTokens": 0.92,
+          "percentage": 1.16,
+          "percentageTokens": 1.03,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
@@ -673,8 +697,8 @@
             "newClones": 0
           },
           "src/components/SidebarExplorer/SidebarExplorer.jsx": {
-            "lines": 137,
-            "tokens": 1051,
+            "lines": 168,
+            "tokens": 1397,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -685,8 +709,8 @@
             "newClones": 0
           },
           "src/components/PromptEditor/PromptEditor.jsx": {
-            "lines": 206,
-            "tokens": 2198,
+            "lines": 243,
+            "tokens": 2689,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -697,8 +721,8 @@
             "newClones": 0
           },
           "src/components/IDELayout/IDELayout.jsx": {
-            "lines": 78,
-            "tokens": 593,
+            "lines": 79,
+            "tokens": 608,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -758,8 +782,8 @@
           }
         },
         "total": {
-          "lines": 1008,
-          "tokens": 8699,
+          "lines": 1077,
+          "tokens": 9551,
           "sources": 8,
           "clones": 0,
           "duplicatedLines": 0,
@@ -848,14 +872,14 @@
       }
     },
     "total": {
-      "lines": 9711,
-      "tokens": 76258,
-      "sources": 65,
+      "lines": 9825,
+      "tokens": 77789,
+      "sources": 67,
       "clones": 3,
       "duplicatedLines": 46,
       "duplicatedTokens": 399,
       "percentage": 0.47,
-      "percentageTokens": 0.52,
+      "percentageTokens": 0.51,
       "newDuplicatedLines": 0,
       "newClones": 0
     }
