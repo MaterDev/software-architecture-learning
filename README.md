@@ -83,7 +83,15 @@ The application features an intuitive interface:
 * **How It Works Landing Page**: Explains the four learning stages and guides you on how to use the tool.
 * **Stage Prompt View**: Provides a dedicated editor for each stage, displaying the generated educational prompts.
 
-For a visual tour, check out the screenshots in the `images/` directory.
+For a visual tour, check out the screenshots below:
+
+### How It Works (Landing)
+
+![How It Works – Landing](./images/full-screenshot.png)
+
+### Stage Prompt View
+
+![Stage Prompt View – Expert Engineer](./images/prompt-screenshot.png)
 
 ## For Developers
 
