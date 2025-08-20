@@ -5,7 +5,8 @@ export const ActionTypes = {
   GENERATE_CYCLE_ERROR: 'GENERATE_CYCLE_ERROR',
   REGENERATE_STAGE: 'REGENERATE_STAGE',
   CLEAR_ERROR: 'CLEAR_ERROR',
-  RESET_CYCLES: 'RESET_CYCLES'
+  RESET_CYCLES: 'RESET_CYCLES',
+  HYDRATE_STATE: 'HYDRATE_STATE',
 };
 
 // Initial state for PromptContext
@@ -14,5 +15,5 @@ export const initialState = {
   cycleHistory: [],
   isLoading: false,
   error: null,
-  cycleCount: 0
+  cycleCount: 0,
 };

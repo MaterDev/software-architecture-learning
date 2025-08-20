@@ -7,7 +7,7 @@ import ActionsSection from './ActionsSection.jsx';
 import DomainWeightsSection from './DomainWeightsSection.jsx';
 
 const SidebarExplorer = ({ 
-  currentCycle, 
+  currentCycle,
   loading, 
   error, 
   onNewCycle, 
@@ -105,6 +105,7 @@ const SidebarExplorer = ({
           </button>
         </div>
       </div>
+
 
       <StageListSection
         currentCycle={currentCycle}

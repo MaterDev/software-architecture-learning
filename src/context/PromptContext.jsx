@@ -2,169 +2,15 @@ import React, { createContext, useReducer, useEffect, useRef } from 'react';
 import { generateCycle, regenerateStage, setDomainWeights } from '../engines/prompt/PromptEngine.js';
 import { logger } from '../utils/logger.js';
 import { ActionTypes, initialState } from './constants';
+import { promptReducer } from './promptReducer.js';
 
-// Reducer function with comprehensive logging
-const promptReducer = (state, action) => {
-  logger.debug('PromptContext', `Action dispatched: ${action.type}`, { 
-    action, 
-    currentState: state 
-  });
-  let newState;
-  
-  switch (action.type) {
-    case ActionTypes.GENERATE_CYCLE_START:
-      logger.info('PromptContext', 'Starting cycle generation');
-      newState = {
-        ...state,
-        isLoading: true,
-        error: null
-      };
-      break;
-
-    case ActionTypes.GENERATE_CYCLE_SUCCESS:
-      logger.info('PromptContext', 'Cycle generation successful', {
-        cycleCount: state.cycleCount + 1,
-        stagesGenerated: Array.isArray(action.payload?.stages)
-          ? action.payload.stages.map(s => s?.stage)
-          : []
-      });
-      newState = {
-        ...state,
-        isLoading: false,
-        currentCycle: action.payload,
-        cycleHistory: [...state.cycleHistory, action.payload],
-        cycleCount: state.cycleCount + 1,
-        error: null
-      };
-      break;
-
-    case ActionTypes.GENERATE_CYCLE_ERROR:
-      logger.error('PromptContext', 'Cycle generation failed', { error: action.payload });
-      newState = {
-        ...state,
-        isLoading: false,
-        error: action.payload
-      };
-      break;
-
-    case ActionTypes.REGENERATE_STAGE: {
-      logger.info('PromptContext', `Regenerating stage: ${action.payload.stage}`, {
-        stage: action.payload.stage,
-        newPrompt: action.payload.prompt,
-        hashtags: action.payload.hashtags
-      });
-
-      if (!state.currentCycle || !Array.isArray(state.currentCycle.stages)) {
-        logger.warn('PromptContext', 'REGENERATE_STAGE ignored: no currentCycle or stages array', {
-          hasCurrentCycle: !!state.currentCycle,
-          stagesType: typeof state.currentCycle?.stages
-        });
-        newState = state;
-        break;
-      }
-      
-      const updatedStages = state.currentCycle.stages.map(stage => 
-        stage.stage === action.payload.stage ? action.payload : stage
-      );
-      
-      const updatedCycle = {
-        ...state.currentCycle,
-        stages: updatedStages,
-        timestamp: Date.now() // Update timestamp to force re-render
-      };
-      
-      newState = {
-        ...state,
-        currentCycle: updatedCycle,
-        cycleHistory: state.cycleHistory.map((cycle, index) => 
-          index === state.cycleHistory.length - 1 ? updatedCycle : cycle
-        )
-      };
-      break;
-    }
-
-    case ActionTypes.CLEAR_ERROR:
-      logger.info('PromptContext', 'Clearing error state');
-      newState = {
-        ...state,
-        error: null
-      };
-      break;
-
-    case ActionTypes.RESET_CYCLES:
-      logger.warn('PromptContext', 'Resetting all cycles and state');
-      newState = {
-        ...initialState
-      };
-      break;
-
-    default:
-      logger.warn('PromptContext', `Unknown action type: ${action.type}`, { action });
-      newState = state;
-      break;
-  }
-  
-  const logStateChange = (action, previousState, newState) => {
-    const stateChange = {
-      cycleCountChanged: previousState.cycleCount !== newState.cycleCount,
-      currentCycleChanged: previousState.currentCycle !== newState.currentCycle,
-      loadingChanged: previousState.isLoading !== newState.isLoading,
-      errorChanged: previousState.error !== newState.error,
-      cycleHistoryChanged: previousState.cycleHistory.length !== newState.cycleHistory.length
-    };
-
-    // Log data structure validation
-    if (newState.currentCycle) {
-      const cycleValidation = {
-        hasStages: Array.isArray(newState.currentCycle.stages),
-        stageCount: newState.currentCycle.stages?.length || 0,
-        hasTimestamp: !!newState.currentCycle.timestamp,
-        timestampValid: newState.currentCycle.timestamp && !isNaN(new Date(newState.currentCycle.timestamp)),
-        stagesStructure: newState.currentCycle.stages?.filter(stage => stage != null).map(stage => ({
-          stage: stage?.stage || 'Unknown',
-          hasPrompt: !!stage?.prompt,
-          hasHashtags: Array.isArray(stage?.hashtags),
-          hashtagCount: stage?.hashtags?.length || 0,
-          hasCopyableText: !!stage?.copyableText
-        })) || []
-      };
-
-      logger.state('PromptContext', 'Cycle Data Validation', cycleValidation);
-      
-      // Log specific issues
-      if (!cycleValidation.hasStages) {
-        logger.warn('PromptContext', ' ISSUE: currentCycle.stages is not an array', {
-          currentCycleType: typeof newState.currentCycle,
-          stagesType: typeof newState.currentCycle.stages,
-          stagesValue: newState.currentCycle.stages
-        });
-      }
-      
-      if (!cycleValidation.timestampValid) {
-        logger.warn('PromptContext', ' ISSUE: Invalid timestamp in currentCycle', {
-          timestamp: newState.currentCycle.timestamp,
-          timestampType: typeof newState.currentCycle.timestamp
-        });
-      }
-    }
-
-    logger.state('PromptContext', 'State updated', {
-      action: action.type,
-      stateChange,
-      cycleCount: newState.cycleCount,
-      hasCurrentCycle: !!newState.currentCycle,
-      isLoading: newState.isLoading,
-      hasError: !!newState.error
-    });
-  };
-
-  logStateChange(action, state, newState);
-
-  return newState;
-};
+// Reducer moved to separate file for testability and to satisfy fast-refresh rules
 
 // Create context
 const PromptContext = createContext();
+
+// Persistence key for storing prompt context state
+const PERSIST_KEY = 'promptContextState.v1';
 
 // Provider component
 export const PromptProvider = ({ children }) => {
@@ -175,27 +21,63 @@ export const PromptProvider = ({ children }) => {
   const hasMountedRef = useRef(false); // Avoid double-run under React Strict Mode
   const regeneratingRef = useRef(new Set()); // Track in-flight stage regenerations
 
-  // Generate initial cycle on mount (guarded for Strict Mode)
+  // Hydrate from localStorage on mount; only generate if nothing persisted
   useEffect(() => {
     if (hasMountedRef.current) return;
     hasMountedRef.current = true;
-    // Apply persisted domain weight overrides BEFORE first generation
+
+    // Apply persisted domain weight overrides BEFORE hydration/generation
     try {
-      const raw = localStorage.getItem('domainWeightsOverrides');
-      if (raw) {
-        const stored = JSON.parse(raw);
+      const rawWeights = localStorage.getItem('domainWeightsOverrides');
+      if (rawWeights) {
+        const stored = JSON.parse(rawWeights);
         if (stored && typeof stored === 'object') {
           setDomainWeights(stored);
-          logger.info('PromptProvider', 'Applied persisted domain weight overrides before first cycle');
+          logger.info('PromptProvider', 'Applied persisted domain weight overrides before hydrate');
         }
       }
     } catch (e) {
       logger.warn('PromptProvider', 'Failed to apply persisted domain weights', { error: e?.message });
     }
-    generateNewCycle();
+
+    // Try hydration
+    let hydrated = false;
+    try {
+      const raw = localStorage.getItem(PERSIST_KEY);
+      if (raw) {
+        const persisted = JSON.parse(raw);
+        if (persisted && (persisted.currentCycle || (Array.isArray(persisted.cycleHistory) && persisted.cycleHistory.length > 0) || Number.isFinite(persisted.cycleCount))) {
+          logger.info('PromptProvider', 'Hydrating prompt state from localStorage');
+          dispatch({ type: ActionTypes.HYDRATE_STATE, payload: persisted });
+          hydrated = true;
+        }
+      }
+    } catch (e) {
+      logger.warn('PromptProvider', 'Failed to hydrate prompt state', { error: e?.message });
+    }
+
+    if (!hydrated) {
+      // First run: generate and apply initial cycle so app has content
+      generateAndApplyInitialCycle();
+    }
   }, []);
 
+  // Persist selected state slices whenever they change
+  useEffect(() => {
+    try {
+      const snapshot = {
+        currentCycle: state.currentCycle,
+        cycleHistory: state.cycleHistory,
+        cycleCount: state.cycleCount,
+      };
+      localStorage.setItem(PERSIST_KEY, JSON.stringify(snapshot));
+    } catch (e) {
+      logger.warn('PromptProvider', 'Failed to persist prompt state', { error: e?.message });
+    }
+  }, [state.currentCycle, state.cycleHistory, state.cycleCount]);
+
   // Action creators with comprehensive logging
+  // Generate and immediately apply a new cycle (no preview)
   const generateNewCycle = async () => {
     if (isGeneratingRef.current) {
       logger.warn('PromptProvider', 'Generation already in progress; ignoring duplicate request');
@@ -203,41 +85,51 @@ export const PromptProvider = ({ children }) => {
     }
     isGeneratingRef.current = true;
 
-    logger.info('PromptProvider', 'User initiated new cycle generation');
+    logger.info('PromptProvider', 'User initiated cycle generation');
     dispatch({ type: ActionTypes.GENERATE_CYCLE_START });
-    
+
     try {
       logger.debug('PromptProvider', 'Calling generateCycle from promptGenerator');
       const newCycle = generateCycle();
-      
+
       logger.prompt('PromptProvider', 'New cycle generated successfully', {
         cycleId: newCycle?.id,
         stageNames: Array.isArray(newCycle?.stages)
-          ? newCycle.stages.map(s => s?.stage)
+          ? newCycle.stages.map((s) => s?.stage)
           : [],
         stageDetails: Array.isArray(newCycle?.stages)
-          ? newCycle.stages.map(s => ({
+          ? newCycle.stages.map((s) => ({
               stage: s?.stage,
               hashtagCount: s?.hashtags?.length || 0,
               promptLength: s?.prompt?.length || 0,
-              timestamp: s?.timestamp
+              timestamp: s?.timestamp,
             }))
-          : []
+          : [],
       });
-      
-      dispatch({ 
-        type: ActionTypes.GENERATE_CYCLE_SUCCESS, 
-        payload: newCycle 
-      });
+
+      dispatch({ type: ActionTypes.GENERATE_CYCLE_SUCCESS, payload: newCycle });
     } catch (error) {
-      logger.error('PromptProvider', 'Failed to generate new cycle', { 
+      logger.error('PromptProvider', 'Failed to generate new cycle', {
         error: error.message,
-        stack: error.stack 
+        stack: error.stack,
       });
-      dispatch({ 
-        type: ActionTypes.GENERATE_CYCLE_ERROR, 
-        payload: error.message 
-      });
+      dispatch({ type: ActionTypes.GENERATE_CYCLE_ERROR, payload: error.message });
+    } finally {
+      isGeneratingRef.current = false;
+    }
+  };
+
+  // Internal: generate and immediately apply (used on initial mount only)
+  const generateAndApplyInitialCycle = async () => {
+    if (isGeneratingRef.current) return;
+    isGeneratingRef.current = true;
+
+    dispatch({ type: ActionTypes.GENERATE_CYCLE_START });
+    try {
+      const newCycle = generateCycle();
+      dispatch({ type: ActionTypes.GENERATE_CYCLE_SUCCESS, payload: newCycle });
+    } catch (error) {
+      dispatch({ type: ActionTypes.GENERATE_CYCLE_ERROR, payload: error.message });
     } finally {
       isGeneratingRef.current = false;
     }
@@ -291,7 +183,10 @@ export const PromptProvider = ({ children }) => {
   const resetCycles = () => {
     logger.warn('PromptProvider', 'User reset all cycles - clearing all data');
     dispatch({ type: ActionTypes.RESET_CYCLES });
+    try { localStorage.removeItem(PERSIST_KEY); } catch (e) { logger.warn('PromptProvider', 'Failed to clear persisted state', { error: e?.message }); }
   };
+
+  // Removed preview flow (apply/discard)
 
   // Context value
   const contextValue = {
@@ -301,7 +196,8 @@ export const PromptProvider = ({ children }) => {
       cycleHistory: state.cycleHistory,
       loading: state.isLoading,
       error: state.error,
-      cycleCount: state.cycleCount
+      cycleCount: state.cycleCount,
+      
     },
     
     // Individual state properties for backward compatibility
@@ -312,6 +208,7 @@ export const PromptProvider = ({ children }) => {
     error: state.error,
     cycleCount: state.cycleCount,
     
+    
     // Actions
     generateNewCycle,
     regenerateStagePrompt,
@@ -320,7 +217,8 @@ export const PromptProvider = ({ children }) => {
     
     // Utilities
     stages: ['Expert Engineer', 'System Designer', 'Leader', 'Review & Synthesis'],
-    hasCurrentCycle: !!state.currentCycle
+    hasCurrentCycle: !!state.currentCycle,
+    
   };
 
   return (
