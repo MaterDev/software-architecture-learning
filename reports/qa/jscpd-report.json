@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-08-19T17:23:27.608Z",
+    "detectionDate": "2025-08-20T21:57:37.032Z",
     "formats": {
       "javascript": {
         "sources": {
@@ -112,6 +112,54 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "src/engines/prompt/core/WeightsManager.js": {
+            "lines": 30,
+            "tokens": 528,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/core/StatsProvider.js": {
+            "lines": 14,
+            "tokens": 174,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/core/InitManager.js": {
+            "lines": 32,
+            "tokens": 320,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/engines/prompt/core/FallbackFactory.js": {
+            "lines": 65,
+            "tokens": 465,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "src/__tests__/engines/prompt/PromptEngine.test.js": {
             "lines": 192,
             "tokens": 1741,
@@ -161,8 +209,8 @@
             "newClones": 0
           },
           "src/engines/prompt/PromptEngine.js": {
-            "lines": 249,
-            "tokens": 2164,
+            "lines": 166,
+            "tokens": 1292,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -365,8 +413,8 @@
             "newClones": 0
           },
           "src/components/SidebarExplorer/SidebarExplorer.jsx": {
-            "lines": 37,
-            "tokens": 221,
+            "lines": 29,
+            "tokens": 169,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -377,8 +425,8 @@
             "newClones": 0
           },
           "src/components/SidebarExplorer/NavigationSection.jsx": {
-            "lines": 5,
-            "tokens": 79,
+            "lines": 1,
+            "tokens": 40,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -413,8 +461,8 @@
             "newClones": 0
           },
           "src/components/PromptEditor/PromptEditor.jsx": {
-            "lines": 268,
-            "tokens": 3156,
+            "lines": 197,
+            "tokens": 2033,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -425,8 +473,20 @@
             "newClones": 0
           },
           "src/components/IDELayout/IDELayout.jsx": {
-            "lines": 31,
-            "tokens": 205,
+            "lines": 35,
+            "tokens": 230,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/HowItWorks/HowItWorks.jsx": {
+            "lines": 0,
+            "tokens": 9,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -568,6 +628,18 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "src/__tests__/context/promptReducer.test.js": {
+            "lines": 66,
+            "tokens": 1100,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "src/utils/logger.js": {
             "lines": 316,
             "tokens": 3642,
@@ -604,9 +676,21 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
+          "src/context/promptReducer.js": {
+            "lines": 147,
+            "tokens": 1434,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
           "src/context/constants.js": {
-            "lines": 17,
-            "tokens": 105,
+            "lines": 18,
+            "tokens": 114,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -629,8 +713,20 @@
             "newClones": 0
           },
           "src/__tests__/setup.js": {
-            "lines": 35,
-            "tokens": 263,
+            "lines": 39,
+            "tokens": 307,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/App.jsx": {
+            "lines": 2,
+            "tokens": 56,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -642,14 +738,14 @@
           }
         },
         "total": {
-          "lines": 5393,
-          "tokens": 48883,
-          "sources": 53,
+          "lines": 5592,
+          "tokens": 50961,
+          "sources": 61,
           "clones": 2,
           "duplicatedLines": 24,
           "duplicatedTokens": 258,
-          "percentage": 0.45,
-          "percentageTokens": 0.53,
+          "percentage": 0.43,
+          "percentageTokens": 0.51,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
@@ -805,8 +901,8 @@
             "newClones": 0
           },
           "src/components/SidebarExplorer/SidebarExplorer.jsx": {
-            "lines": 151,
-            "tokens": 1408,
+            "lines": 148,
+            "tokens": 1390,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -817,8 +913,8 @@
             "newClones": 0
           },
           "src/components/SidebarExplorer/NavigationSection.jsx": {
-            "lines": 24,
-            "tokens": 242,
+            "lines": 23,
+            "tokens": 224,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -853,8 +949,8 @@
             "newClones": 0
           },
           "src/components/PromptEditor/PromptEditor.jsx": {
-            "lines": 344,
-            "tokens": 3951,
+            "lines": 273,
+            "tokens": 2828,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -865,8 +961,20 @@
             "newClones": 0
           },
           "src/components/IDELayout/IDELayout.jsx": {
-            "lines": 79,
-            "tokens": 608,
+            "lines": 112,
+            "tokens": 936,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/components/HowItWorks/HowItWorks.jsx": {
+            "lines": 68,
+            "tokens": 1051,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -889,8 +997,8 @@
             "newClones": 0
           },
           "src/context/PromptContext.jsx": {
-            "lines": 332,
-            "tokens": 2816,
+            "lines": 230,
+            "tokens": 2026,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -901,8 +1009,8 @@
             "newClones": 0
           },
           "src/main.jsx": {
-            "lines": 46,
-            "tokens": 418,
+            "lines": 49,
+            "tokens": 440,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -913,8 +1021,8 @@
             "newClones": 0
           },
           "src/App.jsx": {
-            "lines": 14,
-            "tokens": 83,
+            "lines": 19,
+            "tokens": 177,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -926,9 +1034,9 @@
           }
         },
         "total": {
-          "lines": 1426,
-          "tokens": 13451,
-          "sources": 12,
+          "lines": 1358,
+          "tokens": 12997,
+          "sources": 13,
           "clones": 0,
           "duplicatedLines": 0,
           "duplicatedTokens": 0,
@@ -1016,14 +1124,14 @@
       }
     },
     "total": {
-      "lines": 11307,
-      "tokens": 92836,
-      "sources": 79,
+      "lines": 11438,
+      "tokens": 94460,
+      "sources": 88,
       "clones": 4,
       "duplicatedLines": 59,
       "duplicatedTokens": 488,
       "percentage": 0.52,
-      "percentageTokens": 0.53,
+      "percentageTokens": 0.52,
       "newDuplicatedLines": 0,
       "newClones": 0
     }
