@@ -31,6 +31,8 @@ export class CycleGenerator {
    */
   generate() {
     // Monotonic timestamp to avoid collisions in rapid generations
+    // TODO(cyclegenerator-dry): Extract to _monotonicTimestamp() helper
+    // See docs/follow-ups/cyclegenerator-dry.md
     const nowRaw = Date.now();
     this._lastTs = this._lastTs || 0;
     const timestamp = nowRaw <= this._lastTs ? this._lastTs + 1 : nowRaw;
@@ -137,6 +139,8 @@ export class CycleGenerator {
         } else {
           logger.warn('CycleGenerator', `Stage generation returned null for role: ${roleKey}`);
           // Add fallback stage
+          // TODO(cyclegenerator-dry): DRY with error fallback block below via _buildFallbackStage(roleKey,...)
+          // See docs/follow-ups/cyclegenerator-dry.md
           const fallbackStage = {
             stage: roleKey,
             prompt: 'Fallback prompt due to generation error',
@@ -163,6 +167,8 @@ export class CycleGenerator {
           errorType: error.constructor.name
         });
         // Add fallback stage
+        // TODO(cyclegenerator-dry): DRY with null-return fallback block above via _buildFallbackStage(roleKey,...)
+        // See docs/follow-ups/cyclegenerator-dry.md
         const fallbackStage = {
           stage: roleKey,
           prompt: 'Fallback prompt due to generation error',
@@ -197,6 +203,8 @@ export class CycleGenerator {
     });
 
     // Validate and sanitize all stages before creating cycle
+    // TODO(cyclegenerator-dry): Extract mapping to _validateStage(stage, index, {selectedContext, selectedComplexity, enrichment, timestamp})
+    // See docs/follow-ups/cyclegenerator-dry.md
     const validatedStages = stages.map((stage, index) => {
       if (!stage) {
         logger.error('CycleGenerator', `Stage ${index} is null, creating fallback`);
@@ -285,6 +293,8 @@ export class CycleGenerator {
    */
   generateWithParams(context, complexity, obliqueStrategy = null) {
     // Monotonic timestamp to avoid collisions
+    // TODO(cyclegenerator-dry): Extract to _monotonicTimestamp() helper (dup of generate())
+    // See docs/follow-ups/cyclegenerator-dry.md
     const nowRaw = Date.now();
     this._lastTs = this._lastTs || 0;
     const timestamp = nowRaw <= this._lastTs ? this._lastTs + 1 : nowRaw;
