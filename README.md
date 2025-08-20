@@ -93,6 +93,12 @@ For a visual tour, check out the screenshots below:
 
 ![Stage Prompt View – Expert Engineer](./images/prompt-screenshot.png)
 
+### Context & Data View
+
+This view displays the contextual information and data inputs used to generate the prompts. You'll see contextual chips, details, and inputs beneath each generated prompt, including the domain, technologies, scenario, stakeholders, lesson format, and a JSON Variables block. This is useful for auditing and fine-tuning prompts before sending them to an LLM.
+
+![Context & Data View](./images/data-screenshot.png)
+
 ## For Developers
 
 Interested in the technical details or contributing? You can find more in-depth documentation here:
