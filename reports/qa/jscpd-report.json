@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-08-20T21:57:37.032Z",
+    "detectionDate": "2025-08-20T22:15:54.522Z",
     "formats": {
       "javascript": {
         "sources": {
@@ -653,8 +653,8 @@
             "newClones": 0
           },
           "src/utils/clipboard.js": {
-            "lines": 57,
-            "tokens": 553,
+            "lines": 55,
+            "tokens": 533,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -738,8 +738,8 @@
           }
         },
         "total": {
-          "lines": 5592,
-          "tokens": 50961,
+          "lines": 5590,
+          "tokens": 50941,
           "sources": 61,
           "clones": 2,
           "duplicatedLines": 24,
@@ -804,11 +804,11 @@
             "lines": 192,
             "tokens": 1268,
             "sources": 1,
-            "clones": 1,
-            "duplicatedLines": 22,
-            "duplicatedTokens": 141,
-            "percentage": 11.46,
-            "percentageTokens": 11.12,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
             "newDuplicatedLines": 0,
             "newClones": 0
           },
@@ -847,29 +847,17 @@
             "percentageTokens": 0,
             "newDuplicatedLines": 0,
             "newClones": 0
-          },
-          "src/data/core-concepts.json": {
-            "lines": 227,
-            "tokens": 1660,
-            "sources": 1,
-            "clones": 1,
-            "duplicatedLines": 22,
-            "duplicatedTokens": 141,
-            "percentage": 9.69,
-            "percentageTokens": 8.49,
-            "newDuplicatedLines": 0,
-            "newClones": 0
           }
         },
         "total": {
-          "lines": 2392,
-          "tokens": 18478,
-          "sources": 9,
-          "clones": 1,
-          "duplicatedLines": 22,
-          "duplicatedTokens": 141,
-          "percentage": 0.92,
-          "percentageTokens": 0.76,
+          "lines": 2165,
+          "tokens": 16818,
+          "sources": 8,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
@@ -1124,14 +1112,14 @@
       }
     },
     "total": {
-      "lines": 11438,
-      "tokens": 94460,
-      "sources": 88,
-      "clones": 4,
-      "duplicatedLines": 59,
-      "duplicatedTokens": 488,
-      "percentage": 0.52,
-      "percentageTokens": 0.52,
+      "lines": 11209,
+      "tokens": 92780,
+      "sources": 87,
+      "clones": 3,
+      "duplicatedLines": 37,
+      "duplicatedTokens": 347,
+      "percentage": 0.33,
+      "percentageTokens": 0.37,
       "newDuplicatedLines": 0,
       "newClones": 0
     }
@@ -1242,42 +1230,6 @@
           "line": 502,
           "column": 16,
           "position": 2744
-        }
-      }
-    },
-    {
-      "format": "json",
-      "lines": 23,
-      "fragment": "{\n  \"metadata\": {\n    \"purpose\": \"Core architecture concepts, relationships, and knowledge graph\",\n    \"version\": \"2.0.0\",\n    \"lastUpdated\": \"2025-01-14\"\n  },\n  \"conceptCategories\": {\n    \"foundational\": {\n      \"description\": \"Basic architecture principles and definitions\",\n      \"concepts\": {\n        \"software-architecture\": {\n          \"definition\": \"Structure + Characteristics + Decisions + Principles\",\n          \"components\": [\"structure\", \"characteristics\", \"decisions\", \"principles\"],\n          \"relationships\": [\"enables-quality-attributes\", \"guides-implementation\"],\n          \"complexity\": \"beginner\",\n          \"chapters\": [1],\n          \"keyInsights\": [\n            \"Architecture is more than just structure\",\n            \"Decisions and principles are first-class citizens\",\n            \"Quality attributes drive architectural choices\"\n          ]\n        },\n        \"architect-responsibilities\"",
-      "tokens": 0,
-      "firstFile": {
-        "name": "src/data/core-concepts.json",
-        "start": 1,
-        "end": 23,
-        "startLoc": {
-          "line": 1,
-          "column": 1,
-          "position": 0
-        },
-        "endLoc": {
-          "line": 23,
-          "column": 29,
-          "position": 141
-        }
-      },
-      "secondFile": {
-        "name": "src/data/sources/core-concepts.json",
-        "start": 1,
-        "end": 23,
-        "startLoc": {
-          "line": 1,
-          "column": 1,
-          "position": 0
-        },
-        "endLoc": {
-          "line": 23,
-          "column": 13,
-          "position": 141
         }
       }
     }

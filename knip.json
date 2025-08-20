@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/knipjs/knip/main/schema.json",
+  "ignore": [
+    "reports/**",
+    "dist/**",
+    "src/data/models/*.js"
+  ],
+  "ignoreDependencies": [
+    "escomplex",
+    "typhonjs-escomplex"
+  ]
+}

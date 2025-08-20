@@ -15,7 +15,7 @@
     "test:ui": "vitest --ui",
     "sample:selection": "bun scripts/sample-selection.js",
     "qa:prepare": "mkdir -p reports/qa",
-    "qa:deps": "depcheck | tee reports/qa/depcheck.txt || true && knip --no-gitignore --reporter json | tee reports/qa/knip.json || true",
+    "qa:deps": "depcheck --ignores depcheck,dependency-cruiser,madge,plato,escomplex,typhonjs-escomplex,jscpd,jsinspect,scc,cloc,semgrep,gitleaks,npm-check-updates,license-checker,npm-package-json-lint,knip,@vitest/coverage-v8,@types/react-dom,ajv-cli | tee reports/qa/depcheck.txt || true && knip --no-gitignore --reporter json | tee reports/qa/knip.json || true",
     "qa:graph": "depcruise --include-only ^src --output-type text src | tee reports/qa/depcruise.txt || true",
     "qa:circles": "madge --circular --extensions js,jsx src | tee reports/qa/madge-circular.txt || true && madge --image reports/qa/madge-graph.png src || true",
     "qa:complexity": "plato -r -d reports/qa/plato src || true && escomplex src | tee reports/qa/escomplex.txt || true",

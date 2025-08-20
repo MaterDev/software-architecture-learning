@@ -52,7 +52,6 @@ export async function copyText(text, meta = {}) {
 export async function copyAllStages(allStages, options = {}, meta = {}) {
   const text = buildAllPromptsText(allStages, options);
   if (!text) return false;
-  // Use dynamic import to reference the exported function so test spies can intercept
-  const mod = await import('./clipboard.js');
-  return mod.copyText(text, { action: 'copy-all-stages', ...meta });
+  return copyText(text, { action: 'copy-all-stages', ...meta });
 }
+
