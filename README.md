@@ -87,9 +87,13 @@ For a visual tour, check out the screenshots below:
 
 ### How It Works (Landing)
 
+This is the default landing page, providing an overview of the four learning stages and a guide on how to use the tool. It serves as your starting point to understand the app's methodology.
+
 ![How It Works – Landing](./images/full-screenshot.png)
 
 ### Stage Prompt View
+
+This view presents the generated educational meta-prompt for a selected learning stage. Here, you can review the prompt, regenerate it for variations, and copy it for use with an AI model.
 
 ![Stage Prompt View – Expert Engineer](./images/prompt-screenshot.png)
 
