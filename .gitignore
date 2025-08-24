@@ -117,3 +117,6 @@ reports/qa/tree.txt
 reports/qa/scc.txt
 reports/qa/cloc.txt
 
+# Tauri build artifacts
+src-tauri/target
+src-tauri/gen

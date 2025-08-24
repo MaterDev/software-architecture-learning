@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#6ee7b7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Rounded background -->
+  <rect x="0" y="0" width="1024" height="1024" rx="200" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1024" height="1024" rx="200" fill="url(#glow)"/>
+
+  <!-- Spider (emoji-style) -->
+  <g fill="#0b0b0b" stroke="#000" stroke-opacity="0.25" stroke-width="6">
+    <!-- Legs left -->
+    <path d="M402 520 C 320 500, 280 470, 240 420"/>
+    <path d="M402 560 C 320 560, 270 610, 230 660"/>
+    <path d="M422 600 C 340 640, 290 700, 240 760"/>
+    <path d="M430 470 C 340 440, 300 390, 260 340"/>
+    <!-- Legs right (mirror) -->
+    <path d="M622 520 C 704 500, 744 470, 784 420"/>
+    <path d="M622 560 C 704 560, 754 610, 794 660"/>
+    <path d="M602 600 C 684 640, 734 700, 784 760"/>
+    <path d="M594 470 C 684 440, 724 390, 764 340"/>
+
+    <!-- Body -->
+    <ellipse cx="512" cy="580" rx="190" ry="220"/>
+    <!-- Head -->
+    <circle cx="512" cy="380" r="110"/>
+  </g>
+
+  <!-- Face details -->
+  <g>
+    <!-- Eyes white -->
+    <circle cx="472" cy="360" r="28" fill="#ffffff"/>
+    <circle cx="552" cy="360" r="28" fill="#ffffff"/>
+    <!-- Pupils -->
+    <circle cx="466" cy="366" r="10" fill="#111111"/>
+    <circle cx="546" cy="366" r="10" fill="#111111"/>
+    <!-- small mouth -->
+    <path d="M480 410 Q512 430 544 410" fill="none" stroke="#1f2937" stroke-width="10" stroke-linecap="round"/>
+    <!-- body highlight -->
+    <ellipse cx="560" cy="520" rx="80" ry="120" fill="#ffffff" opacity="0.06" transform="rotate(-20 560 520)"/>
+  </g>
+</svg>

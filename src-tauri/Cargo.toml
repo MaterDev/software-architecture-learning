@@ -1,0 +1,14 @@
+[package]
+name = "software-architecture-learning"
+version = "0.0.0"
+edition = "2021"
+description = "Software Architecture Learning - Tauri desktop app"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+
+[profile.release]
+opt-level = "s"
